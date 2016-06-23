@@ -8,7 +8,8 @@ body h1 {
   max-width: 1200px;
 }
 
-.container.mine {
+.container-fluid.mine {
   padding: 20px;
+
 }
 
