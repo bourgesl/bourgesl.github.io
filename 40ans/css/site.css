@@ -1,0 +1,15 @@
+body h1 {
+  padding:20px;
+}
+
+.mine img {
+  border: 1px lightgray solid;
+  margin-top: 50px;
+  max-width: 1200px;
+}
+
+.container-fluid.mine {
+  padding: 20px;
+
+}
+
