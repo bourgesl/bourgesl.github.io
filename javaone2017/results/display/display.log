@@ -1,0 +1,88 @@
+./display.sh 
+date:
+lundi 18 septembre 2017, 21:20:46 (UTC+0200)
+CLASSPATH:   ../lib/mapbench-0.4.0.jar
+Boot CP:     
+Java opts:   -Dsun.java2d.renderer.subPixel_log2_X=3 -Dsun.java2d.renderer.subPixel_log2_Y=3 -Dsun.java2d.renderer.log=true -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine -DMapBench.skipDraw=false -DMapBench.clip.small=false -DMapBench.qualityMode=false -DMapBench.premultiplied=true -DMapBench.acceleration=false -DMapBench.volatile=false -server
+Java tuning:  -Xms2g  -Xmx2g -XX:+UseConcMarkSweepGC
+JVM path
+/home/bourgesl/apps/jdk-9//bin//java
+Java version
+java version "9"
+Java(TM) SE Runtime Environment (build 9+181)
+Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)
+Java HotSpot(TM) 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+##############################################################
+# Java: 9+181
+#   VM: Java HotSpot(TM) 64-Bit Server VM 9+181 (mixed mode)
+#   OS: Linux 4.10.0-33-generic (amd64)
+# CPUs: 4 (virtual)
+##############################################################
+INFO: ===============================================================================
+INFO: Marlin software rasterizer           = ENABLED
+INFO: Version                              = [marlin-0.7.4-Unsafe-OpenJDK]
+INFO: sun.java2d.renderer                  = sun.java2d.marlin.MarlinRenderingEngine
+INFO: sun.java2d.renderer.useThreadLocal   = true
+INFO: sun.java2d.renderer.useRef           = soft
+INFO: sun.java2d.renderer.edges            = 4096
+INFO: sun.java2d.renderer.pixelsize        = 2048
+INFO: sun.java2d.renderer.subPixel_log2_X  = 3
+INFO: sun.java2d.renderer.subPixel_log2_Y  = 3
+INFO: sun.java2d.renderer.tileSize_log2    = 5
+INFO: sun.java2d.renderer.blockSize_log2   = 5
+INFO: sun.java2d.renderer.blockSize_log2   = 5
+INFO: sun.java2d.renderer.forceRLE         = false
+INFO: sun.java2d.renderer.forceNoRLE       = false
+INFO: sun.java2d.renderer.useTileFlags     = true
+INFO: sun.java2d.renderer.useTileFlags.useHeuristics = true
+INFO: sun.java2d.renderer.rleMinWidth      = 64
+INFO: sun.java2d.renderer.useSimplifier    = false
+INFO: sun.java2d.renderer.doStats          = false
+INFO: sun.java2d.renderer.doMonitors       = false
+INFO: sun.java2d.renderer.doChecks         = false
+INFO: sun.java2d.renderer.useLogger        = false
+INFO: sun.java2d.renderer.logCreateContext = false
+INFO: sun.java2d.renderer.logUnsafeMalloc  = false
+INFO: Renderer settings:
+INFO: CUB_COUNT_LG = 2
+INFO: CUB_DEC_BND  = 20.0
+INFO: CUB_INC_BND  = 8.0
+INFO: QUAD_DEC_BND = 8.0
+INFO: INITIAL_EDGES_CAPACITY               = 73728
+INFO: INITIAL_CROSSING_COUNT               = 512
+INFO: ===============================================================================
+# Renderer: MarlinRenderingEngine 
+# Quality mode: DEFAULT...
+# Filter shape on size: DISABLED...
+# Using BufferedImage INT_ARGB_PRE...
+##############################################################
+profileName: longer_shared
+Loading profile file: /home/marlin/mapbench/bin/../profiles/longer_shared.properties
+Loading scale file: /home/marlin/mapbench/bin/../profiles/mapbench-scales.properties
+Profile properties (merged with defaults):
+  doClip=false
+  doCreateStrokedShape=false
+  doRotate=false
+  doScale=false
+  doShear=false
+  doTranslate=false
+  doUseDashedStroke=false
+  doUseGradient=false
+  doUseTexture=false
+  doUseWingRuleEvenOdd=false
+  iteration=1
+  maxThreads=4
+  minDuration=10000.0
+  minLoops=25
+  pass=1
+  rotateAngle=17.333
+  scaleX=4.0
+  scaleY=4.0
+  shearX=2.0
+  shearY=2.0
+  translateX=0.0
+  translateY=0.0
+  useSharedImage=true
+  warmupLoopsMin=80
+##############################################################
+

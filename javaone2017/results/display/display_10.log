@@ -1,0 +1,57 @@
+./display.sh 
+date:
+lundi 18 septembre 2017, 21:25:26 (UTC+0200)
+CLASSPATH:   ../lib/mapbench-0.4.0.jar
+Boot CP:     
+Java opts:   -Dsun.java2d.renderer.subPixel_log2_X=0 -Dsun.java2d.renderer.subPixel_log2_Y=0 -Dsun.java2d.renderer.log=true -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine -DMapBench.skipDraw=false -DMapBench.clip.small=false -DMapBench.qualityMode=false -DMapBench.premultiplied=true -DMapBench.acceleration=false -DMapBench.volatile=false -server
+Java tuning:  -Xms2g  -Xmx2g -XX:+UseConcMarkSweepGC
+JVM path
+/home/bourgesl/libs/graphics-rasterizer/jdk10/client/build/linux-x86_64-normal-server-release/images/jdk//bin//java
+Java version
+openjdk version "10-internal"
+OpenJDK Runtime Environment (build 10-internal+0-adhoc.bourgesl.client10)
+OpenJDK 64-Bit Server VM (build 10-internal+0-adhoc.bourgesl.client10, mixed mode)
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+##############################################################
+# Java: 10-internal+0-adhoc.bourgesl.client10
+#   VM: OpenJDK 64-Bit Server VM 10-internal+0-adhoc.bourgesl.client10 (mixed mode)
+#   OS: Linux 4.10.0-33-generic (amd64)
+# CPUs: 4 (virtual)
+##############################################################
+INFO: ===============================================================================
+INFO: Marlin software rasterizer           = ENABLED
+INFO: Version                              = [marlin-0.8.1-Unsafe-OpenJDK]
+INFO: sun.java2d.renderer                  = sun.java2d.marlin.MarlinRenderingEngine
+INFO: sun.java2d.renderer.useThreadLocal   = true
+INFO: sun.java2d.renderer.useRef           = soft
+INFO: sun.java2d.renderer.edges            = 4096
+INFO: sun.java2d.renderer.pixelsize        = 2048
+INFO: sun.java2d.renderer.subPixel_log2_X  = 0
+INFO: sun.java2d.renderer.subPixel_log2_Y  = 0
+INFO: sun.java2d.renderer.tileSize_log2    = 5
+INFO: sun.java2d.renderer.tileWidth_log2   = 5
+INFO: sun.java2d.renderer.blockSize_log2   = 5
+INFO: sun.java2d.renderer.forceRLE         = false
+INFO: sun.java2d.renderer.forceNoRLE       = false
+INFO: sun.java2d.renderer.useTileFlags     = true
+INFO: sun.java2d.renderer.useTileFlags.useHeuristics = true
+INFO: sun.java2d.renderer.rleMinWidth      = 64
+INFO: sun.java2d.renderer.useSimplifier    = false
+INFO: sun.java2d.renderer.clip             = true
+INFO: sun.java2d.renderer.doStats          = false
+INFO: sun.java2d.renderer.doMonitors       = false
+INFO: sun.java2d.renderer.doChecks         = false
+INFO: sun.java2d.renderer.useLogger        = false
+INFO: sun.java2d.renderer.logCreateContext = false
+INFO: sun.java2d.renderer.logUnsafeMalloc  = false
+INFO: sun.java2d.renderer.cubic_dec_d2     = 1.0
+INFO: sun.java2d.renderer.cubic_inc_d1     = 0.4
+INFO: sun.java2d.renderer.quad_dec_d2      = 0.5
+INFO: Renderer settings:
+INFO: CUB_DEC_BND  = 1.0
+INFO: CUB_INC_BND  = 0.4
+INFO: QUAD_DEC_BND = 0.5
+INFO: INITIAL_EDGES_CAPACITY               = 98304
+INFO: INITIAL_CROSSING_COUNT               = 1024
+INFO: ===============================================================================
+
