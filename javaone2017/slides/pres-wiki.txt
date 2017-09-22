@@ -1,0 +1,612 @@
+<[autotemplate]
+usepackage=[utf8]{inputenc}
+usepackage={array,multirow}
+usepackage={textcomp}
+usepackage={ragged2e}
+usepackage={hyperref}
+usepackage={helvet}
+hypersetup={colorlinks=false}
+documentclass=[aspectratio=169,11pt,xcolor=dvipsnames]{beamer}
+title={Marlin renderer, a JDK9 Success Story}
+subtitle={Vector Graphics on Steroids for Java 2D and JavaFX}
+author={Laurent Bourgès}
+institute=[OSUG-DC, CNRS]{ \includegraphics[height=1.6cm,keepaspectratio]{../osug.png} \hspace{20pt} \includegraphics[height=1.3cm,keepaspectratio]{../cnrs.jpg} }
+date={JavaOne 2017-10-04}
+titleframe=False
+usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
+[autotemplate]>
+<[nowiki]
+\setbeamercolor{frametitle}{bg=RoyalBlue}
+\setbeamercolor{footlineW}{bg=white}
+
+
+
+
+{\setbeamertemplate{background canvas}{ \includegraphics[height=\paperheight, width=\paperwidth]{../javaone-2017.jpg} }
+\begin{frame}[plain]
+\end{frame}}
+
+
+{\setbeamertemplate{background canvas}{ \includegraphics[height=\paperheight, width=\paperwidth]{../javaone-marlin.png} }
+\begin{frame}[plain]
+\end{frame}}
+
+
+{\setbeamertemplate{logo}{ \includegraphics[height=0.75cm,keepaspectratio]{../openjdk.png} \hspace{20pt} \includegraphics[height=1.5cm,keepaspectratio]{../javaone-logo-fixed.png} \hspace{30pt} }
+\frame{\titlepage}}
+
+
+\setbeamercolor{footline}{fg=white,bg=RoyalBlue}
+
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.3\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}%
+    \usebeamerfont{author in head/foot}\insertshortauthor \hspace{2pt} (\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.45\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
+    \usebeamercolor[fg]{normal text}
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
+    \usebeamercolor[fg]{normal text}
+    \usebeamerfont{title in head/foot}\insertshortdate
+    \usebeamerfont{page number in head/foot}
+    \usebeamertemplate*{frame footer}
+    \hfill
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+[nowiki]>
+
+
+
+
+==== Outline ====
+
+\tableofcontents
+
+
+
+
+== Context \& History ==
+==== Context ====
+
+Java2D is a great API (since 1997) to perform graphics rendering.
+
+--0.4em--
+
+Antialiasing renderers = Graphics2D.draw/fill(Shape):
+* Ductus (closed-source) in Sun / Oracle JDK (jdk 1.2)
+** sun.dc.DuctusRenderingEngine (native C code)
+* Pisces (open-source) integrated in OpenJDK (2007)
+** java2d.pisces.PiscesRenderingEngine (java)
+
+--0.4em--
+
+Status in 2013:
+* Ductus: faster but does not scale well (multi-threading)
+* Pisces: slower but scales better
+* GPU ? java2D pipelines (OpenGL, D3D...) provide only few accelerated operations (or switch to \url{glg2d})
+* JavaFX only for client applications (not server-side)
+
+
+==== Antialiasing quality ====
+
+cropped
+
+<[nowiki]
+\small {
+\begin{table} 
+\begin{tabular}{c | c | c | c | c}
+\hline	
+Subpixels & 0 x 0 & 2 x 2 & 4 x 4 & 8 x 8 \\
+Image & \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_0x0.png}
+& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_1x1.png}
+& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_2x2.png} 
+& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_3x3.png} \\ \hline	
+Subpixels & 16 x 16 & 64 x 64 & 256 x 256 \\ 
+Image & \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_4x4.png}
+& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_6x6.png}
+& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_8x8.png} \\ \hline
+\end{tabular}
+\end{table}
+}
+[nowiki]>
+
+
+
+==== Marlin renderer = OpenJDK's Pisces fork ====
+
+* March-Mai 2013: my first patchs to OpenJDK 8:
+** Pisces patchs to \url{2d-dev@openjdk.java.net}: too late
+** small interest / few feedback
+* Andréa Aimé (GeoServer team) pushed me to go on:
+** new MapBench tool: serialize \& replay map rendering
+** fork OpenJDK's Pisces as a new open-source project
+
+--0.4em--
+
+ ==> 01/2014: '''Marlin renderer''' \& MapBench projects on github (GPL v2) with only 2 contributors (Me and Andrea Aimé) !
+
+--0.4em--
+
+* \url{https://github.com/bourgesl/marlin-renderer}
+** branch 'use\_Unsafe': trunk
+** branch 'openjdk': in synch with OpenJDK9
+* \url{https://github.com/bourgesl/mapbench}
+
+
+
+
+==== Marlin \& MapBench projects at github ====
+
+Objectives:
+* faster alternative with very good scalability
+* improve rendering quality
+* Compatible with both Oracle \& Open JDK 7 / 8 / 9
+
+--0.4em--
+
+'''Very big personal work''':
+* many releases in 2014: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
+* Test Driven Development:
+** regression: MapDisplay (diff pisces / marlin outputs)
+** performance: MapBench \& GeoServer benchmarks (+ oprofile)
+* Important feedback within the GIS community: GeoServer (web), gvSIG CE (Swing) providing complex use cases \& testing releases
+
+
+
+
+==== Marlin renderer back into OpenJDK 9 ====
+
+* Late 2014: several mails to \url{2d-dev@openjdk.java.net}
+* FOSDEM 2015: discussion with OpenJDK managers (Dalibor \& Mario) on how to contribute the Marlin renderer back
+
+ ==> I joined the graphics-rasterizer project in march 2015 to contribute Marlin as a new standalone renderer for OpenJDK9. 
+
+* '''I worked hard''' (single coder) with Jim Graham \& Phil Race (reviewers) between march 2015 to december 2015 (4 big patches)
+* We proposed the 'JEP 265: Marlin Graphics Renderer' in July 2015 and make it completed !
+
+* It is now integrated in OpenJDK9 b96 ==> Marlin even faster: 
+** Marlin 0.7: improve coordinate rounding arround subpixel center
+** Marlin 0.7.2: improve large pixel chunk copies (coverage data)
+
+
+
+
+==== My feedback on contributing to OpenJDK ====
+
+* Very interesting \& many things learnt
+* License issue: OCA for all contributors, no third-party code !
+* Webrev process: great but heavy task:
+** create webrevs (hg status, webrev.ksh with options)
+** push on \url{cr.openjdk.java.net/~<mylogin>/}
+** long discussions on mailing lists for my patches (~50 mails)
+** timezone issue: delays + no skype
+* Few Java2D / computer graphics skills = small field + NO DOC !
+
+General:
+* CI: missing 'open' multi-platform machines to perform tests \& benchmarks outside of Oracle
+* Funding community-driven effort ? support collaboration with outsiders
+
+
+
+
+== How Marlin works ? ==
+==== How Java2D works ? ====
+
+Java2D uses only 1 RenderingEngine implementation at runtime:
+* SunGraphics2D.draw/fill(shape)
+* AAShapePipe.renderPath(shape, stroke)
+** aatg = RenderingEngine.getAATileGenerator(shape, at)
+*** Coverage mask computation (tiles) as alpha transparency [0-255]
+** aatg.getAlpha(byte[] alpha, ...) to get next tile ...
+** output pipeline.renderPathTile(byte[] alpha):
+*** MaskFill operations (software / OpenGL pipeline) on dest surface
+
+<[code][style=basic, language=java]
+RenderingEngine:
+    public static synchronized RenderingEngine getInstance();
+    public AATileGenerator getAATileGenerator(Shape s, 
+				AffineTransform at, ...);
+ AATileGenerator:
+    public int getTypicalAlpha();
+    public void nextTile();
+    public void getAlpha(byte tile\[\], ...);
+[code]>
+
+
+
+
+==== How Marlin works ? Pisces / Marlin pipeline ====
+
+MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
+* use shape.getPathIterator() ==> apply the pipeline to path elements:
+* Dasher (optional): 
+** generates path dashes (curved or segments)
+* Stroker (optional): 
+** generates edges arround of every path element
+** generates edges for decorations (cap \& joins)
+* Renderer:
+** curve decimation into line segments
+** addLine: basic clipping + convert float to subpixel coordinates
+** determine the shape bounding box
+** perform edge rendering into tile strides ie compute pixel coverages
+** fill the MarlinCache with pixel coverages as byte[] (alpha)
+* MarlinTileGenerator:
+** provide tile data (32x32) from MarlinCache (packed byte[])
+
+
+
+
+==== How Marlin works ? the AA algorithm ====
+
+* Scanline algorithm [8x8 supersampling] to estimate pixel coverages
+= Active Edge table (AET) variant with "java" pointers (integer-based)
+* sort edges at each scanline
+* estimate subpixel coverage and accumulate in the alpha row
+* Once a pixel row is done: copy pixel coverages into cache
+* Once 32 (tile height) pixel rows are done: perform blending \& repeat !
+
+<<<../ATAvR.png,height=3.5cm,keepaspectratio>>>
+<<<../jsgb-gpu-bg-map.png,height=3cm,keepaspectratio>>>
+
+
+
+
+==== Marlin performance optimizations ====
+
+Intially GC allocation issue:
+* Many growing arrays + zero-fill
+* Many arrays involved to store edge data, alpha pixel row ...
+* Value-Types may be very helpful: manually coded here !
+
+--0.5em--
+
+RendererContext (TL/CLQ) = reused memory ==> almost no GC:
+* kept by weak / soft reference
+* class instances + initial arrays takes 512Kb
+* weak-referenced array cache for larger arrays
+
+--0.5em--
+
+Use: 
+* Unsafe: allocate/free memory + less bound checks
+* zero-fill (recycle arrays) on used parts only !
+* use dirty arrays when possible: C like !
+
+
+
+
+==== Marlin performance optimizations ====
+* Need good profiler: use oprofile + gather internal metrics
+
+--0.5em--
+
+* Fine tuning of Pisces algorithms:
+** custom rounding [float to int]
+** DDA in Renderer with correct pixel center handling
+** tile stride approach instead of all tiles (32px)
+** pixel alpha transfers (RLE) ==> adaptive approach
+
+--0.5em--
+
+All lot more ... 
+
+
+
+
+== Marlin benchmarks ==
+==== MapBench benchmarks ====
+
+* MapBench tool:
+** a multi-threaded java2d benchmark that replays serialized graphics commands (see ShapeDumperGraphics2D)
+** calibration \& warmup phase at startup + correct statistics [min, median, average, 95th percentile, max]
+
+Procedure:
+* disable HyperThreading (in BIOS)
+* use fixed cpu frequencies (2GHz) on my laptop (i7 4800)
+* setup the jvm: jdk to use + basic jvm settings = CMS gc 2Gb Heap
+* use a profile (shared images) to reduce GC overhead
+
+ ==> Reduce variability (and cpu affinity issues)
+
+
+
+
+==== Before Marlin ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-before.png}
+[nowiki]>
+
+
+==== With Marlin ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin.png}
+[nowiki]>
+
+
+==== Performance gain (1T) ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
+[nowiki]>
+
+==== Performance gain (2T) ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
+[nowiki]>
+
+==== Performance gain (4T) ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
+[nowiki]>
+
+
+==== Marlin Performance ====
+* Compared to Ductus:
+** on par in single thread
+** higher scalability: up to 250\% gain (4T)
+* Compared to Pisces:
+** 2x faster: 100\% to 150\% gain
+* Perfect scalability 1T to 4T
+
+<[nowiki]
+\hspace*{3.cm}\includegraphics[height=4cm,keepaspectratio]{../mean-compare-with-marlin-gain.png}
+[nowiki]>
+
+
+
+
+==== Marlin comparison between JDK9 vs JDK10 ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../diff-marlin-time.png}
+[nowiki]>
+
+==== Marlin comparison between JDK9 vs JDK10 ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../diff-marlin-gain.png}
+[nowiki]>
+
+==== Marlin comparison between JDK9 vs JDK10 ====
+* Marlin in JDK10 (0.7.5): on par with Marlin in JDK9
+* Large fills are slightly 10\% faster
+* Curve accuracy improved but 10\% slower max
+
+
+
+
+== How to use Marlin ? ==
+==== How to use Marlin ? ====
+
+See: \url{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}
+
+* Just download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release}
+* Start your java program with:
+** -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
+** Oracle or Open JDK 1.7 or 1.8 needed
+
+--0.6em--
+
+* OR download any Oracle or Open JDK9 EA builds
+** \url{https://jdk9.java.net/}
+
+
+
+
+== Marlin renderer tuning ==
+==== Marlin renderer tuning ====
+
+Marlin can be customized by using system properties:
+* adjust subpixel sampling: 
+** X/Y=3: [8x8] (by default)
+** smaller values are faster but less accurate
+** higher values are slower but more accurate
+* pixel sizing: typical largest shape width / height (2048 by default)
+* adjust tile size: 6 [64x64] seems better than 5 [32x32]
+
+Debugging:
+* log statistics to know what happens
+* enable checks if segfault or artefacts !
+
+
+
+
+==== Marlin System properties ====
+
+<[nowiki]
+\small {
+\begin{table} 
+\begin{tabular}{l | c | l}
+\hline	
+System property & values & description \\ \hline
+\hline	
+\tiny {sun.java2d.renderer.useThreadLocal} & \textbf{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
+\tiny {sun.java2d.renderer.useRef} & \textbf{soft} - weak - hard & Reference type to RdrCtx \\ \hline
+\hline	
+\tiny {sun.java2d.renderer.pixelsize} & \textbf{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
+\tiny {sun.java2d.renderer.subPixel\_log2\_X} & \textbf{3} in [1-8] & Subpixel count on X axis \\ \hline
+\tiny {sun.java2d.renderer.subPixel\_log2\_Y} & \textbf{3} in [1-8] & Subpixel count in Y axis \\ \hline
+\tiny {sun.java2d.renderer.tileSize\_log2} & \textbf{5} in [3-8] & Pixel width/height for tiles \\ \hline
+\hline	
+\tiny {sun.java2d.renderer.doStats} & true - \textbf{false} & Log rendering statistics \\ \hline
+\tiny {sun.java2d.renderer.doChecks} & true - \textbf{false} & Perform array checks \\ \hline
+\tiny {sun.java2d.renderer.useLogger} & true - \textbf{false} & Use j.u.l.Logger \\ \hline
+\end{tabular}
+\end{table}
+}
+[nowiki]>
+
+Log2 for subpixel \& tile sizes:
+* subPixel = 3 means 8x8 
+* tileSize = 5 means 32x32
+
+
+==== Performance impact of the subpixel tuning ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../subpixel-marlin-time.png}
+[nowiki]>
+
+==== Performance impact of the subpixel tuning ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../subpixel-marlin-gain.png}
+[nowiki]>
+
+
+
+
+== MarlinFX ==
+
+==== MarlinFX System properties ====
+sun.java2d.marlin => javafx.prism.marlin
+
+
+== MarlinFX benchmarks ==
+==== Micro benchmarks ====
+
+==== DemoFX benchmarks ====
+TODO: insert screenshots
+
+==== MapBenchFX benchmarks ====
+
+* MapBenchFX: JavaFX application to render maps
+* Port of the Java2D benchmark using FXGraphics2D
+
+
+
+
+==== MarlinFX vs Native/Java Pisces ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../fx-marlin.png}
+[nowiki]>
+
+==== MarlinFX vs Native/Java Pisces ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../fx-marlin-gain.png}
+[nowiki]>
+
+
+
+
+== Future work ==
+==== Future work ====
+
+I may have still spare time to improve Marlin...
+
+--1em--
+
+But your help is needed:
+* try your applications \& use cases with Marlin
+* contribute: let's implement new algorithms (gamma correction, clipping ...)
+* provide feedback, please !
+
+
+
+
+==== Quality Ideas ====
+
+* NaN / Overflow handling
+* Higher precision maths: double vs float in Dasher / Stroker maths and affine transforms
+
+* '''Handle properly the gamma correction''': (MaskFill C macros) 
+** very important for visual quality
+** note: stroke width must compensate the gamma correction to avoid having thin shapes.
+
+* Analytical pixel coverage: using signed area coverage for a trapezoid ==> compute the exact pixel area covered by the polygon
+
+\centering
+<<<../PolygonFillTrapezoidExample.png,height=2.5cm,keepaspectratio>>>
+
+
+
+
+==== Performance ideas ====
+
+* Clipping: 
+** implement early efficient path clipping (major impact on dashes)
+** take care of affine transforms (margin, not always rectangle)
+
+* Cap \& join processing (Stroker): 
+** do not emit extra collinear points for squared cap \& miter joins
+** improve Polygon Simplifier ?
+
+* Scanline processing (8x8 subpixels):
+** 8 scanlines per pixel row ==> compute exact area covered in 1 row
+** see algorithmic approach (AGG like): \url{http://nothings.org/gamedev/rasterize/}
+** may be almost as fast but a lot more precise !
+
+
+
+
+==== EA Marlin 0.8.1 = Path clipping ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../clip-marlin-time.png}
+[nowiki]>
+
+==== EA Marlin 0.8.1 = Path clipping ====
+
+<[nowiki]
+\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../clip-marlin-gain.png}
+[nowiki]>
+
+
+
+== Conclusion ==
+==== Conclusion ====
+
+* Marlin rocks in Java 9!
+* Happy Java 9, released.
+* Enjoy the Marlin renderer (MT) 
+
+TODO: put Dude on big 9 !
+
+
+==== That's all folks ! ====
+
+* Please ask your questions 
+* or send them to \url{marlin-renderer@googlegroups.com}
+
+--0.6em--
+
+Special thanks to:
+* Andréa Aimé (GeoServer)
+* Benjamin Ducke (gvSIG CE)
+* OpenJDK teams for their help, reviews \& support: 
+** Jim Graham \& Phil Race (java2d)
+** Mario Torre \& Dalibor Topic
+** Mark Reinhold (openjdk 9)
+* ALL Marlin users
+
+
+
+<[nowiki]
+\appendix
+[nowiki]>
+
+== Extra ==
+
+==== JavaOne trip sponsors ====
+
+Andréa Aimé
+Simone
+OSGEO
+Azul
+GLuonHQ
+
+TODO: cite all
+
+
+

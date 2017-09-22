@@ -1,0 +1,54 @@
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_0x0.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 4c 850B 0.000u 0:00.000
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 41634 (0.635294)
+    green: 41634 (0.635294)
+    blue: 52942 (0.807843)
+    all: 52942 (0.807843)
+crop_8x8.png=>cmp_8_0.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.36KB 0.130u 0:00.039
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_1x1.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 23c 1.91KB 0.000u 0:00.009
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 11822 (0.180392)
+    green: 11822 (0.180392)
+    blue: 13364 (0.203922)
+    all: 13364 (0.203922)
+crop_8x8.png=>cmp_8_1.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.36KB 0.070u 0:00.019
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_2x2.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 83c 2.54KB 0.000u 0:00.000
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 5654 (0.0862745)
+    green: 5654 (0.0862745)
+    blue: 5654 (0.0862745)
+    all: 5654 (0.0862745)
+crop_8x8.png=>cmp_8_2.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 4.84KB 0.070u 0:00.020
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_3x3.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 172c 3.01KB 0.000u 0:00.009
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 2056 (0.0313726)
+    green: 2056 (0.0313726)
+    blue: 2056 (0.0313726)
+    all: 2056 (0.0313726)
+crop_8x8.png=>cmp_8_3.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 4.95KB 0.080u 0:00.019
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_4x4.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 248c 3.3KB 0.000u 0:00.000
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 1028 (0.0156863)
+    green: 1028 (0.0156863)
+    blue: 1028 (0.0156863)
+    all: 1028 (0.0156863)
+crop_8x8.png=>cmp_8_4.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 4.79KB 0.080u 0:00.019
+crop_8x8.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 253c 3.33KB 0.000u 0:00.000
+crop_6x6.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 256c 3.33KB 0.000u 0:00.000
+Image: crop_8x8.png
+  Channel distortion: PAE
+    red: 514 (0.00784314)
+    green: 514 (0.00784314)
+    blue: 514 (0.00784314)
+    all: 514 (0.00784314)
+crop_8x8.png=>cmp_8_6.png PNG 400x400 14000x8000+5200+3450 8-bit sRGB 4.5KB 0.070u 0:00.019
