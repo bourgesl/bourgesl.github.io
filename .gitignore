@@ -2,6 +2,8 @@ fosdem-2016/slides/tex/
 fosdem-2016/results/
 fosdem-2016/slides/open.sh
 javaone2017/JDK9NewAndNoteworthy.pdf
+javaone2017/pdf2pptx/
+javaone2017/slides/pres.*
 javaone2017/slides/tex/
 **/open.sh
 

@@ -4,9 +4,10 @@ usepackage={array,multirow}
 usepackage={textcomp}
 usepackage={ragged2e}
 usepackage={hyperref}
-usepackage={helvet}
+usepackage={appendixnumberbeamer}
+usepackage=[absolute,overlay]{textpos}
 hypersetup={colorlinks=false}
-documentclass=[aspectratio=169,11pt,xcolor=dvipsnames]{beamer}
+documentclass=[aspectratio=169,12pt,xcolor=dvipsnames]{beamer}
 title={Marlin renderer, a JDK9 Success Story}
 subtitle={Vector Graphics on Steroids for Java 2D and JavaFX}
 author={Laurent Bourgès}
@@ -16,8 +17,16 @@ titleframe=False
 usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
 [autotemplate]>
 <[nowiki]
+\textblockorigin{0pt}{0pt} %origine des positions (coin gauche) attention, axe y vers le bas !!
+%\TPshowboxesfalse         % affiche le contour des textblock
+
+
 \setbeamercolor{frametitle}{bg=RoyalBlue}
 \setbeamercolor{footlineW}{bg=white}
+
+\iftrue
+ \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+\fi
 
 
 
@@ -26,14 +35,20 @@ usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
 \begin{frame}[plain]
 \end{frame}}
 
-
 {\setbeamertemplate{background canvas}{ \includegraphics[height=\paperheight, width=\paperwidth]{../javaone-marlin.png} }
 \begin{frame}[plain]
 \end{frame}}
 
 
+
+
 {\setbeamertemplate{logo}{ \includegraphics[height=0.75cm,keepaspectratio]{../openjdk.png} \hspace{20pt} \includegraphics[height=1.5cm,keepaspectratio]{../javaone-logo-fixed.png} \hspace{30pt} }
-\frame{\titlepage}}
+\frame{\titlepage
+
+\begin{textblock*}{3cm}(12.5cm,0.5cm)
+\includegraphics[width=2.5cm,keepaspectratio]{../marlin-logo.png}
+\end{textblock*}
+}}
 
 
 \setbeamercolor{footline}{fg=white,bg=RoyalBlue}
@@ -58,6 +73,38 @@ usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
   \end{beamercolorbox}}%
   \vskip0pt%
 }
+
+\makeatletter
+\newsavebox{\mybox}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \savebox{\mybox}{%
+      \begin{beamercolorbox}[%
+          wd=\paperwidth,%
+          sep=0pt,%
+          leftskip=\metropolis@frametitle@padding,%
+          rightskip=\metropolis@frametitle@padding,%
+        ]{frametitle}%
+      \metropolis@frametitlestrut@start\insertframetitle\metropolis@frametitlestrut@end%
+      \end{beamercolorbox}%
+    }
+  \begin{beamercolorbox}[%
+      wd=\paperwidth,%
+      sep=0pt,%
+      leftskip=\metropolis@frametitle@padding,%
+      rightskip=\metropolis@frametitle@padding,%
+    ]{frametitle}%
+  \metropolis@frametitlestrut@start\insertframetitle\metropolis@frametitlestrut@end%
+  \hfill%
+    \raisebox{-\metropolis@frametitle@padding}{\includegraphics[height=\dimexpr\ht\mybox+\metropolis@frametitle@padding\relax,keepaspectratio]{../marlin-logo.png}}%
+    \hspace*{-\metropolis@frametitle@padding}
+  \end{beamercolorbox}%
+}
+
+\addtobeamertemplate{frametitle}{}{%
+    \usebeamertemplate*{progress bar in head/foot}
+}
+\makeatother
 [nowiki]>
 
 
@@ -68,65 +115,82 @@ usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
 \tableofcontents
 
 
-
-
 == Context \& History ==
-==== Context ====
 
-Java2D is a great API (since 1997) to perform graphics rendering.
-
---0.4em--
-
-Antialiasing renderers = Graphics2D.draw/fill(Shape):
-* Ductus (closed-source) in Sun / Oracle JDK (jdk 1.2)
-** sun.dc.DuctusRenderingEngine (native C code)
-* Pisces (open-source) integrated in OpenJDK (2007)
-** java2d.pisces.PiscesRenderingEngine (java)
-
---0.4em--
-
-Status in 2013:
-* Ductus: faster but does not scale well (multi-threading)
-* Pisces: slower but scales better
-* GPU ? java2D pipelines (OpenGL, D3D...) provide only few accelerated operations (or switch to \url{glg2d})
-* JavaFX only for client applications (not server-side)
-
-
-==== Antialiasing quality ====
-
-cropped
+==== Role of an Antialiasing Renderer ====
+* Geometry is defined by a mathematical description of a path
+* Shapes may be complex: concave, convex, intersecting ...
+* To draw to any kind of raster surface (image, screen), need to map the rendering of ideal path to raster coordinates
+* Points on the path may rarely map exactly to raster coordinates
+* Need to ascertain coverage (anti-aliasing) for each output pixel
 
 <[nowiki]
-\small {
-\begin{table} 
-\begin{tabular}{c | c | c | c | c}
+\texttt{\small
+\begin{tabular}{| c | c | c | c | c | c |}
 \hline	
-Subpixels & 0 x 0 & 2 x 2 & 4 x 4 & 8 x 8 \\
-Image & \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_0x0.png}
-& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_1x1.png}
-& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_2x2.png} 
-& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_3x3.png} \\ \hline	
-Subpixels & 16 x 16 & 64 x 64 & 256 x 256 \\ 
-Image & \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_4x4.png}
-& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_6x6.png}
-& \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_8x8.png} \\ \hline
+0x0 & 2x2 & 4x4 & 8x8 & 16x16 & 64x64 \\ 
+\includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_0x0.png}
+& \includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_1x1.png}
+& \includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_2x2.png} 
+& \includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_3x3.png}
+& \includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_4x4.png}
+& \includegraphics[height=1.8cm,keepaspectratio]{../cropped/crop_6x6.png} \\ \hline
 \end{tabular}
-\end{table}
 }
 [nowiki]>
 
 
 
+
+==== Java2D API in a nutshell ====
+
+Java2D is a great \& powerful Graphics API:
+* \texttt{Shape} interface (\texttt{java.awt.geom})
+** Primitives: \texttt{Rectangle2D, Line2D, Ellipse2D, Arc2D ...}
+** General \texttt{Path2D}: \texttt{moveTo(), lineTo(), quadTo(), curveTo(), closeTo()}
+* \texttt{Stroke} interface: \texttt{BasicStroke} (\texttt{width, dashes} fields)
+* \texttt{Paint} interface: \texttt{Color, GradientPaint, TexturePaint}
+* \texttt{Composite} interface: \texttt{AlphaComposite} (Porter/Duff blending rules)
+* \texttt{Graphics} interface: \texttt{Graphics2D draw(Shape) or fill(Shape)} performs shape rendering operations
+
+
+
+
+==== Background (before Marlin) ====
+Antialiasing renderers available in Java:
+* JDK 1.2 included licensed closed-source technology from Ductus
+** Ductus provides high performance, but single threaded
+** State of the art for its time
+** Ductus still ships with Oracle JDK 9
+** \texttt{sun.dc.DuctusRenderingEngine} (native C code)
+
+* However OpenJDK 1.6 replaced Ductus with "Pisces"
+** Pisces developed + owned by Sun, in part for Java ME
+** So could be open-sourced but performance much poorer
+** \texttt{java2d.pisces.PiscesRenderingEngine} (java code)
+
+Note: all of these are AA rendering only. Other renderers for non-AA cases.
+
+
+
+
 ==== Marlin renderer = OpenJDK's Pisces fork ====
+
+Status in 2013:
+* Ductus: faster but scalability issue (multi-threading)
+* Pisces: slower but better scalability (GPL) 
+* GPU ? Java2D OpenGL \& D3D pipelines provide only few accelerated operations (blending)
 
 * March-Mai 2013: my first patchs to OpenJDK 8:
 ** Pisces patchs to \url{2d-dev@openjdk.java.net}: too late
-** small interest / few feedback
+** Small interest / few feedbacks
 * Andréa Aimé (GeoServer team) pushed me to go on:
-** new MapBench tool: serialize \& replay map rendering
-** fork OpenJDK's Pisces as a new open-source project
+** New MapBench tool: serialize \& replay rendering commands
+** Fork OpenJDK's Pisces as a new open-source project
 
---0.4em--
+
+
+==== Marlin renderer @ github ====
 
  ==> 01/2014: '''Marlin renderer''' \& MapBench projects on github (GPL v2) with only 2 contributors (Me and Andrea Aimé) !
 
@@ -137,25 +201,35 @@ Image & \includegraphics[height=2.5cm,keepaspectratio]{../cropped/crop_4x4.png}
 ** branch 'openjdk': in synch with OpenJDK9
 * \url{https://github.com/bourgesl/mapbench}
 
+TODO: add branches
 
 
-
-==== Marlin \& MapBench projects at github ====
+==== Marlin \& MapBench projects @ github ====
 
 Objectives:
-* faster alternative with very good scalability
-* improve rendering quality
+* Faster alternative with very good scalability
+* Improve rendering quality
 * Compatible with both Oracle \& Open JDK 7 / 8 / 9
 
 --0.4em--
 
 '''Very big personal work''':
-* many releases in 2014: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
+* Many releases in 2014: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
 * Test Driven Development:
-** regression: MapDisplay (diff pisces / marlin outputs)
-** performance: MapBench \& GeoServer benchmarks (+ oprofile)
-* Important feedback within the GIS community: GeoServer (web), gvSIG CE (Swing) providing complex use cases \& testing releases
+** Regression: MapDisplay (diff pisces / marlin outputs)
+** Performance: MapBench \& GeoServer benchmarks (+ oprofile)
+* Important feedback within the GIS community (GeoServer) providing complex use cases \& testing releases
 
+
+
+
+==== Marlin Release history @ github ====
+* Releases: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
+
+TODO: table of major features
+
+* Marlin 0.7: improve coordinate rounding arround subpixel center
+* Marlin 0.7.2: improve large pixel chunk copies (coverage data)
 
 
 
@@ -167,11 +241,21 @@ Objectives:
  ==> I joined the graphics-rasterizer project in march 2015 to contribute Marlin as a new standalone renderer for OpenJDK9. 
 
 * '''I worked hard''' (single coder) with Jim Graham \& Phil Race (reviewers) between march 2015 to december 2015 (4 big patches)
-* We proposed the 'JEP 265: Marlin Graphics Renderer' in July 2015 and make it completed !
 
-* It is now integrated in OpenJDK9 b96 ==> Marlin even faster: 
-** Marlin 0.7: improve coordinate rounding arround subpixel center
-** Marlin 0.7.2: improve large pixel chunk copies (coverage data)
+
+
+==== JEP 265: Marlin renderer back into OpenJDK 9 ====
+
+We proposed the JEP 265 in July 2015 and make it completed !
+* JEP 265: Marlin Graphics Renderer
+* \href{http://openjdk.java.net/jeps/265}{http://openjdk.java.net/jeps/265}
+* Developer : Laurent Bourgès.
+* Reviewer  : Jim Graham
+
+* Marlin was integrated in OpenJDK9 b96 (dec 2015) and got enhancements in 2016.
+* Current integrated releases within OpenJDK:
+** JDK9 = Marlin 0.7.4
+** JDK10 = Marlin 0.7.5
 
 
 
@@ -187,15 +271,17 @@ Objectives:
 ** timezone issue: delays + no skype
 * Few Java2D / computer graphics skills = small field + NO DOC !
 
+
+==== My feedback on contributing to OpenJDK ====
+
 General:
+* Missing contributors into Graphics stack !
 * CI: missing 'open' multi-platform machines to perform tests \& benchmarks outside of Oracle
 * Funding community-driven effort ? support collaboration with outsiders
 
 
-
-
 == How Marlin works ? ==
-==== How Java2D works ? ====
+==== How the Java2D pipeline works ? ====
 
 Java2D uses only 1 RenderingEngine implementation at runtime:
 * SunGraphics2D.draw/fill(shape)
@@ -254,6 +340,17 @@ MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
 <<<../jsgb-gpu-bg-map.png,height=3cm,keepaspectratio>>>
 
 
+==== How Marlin works ? the AA algorithm ====
+How it works
+* Java2D's internal drawing renders rectangular tiles.
+* Marlin starts with the path defining the shape
+* Takes the elements of the path and flattens curves
+* Uses 8x8 super-sampling to estimate coverage.
+* For each sample line calculates intersections.
+* Sorts where the path edges cross the scan line
+* Output is one byte per pixel representing alpha coverage.
+* Process 32 entire pixel rows at a time and cache sample-line intersection info
+* Provide 32x32 rectangular tiles needed by the internal Java2D rendering pipelines
 
 
 ==== Marlin performance optimizations ====
@@ -314,38 +411,43 @@ Procedure:
  ==> Reduce variability (and cpu affinity issues)
 
 
+==== MapBench tests ====
+Many tests: 9 maps, 5 large ellipse \& spiral drawings:
+<[nowiki]
+\hspace*{2cm}\includegraphics[height=6.5cm,keepaspectratio]{../all.png}
+[nowiki]>
 
 
 ==== Before Marlin ====
-
+Oracle Ductus (faster - 1T) vs OpenJDK Pisces (slower but scalability)
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-before.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
 
 
 ==== With Marlin ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
 
 
 ==== Performance gain (1T) ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
 [nowiki]>
 
 ==== Performance gain (2T) ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
 [nowiki]>
 
 ==== Performance gain (4T) ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
 [nowiki]>
 
 
@@ -367,13 +469,13 @@ Procedure:
 ==== Marlin comparison between JDK9 vs JDK10 ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../diff-marlin-time.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-time.png}
 [nowiki]>
 
 ==== Marlin comparison between JDK9 vs JDK10 ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../diff-marlin-gain.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-gain.png}
 [nowiki]>
 
 ==== Marlin comparison between JDK9 vs JDK10 ====
@@ -381,6 +483,20 @@ Procedure:
 * Large fills are slightly 10\% faster
 * Curve accuracy improved but 10\% slower max
 
+
+
+
+==== Marlin comparison between 0.3 vs 0.8.1 ====
+
+<[nowiki]
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-time.png}
+[nowiki]>
+
+==== Marlin comparison between 0.3 vs 0.8.1 ====
+
+<[nowiki]
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-gain.png}
+[nowiki]>
 
 
 
@@ -423,78 +539,117 @@ Debugging:
 ==== Marlin System properties ====
 
 <[nowiki]
-\small {
+
+\iffalse
+
+{\small
 \begin{table} 
 \begin{tabular}{l | c | l}
 \hline	
-System property & values & description \\ \hline
+System property \\ {\scriptsize -Dsun.java2d.renderer.<KEY>=} & Values & Description \\ \hline
 \hline	
-\tiny {sun.java2d.renderer.useThreadLocal} & \textbf{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
-\tiny {sun.java2d.renderer.useRef} & \textbf{soft} - weak - hard & Reference type to RdrCtx \\ \hline
+useThreadLocal & \textbf{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
+useRef & \textbf{soft} - weak - hard & Reference type to RdrCtx \\ \hline
 \hline	
-\tiny {sun.java2d.renderer.pixelsize} & \textbf{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
-\tiny {sun.java2d.renderer.subPixel\_log2\_X} & \textbf{3} in [1-8] & Subpixel count on X axis \\ \hline
-\tiny {sun.java2d.renderer.subPixel\_log2\_Y} & \textbf{3} in [1-8] & Subpixel count in Y axis \\ \hline
-\tiny {sun.java2d.renderer.tileSize\_log2} & \textbf{5} in [3-8] & Pixel width/height for tiles \\ \hline
+pixelsize & \textbf{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
+subPixel\_log2\_X & \textbf{3} in [1-8] & Subpixel count on X axis \\ \hline
+subPixel\_log2\_Y & \textbf{3} in [1-8] & Subpixel count in Y axis \\ \hline
+tileSize\_log2 & \textbf{5} in [3-8] & Pixel width/height for tiles \\ \hline
 \hline	
-\tiny {sun.java2d.renderer.doStats} & true - \textbf{false} & Log rendering statistics \\ \hline
-\tiny {sun.java2d.renderer.doChecks} & true - \textbf{false} & Perform array checks \\ \hline
-\tiny {sun.java2d.renderer.useLogger} & true - \textbf{false} & Use j.u.l.Logger \\ \hline
+doStats & true - \textbf{false} & Log rendering statistics \\ \hline
+doChecks & true - \textbf{false} & Perform array checks \\ \hline
+useLogger & true - \textbf{false} & Use j.u.l.Logger \\ \hline
 \end{tabular}
 \end{table}
 }
+
+\fi
 [nowiki]>
 
-Log2 for subpixel \& tile sizes:
-* subPixel = 3 means 8x8 
-* tileSize = 5 means 32x32
+Log-2 values for subpixel \& tile sizes:
+* subPixel = 3 means 8 x 8 
+* tileSize = 5 means 32 x 32
 
 
-==== Performance impact of the subpixel tuning ====
 
-<[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../subpixel-marlin-time.png}
-[nowiki]>
 
-==== Performance impact of the subpixel tuning ====
+==== Other Java2D improvements in Java 9 ====
+* JDK-  : PNGEncoder compression ratio
+* Path2D: array growing algo
 
-<[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../subpixel-marlin-gain.png}
-[nowiki]>
 
 
 
 
 == MarlinFX ==
 
+==== MarlinFX project ====
+
+2016: port Marlin into JavaFX Prism
+* Prism integration
+** Complete mask no more tiles
+** GPU backend is faster (upload texture may be costly)
+** but single-threaded (GUI)
+
+* Double-precision variant to improve accuracy on very large shapes (stroke / dashes)
+
+* Integrated in OpenJFX9 (dec 2016) but disabled by default
+
+
+
+==== How to use MarlinFX ? ====
+
+* enable Marlin:
+
+* use Double variant:
+
+
+
 ==== MarlinFX System properties ====
-sun.java2d.marlin => javafx.prism.marlin
+'sun.java2d.marlin' => 'javafx.prism.marlin'
+
+TODO: complete
+
+
+==== My feedback on contributing to OpenJFX ====
+
+Contrary to Marlin, OpenJFX patches were more quickly integrated into OpenJFX9 (Jim Graham, again) !
+
+TODO: complete
 
 
 == MarlinFX benchmarks ==
 ==== Micro benchmarks ====
 
 ==== DemoFX benchmarks ====
-TODO: insert screenshots
+OpenJFX9 b146 first results with DemoFX Triangle test
+
+<<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
 
 ==== MapBenchFX benchmarks ====
 
 * MapBenchFX: JavaFX application to render maps
 * Port of the Java2D benchmark using FXGraphics2D
 
-
+<[nowiki]
+\begin{tabular}{c c c}
+  \includegraphics[height=2.5cm,keepaspectratio]{../MapDemo-FX_circles.png} 
+& \includegraphics[height=2.5cm,keepaspectratio]{../MapDemo-FX_map_dc.png} 
+& \includegraphics[height=2.5cm,keepaspectratio]{../MapDemo-FX_map_z625k.png} 
+\end{tabular}
+[nowiki]>
 
 
 ==== MarlinFX vs Native/Java Pisces ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../fx-marlin.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx-marlin.png}
 [nowiki]>
 
 ==== MarlinFX vs Native/Java Pisces ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../fx-marlin-gain.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx-marlin-gain.png}
 [nowiki]>
 
 
@@ -508,24 +663,21 @@ I may have still spare time to improve Marlin...
 --1em--
 
 But your help is needed:
-* try your applications \& use cases with Marlin
-* contribute: let's implement new algorithms (gamma correction, clipping ...)
-* provide feedback, please !
+* Try your applications \& use cases with the Marlin renderer
+* Contribute to the Marlin project: let's implement new algorithms (gamma correction, clipping ...)
+* Provide feedback, please !
 
 
 
 
 ==== Quality Ideas ====
 
-* NaN / Overflow handling
-* Higher precision maths: double vs float in Dasher / Stroker maths and affine transforms
-
-* '''Handle properly the gamma correction''': (MaskFill C macros) 
-** very important for visual quality
-** note: stroke width must compensate the gamma correction to avoid having thin shapes.
+* '''Handle properly the gamma correction''': 
+** in MaskFill for images (C macros) \& GPU backends
+** \textbf{Very important for visual quality}
+** note: Stroke's width must compensate the gamma correction to avoid having thiner / fatter shapes.
 
 * Analytical pixel coverage: using signed area coverage for a trapezoid ==> compute the exact pixel area covered by the polygon
-
 \centering
 <<<../PolygonFillTrapezoidExample.png,height=2.5cm,keepaspectratio>>>
 
@@ -534,7 +686,7 @@ But your help is needed:
 
 ==== Performance ideas ====
 
-* Clipping: 
+* Clipping (coming in release 0.8): 
 ** implement early efficient path clipping (major impact on dashes)
 ** take care of affine transforms (margin, not always rectangle)
 
@@ -553,25 +705,26 @@ But your help is needed:
 ==== EA Marlin 0.8.1 = Path clipping ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../clip-marlin-time.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-time.png}
 [nowiki]>
 
 ==== EA Marlin 0.8.1 = Path clipping ====
 
 <[nowiki]
-\hspace*{-0.8cm}\includegraphics[height=7.4cm,keepaspectratio]{../clip-marlin-gain.png}
+\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-gain.png}
 [nowiki]>
 
 
 
 == Conclusion ==
 ==== Conclusion ====
-
 * Marlin rocks in Java 9!
-* Happy Java 9, released.
-* Enjoy the Marlin renderer (MT) 
-
-TODO: put Dude on big 9 !
+* Performance goals were met
+** Scales for multiple threads whereas Ductus does not
+** Single threaded performance generally as good or better for complex shapes.
+* Quality goals were met.
+* Marlin is now the default AA renderer for Oracle JDK (and OpenJDK).
+* Implementation, not API. Benefit accrues automatically to apps.
 
 
 ==== That's all folks ! ====
@@ -582,31 +735,147 @@ TODO: put Dude on big 9 !
 --0.6em--
 
 Special thanks to:
-* Andréa Aimé (GeoServer)
-* Benjamin Ducke (gvSIG CE)
+* Andréa Aimé \& GeoServer team
 * OpenJDK teams for their help, reviews \& support: 
-** Jim Graham \& Phil Race (java2d)
+** Jim Graham \& Phil Race (Java2D)
 ** Mario Torre \& Dalibor Topic
-** Mark Reinhold (openjdk 9)
+** Mark Reinhold
 * ALL Marlin users
 
 
+==== JavaOne Sponsors (gofundme) ====
+Special thanks to all my 40 donators:
+* \textbf{GeoServer Project Steering Comittee}
+* \textbf{AZUL SYSTEMS}
+* \textbf{Gluon Software}
+** Thanks for all that you do to make JavaFX an awesome UI library
+* \textbf{OpenJDK}: Mark Reinhold, Jim Graham, Phil Race, Kevin Rushforth
+* \textbf{Dirk Lemmermann}
+** What would I do without people like you? So here you go!
+* \textbf{Manuel Timita}
+** Your work means a lot to us!
+* H. K.
 
-<[nowiki]
-\appendix
-[nowiki]>
+==== JavaOne Sponsors (gofundme) ====
+* \textbf{Chris Newland}
+** Laurent has made a big contribution to OpenJDK with his Marlin and Marlin-FX high performance renderers. Let's help him get to JavaOne 2017!
+* \textbf{Simone Giannecchini}
+* \textbf{Andréa Aimé}
+** Laurent helped solving a significant performance/scalability problem in server side Java applications using java2d. Let's help him reach JavaOne and talk about his work!
+* Z. B.
+* \textbf{JUGS e.V.}
+* Brad Hards
+
+==== JavaOne Sponsors (gofundme) ====
+* Mario Ivankovits
+* Peter-Paul Koonings (GeoNovation)
+* \textbf{Michael Paus}
+* Bart van den Eijnden (osgis.nl)
+* Mario Zechner
+* Jody Garnett
+* Tom Schindl
+* Thea Aldrich
+* Cédric Champeau
+* Ondrej Mihályi
+* Thomas Enebo
+* Hiroshi Nakamura
+
+==== JavaOne Sponsors (gofundme) ====
+* Reinhard Pointner
+* Adler Fleurant
+* Paul Bramy
+* Sten Nordström
+* Chris Holmes
+* Carl Dea
+** I'm not going to JavaOne, but hearing about Laurent Bourgès making Java 2D faster caught my attention. Graphics and performance engineers are true heroes. They make users of the APIs look good, while their work under the covers really do the heavy lifting. Go Laurent!
+
+==== JavaOne Sponsors (gofundme) ====
+* Michael Simons
+* P. S.
+* A. B.
+* Igor Kolomiets
+* Vincent Privat
+* M. H.
+* Mike Duigou
+** Would love to see JavaOne sponsor opensource committers in future years
+* J. M.
+
+
+
 
 == Extra ==
 
-==== JavaOne trip sponsors ====
+<[nowiki]
+\appendix
 
-Andréa Aimé
-Simone
-OSGEO
-Azul
-GLuonHQ
 
-TODO: cite all
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.3\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}%
+    \usebeamerfont{author in head/foot}\insertshortauthor \hspace{2pt} (\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.45\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
+    \usebeamercolor[fg]{normal text}
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
+    \usebeamercolor[fg]{normal text}
+    \usebeamerfont{title in head/foot}\insertshortdate
+    \usebeamerfont{page number in head/foot}
+    \usebeamertemplate*{frame footer}
+    \hfill
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\makeatletter
+\newsavebox{\myboxB}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \savebox{\myboxB}{%
+      \begin{beamercolorbox}[%
+          wd=\paperwidth,%
+          sep=0pt,%
+          leftskip=\metropolis@frametitle@padding,%
+          rightskip=\metropolis@frametitle@padding,%
+        ]{frametitle}%
+      \metropolis@frametitlestrut@start\insertframetitle\metropolis@frametitlestrut@end%
+      \end{beamercolorbox}%
+    }
+  \begin{beamercolorbox}[%
+      wd=\paperwidth,%
+      sep=0pt,%
+      leftskip=\metropolis@frametitle@padding,%
+      rightskip=\metropolis@frametitle@padding,%
+    ]{frametitle}%
+  \metropolis@frametitlestrut@start\insertframetitle\metropolis@frametitlestrut@end%
+  \hfill%
+    \raisebox{-\metropolis@frametitle@padding}{\includegraphics[height=\dimexpr\ht\myboxB+\metropolis@frametitle@padding\relax,keepaspectratio]{../marlin-logo.png}}%
+    \hspace*{-\metropolis@frametitle@padding}
+  \end{beamercolorbox}%
+}
+
+\addtobeamertemplate{frametitle}{}{%
+    \usebeamertemplate*{progress bar in head/foot}
+}
+\makeatother
+[nowiki]>
+
+
+
+==== Performance impact of the subpixel tuning ====
+* Subpixel tuning from 1x1 to 8x8:
+<[nowiki]
+\hspace*{-1.cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-time.png}
+[nowiki]>
+
+==== Performance impact of the subpixel tuning ====
+* TODO:
+<[nowiki]
+\hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-gain.png}
+[nowiki]>
 
 
 

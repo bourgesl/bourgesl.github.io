@@ -2,5 +2,6 @@ wiki2beamer pres-wiki.txt > tex/pres.tex
 
 cd tex
 
-pdflatex pres.tex
+#pdflatex pres.tex
+xelatex pres.tex
 
