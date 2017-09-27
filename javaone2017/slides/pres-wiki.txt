@@ -23,7 +23,6 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 \setbeamercolor{frametitle}{bg=RoyalBlue}
 \setbeamercolor{footlineW}{bg=white}
 
-
 \iftrue
  \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
 \fi
@@ -690,11 +689,15 @@ Log-2 values for subpixel \& tile sizes:
 
 
 
-==== Other Java2D improvements in Java 9 ====
-* JDK-  : PNGEncoder compression ratio
-* Path2D: array growing algo
+==== Other Java 9 improvements ====
+JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.java.net}
+* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level and iDAT chunk maximum size --> '''set compression level to medium''' [4 vs 9]
 
-
+* \href{https://bugs.openjdk.java.net/browse/JDK-8078464}{JDK-8078464} '''Path2D storage growth algorithms should be less linear'''
+* \href{https://bugs.openjdk.java.net/browse/JDK-8084662}{JDK-8084662} Path2D copy constructors and clone method propagate size of arrays from source path 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8074587}{JDK-8074587} Path2D copy constructors do not trim arrays 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8078192}{JDK-8078192} Path2D storage trimming 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8169294}{JDK-8169294} JFX Path2D storage growth algorithms should be less linear 
 
 
 
@@ -1003,13 +1006,13 @@ Special Thanks to all my donators:
 === Comparing Marlin renderer releases using JDK-8 ===
 
 ==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
-* Marlin 0.3 (2014.1) \& 0.5.6 (2015.2) \& 0.7.4 (JDK-9) \& 0.8.1 (2017)
+* Marlin 0.3 (2014.1) \& 0.5.6 (2015) \& 0.7.4 (JDK-9) \& 0.8.1 (2017)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-time.png}
 [nowiki]>
 
 ==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
-* Marlin 0.5.6 (2015.2) \& 0.7.4 (JDK-9) \& 0.8.1 (2017) vs 0.3 (2014.1)
+* Marlin 0.5.6 \& 0.7.4 \& 0.8.1 vs 0.3
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-gain.png}
 [nowiki]>
