@@ -1,6 +1,6 @@
 <[autotemplate]
 usepackage=[utf8]{inputenc}
-usepackage={array,multirow}
+usepackage={array,multirow,multicol}
 usepackage={textcomp}
 usepackage={ragged2e}
 usepackage={hyperref}
@@ -14,19 +14,24 @@ author={Laurent Bourgès}
 institute=[OSUG-DC, CNRS]{ \includegraphics[height=1.6cm,keepaspectratio]{../osug.png} \hspace{20pt} \includegraphics[height=1.3cm,keepaspectratio]{../cnrs.jpg} }
 date={JavaOne 2017-10-04}
 titleframe=False
-usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
+usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
 [autotemplate]>
 <[nowiki]
-\textblockorigin{0pt}{0pt} %origine des positions (coin gauche) attention, axe y vers le bas !!
-%\TPshowboxesfalse         % affiche le contour des textblock
+\textblockorigin{0pt}{0pt} % position origin (showboxes)
 
 
 \setbeamercolor{frametitle}{bg=RoyalBlue}
 \setbeamercolor{footlineW}{bg=white}
 
+
 \iftrue
  \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
 \fi
+
+\metroset{block=fill}
+
+\setbeamerfont{block body}{size=\fontsize{9pt}{10.8}}
+\setbeamerfont{block title}{size=\fontsize{9pt}{10.8}}
 
 
 
@@ -112,7 +117,9 @@ usetheme=[outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
 
 ==== Outline ====
 
-\tableofcontents
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
 
 
 == Context \& History ==
@@ -341,7 +348,6 @@ MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
 
 
 ==== How Marlin works ? the AA algorithm ====
-How it works
 * Java2D's internal drawing renders rectangular tiles.
 * Marlin starts with the path defining the shape
 * Takes the elements of the path and flattens curves
@@ -354,25 +360,18 @@ How it works
 
 
 ==== Marlin performance optimizations ====
-
-Intially GC allocation issue:
-* Many growing arrays + zero-fill
-* Many arrays involved to store edge data, alpha pixel row ...
-* Value-Types may be very helpful: manually coded here !
-
---0.5em--
-
-RendererContext (TL/CLQ) = reused memory ==> almost no GC:
-* kept by weak / soft reference
-* class instances + initial arrays takes 512Kb
-* weak-referenced array cache for larger arrays
-
---0.5em--
-
-Use: 
-* Unsafe: allocate/free memory + less bound checks
-* zero-fill (recycle arrays) on used parts only !
-* use dirty arrays when possible: C like !
+* Initially GC allocation issue:
+** Many growing arrays + zero-fill
+** Many arrays involved to store edge data, alpha pixel row ...
+** Value-Types may be very helpful: manually coded here !
+* Marlin RendererContext (TL/CLQ) = reused memory ==> almost no GC
+** kept by weak / soft reference
+** class instances + initial arrays takes 512Kb
+** weak-referenced array cache for larger arrays
+* Other considerations: 
+** Unsafe: allocate/free memory + less bound checks
+** zero-fill (recycle arrays) on used parts only !
+** use dirty arrays when possible: C like !
 
 
 
@@ -380,142 +379,265 @@ Use:
 ==== Marlin performance optimizations ====
 * Need good profiler: use oprofile + gather internal metrics
 
---0.5em--
-
 * Fine tuning of Pisces algorithms:
-** custom rounding [float to int]
+** Optimized Merge Sort (in-place)
+** Custom rounding [float to int]
 ** DDA in Renderer with correct pixel center handling
-** tile stride approach instead of all tiles (32px)
-** pixel alpha transfers (RLE) ==> adaptive approach
+** Tile stride approach (32px) instead of all shape mask 
+** Pixel alpha transfers (RLE) ==> adaptive approach
+** Optimized Pixel copies (block flags)
 
---0.5em--
+--0.3em--
 
-All lot more ... 
-
-
+A lot more ... 
 
 
-== Marlin benchmarks ==
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Answer: Ductus
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Answer: Marlin
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Answer: Pisces
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+
+<[nowiki]
+\hspace*{-1.225cm}
+\begin{tabular}{c c c}
+  \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-ductus_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-marlin_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-pisces_9.png} \\
+Ductus & Marlin & Pisces
+\end{tabular}
+[nowiki]>
+ ==> Quite an hard challenge !
+
+
+
+== Marlin usage \& benchmarks ==
+==== How to use Marlin ? ====
+
+* Just download any Oracle or OpenJDK-9 release
+** \url{https://jdk9.java.net/}
+
+--0.4em--
+
+* For JDK 1.7 or JDK-8: 
+** Download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release @ github}
+* Howto: \url{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}
+* Start your java program with:
+<[code][style=basic, language=bash]
+java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
+     -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
+     ...
+[code]>
+
+
 ==== MapBench benchmarks ====
 
 * MapBench tool:
-** a multi-threaded java2d benchmark that replays serialized graphics commands (see ShapeDumperGraphics2D)
-** calibration \& warmup phase at startup + correct statistics [min, median, average, 95th percentile, max]
-
-Procedure:
-* disable HyperThreading (in BIOS)
-* use fixed cpu frequencies (2GHz) on my laptop (i7 4800)
-* setup the jvm: jdk to use + basic jvm settings = CMS gc 2Gb Heap
-* use a profile (shared images) to reduce GC overhead
+** Multi-threaded java2d benchmark that replays serialized graphics commands: see \texttt{ShapeDumperGraphics2D}
+** Calibration \& warmup phase at startup + correct statistics [95th percentile...]
+* Protocol:
+** Disable Hyper-Threading (in BIOS)
+** Use fixed cpu frequencies (2.0 GHz) on my laptop (i7-6820 HQ)
+** Setup JVM: select JDK + basic jvm settings = CMS GC 2Gb Heap
+** Use the profile 'shared images' to reduce GC overhead
 
  ==> Reduce variability (and cpu affinity issues)
 
 
 ==== MapBench tests ====
-Many tests: 9 maps, 5 large ellipse \& spiral drawings:
+* Test showcase: 9 maps, 5 large ellipse \& spiral drawings
 <[nowiki]
-\hspace*{2cm}\includegraphics[height=6.5cm,keepaspectratio]{../all.png}
+\hspace*{1.0cm}\includegraphics[height=6.5cm,keepaspectratio]{../all.png}
 [nowiki]>
 
 
-==== Before Marlin ====
-Oracle Ductus (faster - 1T) vs OpenJDK Pisces (slower but scalability)
+=== Comparing AA renderers in JDK-9 (Ductus, Pisces, Marlin) ===
+
+==== Before Marlin (Oracle JDK-9 EA b181) ====
+* OracleJDK Ductus (red) \& Pisces (blue)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
 
-
-==== With Marlin ====
-
+==== Before Marlin (Oracle JDK-9 EA b181) ====
+* OracleJDK Ductus (red) \& Pisces (blue)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
 
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Comparison}
+* Ductus: faster (1T) but scalability issue !
+* Pisces: slower but higher scalability
+\end{block}
+\end{textblock*}
 
-==== Performance gain (1T) ====
 
+==== With Marlin (Oracle JDK-9 EA b181) ====
+* OracleJDK Ductus (red) \& Pisces (blue) \& Marlin (green)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
 
-==== Performance gain (2T) ====
-
+==== With Marlin (Oracle JDK-9 EA b181) ====
+* OracleJDK Ductus (red) \& Pisces (blue) \& Marlin (green)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
 
-==== Performance gain (4T) ====
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Marlin renderer is the winner}
+* Better performance compared to Ductus (or equal) or Pisces
+* Perfect scalability
+\end{block}
+\end{textblock*}
 
+
+==== Performance gains (1 thread) ====
+* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
 [nowiki]>
 
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Marlin performance gains (single thread)}
+* vs Ductus: '''10\%''' to 30\%
+* vs Pisces: '''125\%''' (average), up to 300\% (stroked spiral test)
+\end{block}
+\end{textblock*}
 
-==== Marlin Performance ====
+
+==== Performance gains (2 thread) ====
+* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
+[nowiki]>
+
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Marlin performance gains (2 threads)}
+* vs Ductus: '''75\%''' (average)
+* vs Pisces: '''140\%''' (average)
+\end{block}
+\end{textblock*}
+
+
+==== Performance gains (4 thread) ====
+* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
+[nowiki]>
+
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Marlin performance gains (2 threads)}
+* vs Ductus: '''250\%''' (average)
+* vs Pisces: '''160\%''' (average)
+\end{block}
+\end{textblock*}
+
+
+==== Marlin Performance Summary (JDK-9) ====
 * Compared to Ductus:
-** on par in single thread
-** higher scalability: up to 250\% gain (4T)
+** Same performance (1T) but better scalability up to 250\% gain (4T)
 * Compared to Pisces:
 ** 2x faster: 100\% to 150\% gain
 * Perfect scalability 1T to 4T
-
 <[nowiki]
-\hspace*{3.cm}\includegraphics[height=4cm,keepaspectratio]{../mean-compare-with-marlin-gain.png}
+\hspace*{2.0cm}\includegraphics[height=4cm,keepaspectratio]{../mean-compare-with-marlin-gain.png}
 [nowiki]>
 
 
 
+=== Comparing Marlin renderer changes between JDK-9 \& OpenJDK-10 ===
 
-==== Marlin comparison between JDK9 vs JDK10 ====
-
+==== Marlin Performance changes (JDK-9 vs OpenJDK-10) ====
+* Marlin 0.7.5 vs 0.7.4 (curve accuracy, large fills, Double variant)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-time.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-time.png}
 [nowiki]>
 
-==== Marlin comparison between JDK9 vs JDK10 ====
-
+==== Marlin Performance changes (JDK-9 vs OpenJDK-10) ====
+* Marlin 0.7.5 vs 0.7.4 (curve accuracy, large fills, Double variant)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-gain.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-time.png}
 [nowiki]>
 
-==== Marlin comparison between JDK9 vs JDK10 ====
-* Marlin in JDK10 (0.7.5): on par with Marlin in JDK9
-* Large fills are slightly 10\% faster
-* Curve accuracy improved but 10\% slower max
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Minor timing changes}
+* large fills: 10\% faster (large ellipse tests)
+* curves: 10\% slower (lots of curves)
+\end{block}
+\end{textblock*}
 
 
-
-
-==== Marlin comparison between 0.3 vs 0.8.1 ====
-
+==== Marlin Performance Summary (JDK-9 vs OpenJDK-10) ====
+* Marlin 0.7.5 vs 0.7.4 (curve accuracy, large fills, Double variant)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-time.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../diff-marlin-gain.png}
 [nowiki]>
 
-==== Marlin comparison between 0.3 vs 0.8.1 ====
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Same Marlin (average) performance in OpenJDK-10 as in JDK-9}
+* Large fills are 10\% faster, improved curve accuracy is only 10\% slower
+* '''No difference between Float and Double Marlin variants'''
+\end{block}
+\end{textblock*}
 
+
+=== Studying Marlin \& Java2D internal stages ===
+
+==== Marlin internal timings ====
+* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-gain.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
 [nowiki]>
 
+==== Marlin internal timings ====
+* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
+[nowiki]>
 
-
-== How to use Marlin ? ==
-==== How to use Marlin ? ====
-
-See: \url{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}
-
-* Just download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release}
-* Start your java program with:
-** -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
-** Oracle or Open JDK 1.7 or 1.8 needed
-
---0.6em--
-
-* OR download any Oracle or Open JDK9 EA builds
-** \url{https://jdk9.java.net/}
-
-
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Stage cost ratios}
+* Path processing: 20 to 30\% (stroked shapes) but 3\% (filled)
+* Blending: '''25\%''' (average) but up to 75\% (large ellipse fills): ''Future work ?'' 
+\end{block}
+\end{textblock*}
 
 
 == Marlin renderer tuning ==
@@ -539,9 +661,6 @@ Debugging:
 ==== Marlin System properties ====
 
 <[nowiki]
-
-\iffalse
-
 {\small
 \begin{table} 
 \begin{tabular}{l | c | l}
@@ -562,8 +681,6 @@ useLogger & true - \textbf{false} & Use j.u.l.Logger \\ \hline
 \end{tabular}
 \end{table}
 }
-
-\fi
 [nowiki]>
 
 Log-2 values for subpixel \& tile sizes:
@@ -596,17 +713,8 @@ Log-2 values for subpixel \& tile sizes:
 * Integrated in OpenJFX9 (dec 2016) but disabled by default
 
 
-
-==== How to use MarlinFX ? ====
-
-* enable Marlin:
-
-* use Double variant:
-
-
-
 ==== MarlinFX System properties ====
-'sun.java2d.marlin' => 'javafx.prism.marlin'
+'sun.java2d.marlin' prefix --> 'javafx.prism.marlin' prefix
 
 TODO: complete
 
@@ -618,13 +726,27 @@ Contrary to Marlin, OpenJFX patches were more quickly integrated into OpenJFX9 (
 TODO: complete
 
 
-== MarlinFX benchmarks ==
-==== Micro benchmarks ====
+== MarlinFX usage \& benchmarks ==
+
+==== How to use MarlinFX ? ====
+ MarlinFX is only available in JDK-9:
+* Enable MarlinFX using prism settings:
+<[code][style=basic, language=bash]
+java -Dprism.marlinrasterizer=true ...
+[code]>* Select Marlin Double or Float variant:
+<[code][style=basic, language=bash]
+java -Dprism.marlinrasterizer=true -Dprism.marlin.double=true ...
+[code]>* To enable the Prism log, add \texttt{-Dprism.verbose=true}:
+<[code][style=basic, language=bash]
+Prism pipeline init order: es2 
+Using Marlin rasterizer (double)
+[code]>
+
 
 ==== DemoFX benchmarks ====
-OpenJFX9 b146 first results with DemoFX Triangle test
+* OpenJFX9 b146 first results with DemoFX Triangle test (VSYNC)
+** 58 fps vs 48 fps = 20\% gain <<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
 
-<<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
 
 ==== MapBenchFX benchmarks ====
 
@@ -671,15 +793,18 @@ But your help is needed:
 
 
 ==== Quality Ideas ====
-
 * '''Handle properly the gamma correction''': 
 ** in MaskFill for images (C macros) \& GPU backends
-** \textbf{Very important for visual quality}
+** '''Very important for visual quality'''
 ** note: Stroke's width must compensate the gamma correction to avoid having thiner / fatter shapes.
 
+<<<../LinesTest-original-maskFill-crop.png,height=2.25cm,keepaspectratio>>> \hspace{4pt}
+<<<../LinesTest-gamma-corrected-maskFill-crop.png,height=2.25cm,keepaspectratio>>>
+
+==== Quality Ideas ====
 * Analytical pixel coverage: using signed area coverage for a trapezoid ==> compute the exact pixel area covered by the polygon
 \centering
-<<<../PolygonFillTrapezoidExample.png,height=2.5cm,keepaspectratio>>>
+<<<../PolygonFillTrapezoidExample.png,height=4.5cm,keepaspectratio>>>
 
 
 
@@ -744,32 +869,44 @@ Special thanks to:
 
 
 ==== JavaOne Sponsors (gofundme) ====
-Special thanks to all my 40 donators:
-* \textbf{GeoServer Project Steering Comittee}
-* \textbf{AZUL SYSTEMS}
-* \textbf{Gluon Software}
+Special Thanks to all my donators:
+<[columns]
+[[[0.56\textwidth]]]
+* '''GeoServer Project Steering Comittee'''
+* '''Gluon Software'''
 ** Thanks for all that you do to make JavaFX an awesome UI library
-* \textbf{OpenJDK}: Mark Reinhold, Jim Graham, Phil Race, Kevin Rushforth
-* \textbf{Dirk Lemmermann}
+* '''Dirk Lemmermann'''
 ** What would I do without people like you? So here you go!
-* \textbf{Manuel Timita}
+[[[0.48\textwidth]]]
+* '''AZUL SYSTEMS'''
+* '''OpenJDK''' members: \\ '''Mark Reinhold, !Jim Graham!, \\ Phil Race, Kevin Rushforth'''
+* '''Manuel Timita'''
 ** Your work means a lot to us!
 * H. K.
+[columns]>
 
 ==== JavaOne Sponsors (gofundme) ====
-* \textbf{Chris Newland}
-** Laurent has made a big contribution to OpenJDK with his Marlin and Marlin-FX high performance renderers. Let's help him get to JavaOne 2017!
-* \textbf{Simone Giannecchini}
-* \textbf{Andréa Aimé}
+* !'''Andréa Aimé'''!
 ** Laurent helped solving a significant performance/scalability problem in server side Java applications using java2d. Let's help him reach JavaOne and talk about his work!
+* '''Chris Newland'''
+** Laurent has made a big contribution to OpenJDK with his Marlin and Marlin-FX high performance renderers. Let's help him get to JavaOne 2017!
+<[columns]
+[[[0.4\textwidth]]]
+* '''Simone Giannecchini'''
 * Z. B.
-* \textbf{JUGS e.V.}
+* '''JUGS e.V.'''
+[[[0.6\textwidth]]]
 * Brad Hards
-
-==== JavaOne Sponsors (gofundme) ====
 * Mario Ivankovits
 * Peter-Paul Koonings (GeoNovation)
-* \textbf{Michael Paus}
+[columns]>
+
+
+
+==== JavaOne Sponsors (gofundme) ====
+<[columns]
+[[[0.5\textwidth]]]
+* '''Michael Paus'''
 * Bart van den Eijnden (osgis.nl)
 * Mario Zechner
 * Jody Garnett
@@ -779,35 +916,33 @@ Special thanks to all my 40 donators:
 * Ondrej Mihályi
 * Thomas Enebo
 * Hiroshi Nakamura
-
-==== JavaOne Sponsors (gofundme) ====
+[[[0.5\textwidth]]]
 * Reinhard Pointner
 * Adler Fleurant
 * Paul Bramy
 * Sten Nordström
 * Chris Holmes
-* Carl Dea
-** I'm not going to JavaOne, but hearing about Laurent Bourgès making Java 2D faster caught my attention. Graphics and performance engineers are true heroes. They make users of the APIs look good, while their work under the covers really do the heavy lifting. Go Laurent!
-
-==== JavaOne Sponsors (gofundme) ====
 * Michael Simons
 * P. S.
 * A. B.
 * Igor Kolomiets
 * Vincent Privat
-* M. H.
+[columns]>
+
+
+==== JavaOne Sponsors (gofundme) ====
+* Carl Dea
+** I'm not going to JavaOne, but hearing about Laurent Bourgès making Java 2D faster caught my attention. Graphics and performance engineers are true heroes. They make users of the APIs look good, while their work under the covers really do the heavy lifting. Go Laurent!
 * Mike Duigou
 ** Would love to see JavaOne sponsor opensource committers in future years
+* M. H.
 * J. M.
 
 
-
-
-== Extra ==
+== ==[Extra]
 
 <[nowiki]
 \appendix
-
 
 \setbeamertemplate{footline}
 {%
@@ -822,10 +957,6 @@ Special thanks to all my 40 donators:
   \begin{beamercolorbox}[wd=.25\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
     \usebeamercolor[fg]{normal text}
     \usebeamerfont{title in head/foot}\insertshortdate
-    \usebeamerfont{page number in head/foot}
-    \usebeamertemplate*{frame footer}
-    \hfill
-    \usebeamertemplate*{frame numbering}
   \end{beamercolorbox}}%
   \vskip0pt%
 }
@@ -864,15 +995,37 @@ Special thanks to all my 40 donators:
 [nowiki]>
 
 
+=== Comparing Marlin renderer releases using JDK-8 ===
 
+==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
+* Marlin 0.3 (2014.1) \& 0.5.6 (2015.2) \& 0.7.4 (JDK-9) \& 0.8.1 (2017)
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-time.png}
+[nowiki]>
+
+==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
+* Marlin 0.5.6 (2015.2) \& 0.7.4 (JDK-9) \& 0.8.1 (2017) vs 0.3 (2014.1)
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-gain.png}
+[nowiki]>
+
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Marlin performance improved through releases}
+* Loss in 0.5.6 (large ellipse fills) fixed in 0.7
+* Important improvements on complex stroked shapes (spirals)
+\end{block}
+\end{textblock*}
+
+
+=== Performance impact of the subpixel tuning ===
 ==== Performance impact of the subpixel tuning ====
-* Subpixel tuning from 1x1 to 8x8:
+* Subpixel settings (1x1 to 6x6):
 <[nowiki]
 \hspace*{-1.cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-time.png}
 [nowiki]>
 
 ==== Performance impact of the subpixel tuning ====
-* TODO:
+* Gain \& Loss of Subpixel settings (1x1 to 6x6) VS 3x3:
 <[nowiki]
 \hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-gain.png}
 [nowiki]>
