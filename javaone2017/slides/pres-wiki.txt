@@ -32,7 +32,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 \setbeamerfont{block body}{size=\fontsize{9pt}{10.8}}
 \setbeamerfont{block title}{size=\fontsize{9pt}{10.8}}
 
-
+\setcounter{tocdepth}{1}
 
 
 {\setbeamertemplate{background canvas}{ \includegraphics[height=\paperheight, width=\paperwidth]{../javaone-2017.jpg} }
@@ -115,20 +115,19 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 
 
 ==== Outline ====
-
 \begin{multicols}{2}
-  \tableofcontents
+\tableofcontents
 \end{multicols}
 
 
 == Context \& History ==
 
 ==== Role of an Antialiasing Renderer ====
-* Geometry is defined by a mathematical description of a path
-* Shapes may be complex: concave, convex, intersecting ...
+* Geometry is defined by a '''mathematical description of a path'''
+* '''Shapes''' may be complex: concave, convex, intersecting ...
 * To draw to any kind of raster surface (image, screen), need to map the rendering of ideal path to raster coordinates
-* Points on the path may rarely map exactly to raster coordinates
-* Need to ascertain coverage (anti-aliasing) for each output pixel
+* '''Points on the path''' may rarely map exactly to '''raster coordinates'''
+* '''Need to ascertain coverage (anti-aliasing) for each output pixel'''
 
 <[nowiki]
 \texttt{\small
@@ -149,124 +148,129 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 
 
 ==== Java2D API in a nutshell ====
-
-Java2D is a great \& powerful Graphics API:
+'''Java2D is a great \& powerful Graphics API''':
 * \texttt{Shape} interface (\texttt{java.awt.geom})
 ** Primitives: \texttt{Rectangle2D, Line2D, Ellipse2D, Arc2D ...}
 ** General \texttt{Path2D}: \texttt{moveTo(), lineTo(), quadTo(), curveTo(), closeTo()}
 * \texttt{Stroke} interface: \texttt{BasicStroke} (\texttt{width, dashes} fields)
 * \texttt{Paint} interface: \texttt{Color, GradientPaint, TexturePaint}
 * \texttt{Composite} interface: \texttt{AlphaComposite} (Porter/Duff blending rules)
-* \texttt{Graphics} interface: \texttt{Graphics2D draw(Shape) or fill(Shape)} performs shape rendering operations
+* \texttt{Graphics} interface: '''\texttt{Graphics2D draw(Shape) or fill(Shape)} performs shape rendering operations'''
 
 
 
 
 ==== Background (before Marlin) ====
-Antialiasing renderers available in Java:
-* JDK 1.2 included licensed closed-source technology from Ductus
-** Ductus provides high performance, but single threaded
+'''Antialiasing renderers available''' in Java:
+* '''JDK 1.2''' included licensed '''closed-source''' technology from '''Ductus'''
+** Ductus provides '''high performance, but single threaded'''
 ** State of the art for its time
 ** Ductus still ships with Oracle JDK 9
 ** \texttt{sun.dc.DuctusRenderingEngine} (native C code)
 
-* However OpenJDK 1.6 replaced Ductus with "Pisces"
+* However '''OpenJDK''' 1.6 replaced Ductus with '''"Pisces"'''
 ** Pisces developed + owned by Sun, in part for Java ME
-** So could be open-sourced but performance much poorer
+** So could be '''open-sourced but performance much poorer'''
 ** \texttt{java2d.pisces.PiscesRenderingEngine} (java code)
 
-Note: all of these are AA rendering only. Other renderers for non-AA cases.
+Note: '''Other renderers for non-AA cases'''
 
 
 
 
 ==== Marlin renderer = OpenJDK's Pisces fork ====
-
 Status in 2013:
-* Ductus: faster but scalability issue (multi-threading)
-* Pisces: slower but better scalability (GPL) 
-* GPU ? Java2D OpenGL \& D3D pipelines provide only few accelerated operations (blending)
+* '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except \href{https://brandonborkholder.github.io/glg2d/}{glg2d}
+* '''Pisces is slower''' but '''open-source''' (GPL)
 
-* March-Mai 2013: my first patchs to OpenJDK 8:
-** Pisces patchs to \url{2d-dev@openjdk.java.net}: too late
-** Small interest / few feedbacks
-* Andréa Aimé (GeoServer team) pushed me to go on:
-** New MapBench tool: serialize \& replay rendering commands
-** Fork OpenJDK's Pisces as a new open-source project
+'''2013.3: My first patchs to OpenJDK 8''':
+* '''Pisces patchs''' to \url{2d-dev@openjdk.java.net}: too late for JDK-8
+* Small interest / few feedbacks
+
+'''Andréa Aimé''' (GeoServer team) '''pushed me to go on''':
+* New '''MapBench''' tool: serialize \& replay rendering commands
+* '''Fork OpenJDK's Pisces as a new open-source project'''
 
 
 
 ==== Marlin renderer @ github ====
 
- ==> 01/2014: '''Marlin renderer''' \& MapBench projects on github (GPL v2) with only 2 contributors (Me and Andrea Aimé) !
-
---0.4em--
+ ==> 2014.1: '''Marlin renderer''' \& MapBench projects @ github (GPL v2)
 
 * \url{https://github.com/bourgesl/marlin-renderer}
-** branch 'use\_Unsafe': trunk
-** branch 'openjdk': in synch with OpenJDK9
+** branch ''''openjdk-dev': dev branch'''
+** branch 'openjdk': in synch with OpenJDK-9 \& 10
+** branch ''''use\_Unsafe': main for Marlin releases'''
+** '''28 \href{https://github.com/bourgesl/marlin-renderer/releases}{Releases}''', \href{https://github.com/bourgesl/marlin-renderer/wiki}{Wiki}
 * \url{https://github.com/bourgesl/mapbench}
-
-TODO: add branches
 
 
 ==== Marlin \& MapBench projects @ github ====
 
-Objectives:
-* Faster alternative with very good scalability
-* Improve rendering quality
+'''Objectives''':
+* '''Faster''' alternative with very good scalability
+* Improve rendering '''quality'''
 * Compatible with both Oracle \& Open JDK 7 / 8 / 9
 
---0.4em--
-
 '''Very big personal work''':
-* Many releases in 2014: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
-* Test Driven Development:
-** Regression: MapDisplay (diff pisces / marlin outputs)
-** Performance: MapBench \& GeoServer benchmarks (+ oprofile)
-* Important feedback within the GIS community (GeoServer) providing complex use cases \& testing releases
 
-
-
-
-==== Marlin Release history @ github ====
-* Releases: see \href{https://github.com/bourgesl/marlin-renderer/releases/}{releases}
-
-TODO: table of major features
-
-* Marlin 0.7: improve coordinate rounding arround subpixel center
-* Marlin 0.7.2: improve large pixel chunk copies (coverage data)
+* '''Performance \& Test Driven Development''':
+** '''Regression''' tests: MapDisplay (diff Pisces vs Marlin outputs)
+** '''Performance''' tests: MapBench benchmarks (+ profiler)
+* Major feedback (GeoServer) providing use cases \& testing releases
 
 
 
 ==== Marlin renderer back into OpenJDK 9 ====
 
-* Late 2014: several mails to \url{2d-dev@openjdk.java.net}
-* FOSDEM 2015: discussion with OpenJDK managers (Dalibor \& Mario) on how to contribute the Marlin renderer back
+* '''FOSDEM 2015''': Great discussion with OpenJDK managers (Dalibor \& Mario) on how to contribute the Marlin renderer back
 
- ==> I joined the graphics-rasterizer project in march 2015 to contribute Marlin as a new standalone renderer for OpenJDK9. 
+ ==> I joined the '''graphics-rasterizer''' project in march 2015 to '''contribute Marlin as a new standalone renderer for OpenJDK9'''
 
-* '''I worked hard''' (single coder) with Jim Graham \& Phil Race (reviewers) between march 2015 to december 2015 (4 big patches)
-
+* '''I worked really hard''' (again, single developper) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches = '''10,000 LOC''' !
+* Reviews improved a lot the code and Computer Grapĥics algorithms
 
 
 ==== JEP 265: Marlin renderer back into OpenJDK 9 ====
 
-We proposed the JEP 265 in July 2015 and make it completed !
-* JEP 265: Marlin Graphics Renderer
+We proposed the JEP 265 in July 2015 and make it completed:
+* '''JEP 265: Marlin Graphics Renderer'''
 * \href{http://openjdk.java.net/jeps/265}{http://openjdk.java.net/jeps/265}
-* Developer : Laurent Bourgès.
-* Reviewer  : Jim Graham
+* '''Developer: Laurent Bourgès'''
+* '''Reviewer: Jim Graham'''
 
-* Marlin was integrated in OpenJDK9 b96 (dec 2015) and got enhancements in 2016.
-* Current integrated releases within OpenJDK:
-** JDK9 = Marlin 0.7.4
-** JDK10 = Marlin 0.7.5
+* Marlin integrated in OpenJDK-9 b96 (dec 2015), enhancements in 2016
+* Current '''integrated releases''' within OpenJDK:
+<[nowiki]
+\begin{table}
+\begin{tabular}{c | l} \hline
+JDK-9 & Marlin 0.7.4 \\ \hline
+JDK-10 & Marlin 0.7.5 \\ \hline
+\end{tabular}
+\end{table}
+[nowiki]>
 
 
 
+==== Marlin Releases @ github ====
+ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
+<[nowiki]
+\begin{table}
+\begin{tabular}{l | l} \hline
+TODO & TODO \\ \hline
+Marlin 0.7 & Improve coordinate rounding arround subpixel center \\ \hline
+Marlin 0.7.2 & Improve large pixel chunk copies (coverage data) \\ \hline
+Marlin 0.5.6 & \textbf{Optimized merge sort} for newly added edges [2015.3] \\ \hline
+Marlin 0.5 & Use \textbf{sun.misc.Unsafe} (off-heap memory) may crash your JVM \\ \hline
+Marlin 0.4 & Internal settings made customizable from system properties \\ \hline
+Marlin 0.3 & Initial (rdr ctx, array cache, dirty array) [2014.1] \\ \hline
+\end{tabular}
+\end{table}
+[nowiki]>
 
-==== My feedback on contributing to OpenJDK ====
+
+
+==== Feedback on contributing to OpenJDK ====
 
 * Very interesting \& many things learnt
 * License issue: OCA for all contributors, no third-party code !
@@ -278,7 +282,7 @@ We proposed the JEP 265 in July 2015 and make it completed !
 * Few Java2D / computer graphics skills = small field + NO DOC !
 
 
-==== My feedback on contributing to OpenJDK ====
+==== Feedback on contributing to OpenJDK (continued) ====
 
 General:
 * Missing contributors into Graphics stack !
@@ -392,60 +396,8 @@ A lot more ...
 
 
 
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Answer: Ductus
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Answer: Marlin
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Answer: Pisces
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
-[nowiki]>
-
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-
-<[nowiki]
-\hspace*{-1.225cm}
-\begin{tabular}{c c c}
-  \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-ductus_9.png} 
-& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-marlin_9.png} 
-& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-pisces_9.png} \\
-Ductus & Marlin & Pisces
-\end{tabular}
-[nowiki]>
- ==> Quite an hard challenge !
-
-
-
 == Marlin usage \& benchmarks ==
+
 ==== How to use Marlin ? ====
 
 * Just download any Oracle or OpenJDK-9 release
@@ -462,6 +414,62 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
      -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
      ...
 [code]>
+
+
+
+=== Marlin visual quality ===
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test) ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test results) ====[standout]
+Answer: Ductus
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test results) ====[standout]
+Answer: Marlin
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Marlin visual quality (Blind Test results) ====[standout]
+Answer: Pisces
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+
+==== Marlin visual quality ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+
+<[nowiki]
+\hspace*{-1.225cm}
+\begin{tabular}{c c c}
+  \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-ductus_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-marlin_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-pisces_9.png} \\
+Ductus & Marlin & Pisces
+\end{tabular}
+[nowiki]>
+ ==> Quite an hard challenge !
+
 
 
 ==== MapBench benchmarks ====
@@ -705,8 +713,9 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 ==== MarlinFX project ====
 
-2016: port Marlin into JavaFX Prism
-* Prism integration
+2016: Port Marlin into JavaFX Prism engine
+* \url{https://github.com/bourgesl/marlin-renderer-fx}
+* Prism integration:
 ** Complete mask no more tiles
 ** GPU backend is faster (upload texture may be costly)
 ** but single-threaded (GUI)
@@ -714,6 +723,7 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 * Double-precision variant to improve accuracy on very large shapes (stroke / dashes)
 
 * Integrated in OpenJFX9 (dec 2016) but disabled by default
+
 
 
 ==== MarlinFX System properties ====
@@ -754,7 +764,8 @@ Using Marlin rasterizer (double)
 ==== MapBenchFX benchmarks ====
 
 * MapBenchFX: JavaFX application to render maps
-* Port of the Java2D benchmark using FXGraphics2D
+* Port of the Java2D MapBench benchmark using FXGraphics2D
+* \url{https://github.com/bourgesl/mapbench-fx}
 
 <[nowiki]
 \begin{tabular}{c c c}
