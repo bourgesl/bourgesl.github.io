@@ -745,7 +745,7 @@ Using Marlin rasterizer (double)
 
 ==== DemoFX benchmarks ====
 * OpenJFX9 b146 first results with DemoFX Triangle test (VSYNC)
-** 58 fps vs 48 fps = 20\% gain <<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
+** '''58 fps vs 48 fps = 20\% gain''' <<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
 
 
 ==== MapBenchFX benchmarks ====
@@ -762,19 +762,24 @@ Using Marlin rasterizer (double)
 [nowiki]>
 
 
-==== MarlinFX vs Native/Java Pisces ====
-
+==== MarlinFX vs Native \& Java Pisces (Oracle JDK-9 EA b181) ====
+* Native Pisces (red) \& Java Pisces (blue) \& MarlinFX (green)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx-marlin.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx9-marlin.png}
 [nowiki]>
 
-==== MarlinFX vs Native/Java Pisces ====
-
+==== MarlinFX vs Native \& Java Pisces (Oracle JDK-9 EA b181) ====
+* Native Pisces (red) \& Java Pisces (blue) \& MarlinFX (green)
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx-marlin-gain.png}
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx9-marlin-gain.png}
 [nowiki]>
 
-
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{MarlinFX renderer is the winner (on linux) }
+* vs Native Pisces: '''65\%''' (average)
+* vs Java Pisces: '''70\%''' (average)
+\end{block}
+\end{textblock*}
 
 
 == Future work ==
