@@ -120,6 +120,8 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 \end{multicols}
 
 
+
+
 == Context \& History ==
 
 ==== Role of an Antialiasing Renderer ====
@@ -193,6 +195,7 @@ Status in 2013:
 
 
 
+
 ==== Marlin renderer @ github ====
 
  ==> 2014.1: '''Marlin renderer''' \& MapBench projects @ github (GPL v2)
@@ -203,6 +206,8 @@ Status in 2013:
 ** branch ''''use\_Unsafe': main for Marlin releases'''
 ** '''28 \href{https://github.com/bourgesl/marlin-renderer/releases}{Releases}''', \href{https://github.com/bourgesl/marlin-renderer/wiki}{Wiki}
 * \url{https://github.com/bourgesl/mapbench}
+
+
 
 
 ==== Marlin \& MapBench projects @ github ====
@@ -221,6 +226,7 @@ Status in 2013:
 
 
 
+
 ==== Marlin renderer back into OpenJDK 9 ====
 
 * '''FOSDEM 2015''': Great discussion with OpenJDK managers (Dalibor \& Mario) on how to contribute the Marlin renderer back
@@ -229,6 +235,8 @@ Status in 2013:
 
 * '''I worked really hard''' (again, single developper) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches = '''10,000 LOC''' !
 * Reviews improved a lot the code and Computer Grapĥics algorithms
+
+
 
 
 ==== JEP 265: Marlin renderer back into OpenJDK 9 ====
@@ -252,45 +260,76 @@ JDK-10 & Marlin 0.7.5 \\ \hline
 
 
 
+
 ==== Marlin Releases @ github ====
- Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
+Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 <[nowiki]
-\begin{table}
+{\small
 \begin{tabular}{l | l} \hline
-TODO & TODO \\ \hline
-Marlin 0.7 & Improve coordinate rounding arround subpixel center \\ \hline
-Marlin 0.7.2 & Improve large pixel chunk copies (coverage data) \\ \hline
-Marlin 0.5.6 & \textbf{Optimized merge sort} for newly added edges [2015.3] \\ \hline
-Marlin 0.5 & Use \textbf{sun.misc.Unsafe} (off-heap memory) may crash your JVM \\ \hline
-Marlin 0.4 & Internal settings made customizable from system properties \\ \hline
-Marlin 0.3 & Initial (rdr ctx, array cache, dirty array) [2014.1] \\ \hline
+\textbf{Release} & Main features \\ \hline
+\textbf{0.3 \tiny{[2014.1]}} & Initial: renderer context, array cache, dirty array \\ \hline
+\textbf{0.4} & Internal settings made customizable from system properties \\ \hline
+\textbf{0.5 \tiny{[2014.3]}} & Use \textbf{sun.misc.Unsafe} (off-heap memory) (may crash your JVM) \\ \hline
+\textbf{0.5.6 \tiny{[2015.3]}} & \textbf{Optimized merge sort} for newly added edges \\ \hline
+\textbf{0.7 \tiny{[2015.8]}} & Improve \textbf{coordinate rounding arround subpixel center} \\
+& Perform \textbf{DDA in scanline edge processing} \\
+& Optimized \textbf{cubic / quad flattening} \\ \hline
+\textbf{0.7.1} & Hybrid approach (raw or \textbf{RLE}) to copy pixel coverages into mask \\ \hline
 \end{tabular}
-\end{table}
+}
 [nowiki]>
+
+
+
+
+==== Marlin Releases @ github (continued) ====
+Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
+<[nowiki]
+{\small
+\begin{tabular}{l | l} \hline
+\textbf{Release} & Main features \\ \hline
+\textbf{0.7.2 \tiny{[2015.11]}} & \textbf{Improve large pixel chunk copies} (coverage) \\ \hline
+\textbf{0.7.3.3} & \textbf{Handle coordinate overflow}: ignore (NaN / Infinity) \\ \hline
+\textbf{0.7.4 \tiny{[2016.6]}} & \textbf{Array cache refactoring \& tuning [--> JDK-9]} \\ \hline
+\textbf{0.7.5 \tiny{[2016.12]}} & Added the \textbf{Double pipeline for higher accuracy [--> JDK-10]} \\
+& Optimized tile filling (almost empty / full) \\
+& \textbf{Higher precision of the curve conversion} to line segments \\ \hline
+\textbf{0.8.0 \tiny{[2017.8]}} & Added \textbf{path clipper for stroked shapes} (cap, joins, tx) \\ \hline
+\textbf{0.8.1} & Added \textbf{path clipper for filled shapes} (N.Z. winding rule) \\ \hline
+\end{tabular}
+}
+[nowiki]>
+
 
 
 
 ==== Feedback on contributing to OpenJDK ====
 
-* Very interesting \& many things learnt
-* License issue: OCA for all contributors, no third-party code !
-* Webrev process: great but heavy task:
-** create webrevs (hg status, webrev.ksh with options)
-** push on \url{cr.openjdk.java.net/~<mylogin>/}
-** long discussions on mailing lists for my patches (~50 mails)
-** timezone issue: delays + no skype
-* Few Java2D / computer graphics skills = small field + NO DOC !
+* '''Very interesting experience''' \& many things learnt
+* '''License issue: OCA''' for all contributors, no third-party code !
+* '''Webrev process: great but heavy task''':
+** Create webrevs (hg status, webrev.ksh with options)
+** Push on \url{cr.openjdk.java.net/~<mylogin>/}
+** Long review threads on mailing lists for my patches (~50 mails)
+** Timezone difference: delays + no skype
+* '''Few Java2D / computer graphics skills''': small field + NO DOC !
+
+
 
 
 ==== Feedback on contributing to OpenJDK (continued) ====
 
-General:
-* Missing contributors into Graphics stack !
+In General:
+* '''Missing active contributors in the Graphics stack''' (Java2D \& JavaFX) !
 * CI: missing 'open' multi-platform machines to perform tests \& benchmarks outside of Oracle
-* Funding community-driven effort ? support collaboration with outsiders
+* '''Funding community-driven effort ?'''
+** Support collaboration with outsiders (meeting, costs)
+** Promote Code challenges on focused items
+
 
 
 == How Marlin works ? ==
+
 ==== How the Java2D pipeline works ? ====
 
 Java2D uses only 1 RenderingEngine implementation at runtime:
@@ -396,6 +435,62 @@ A lot more ...
 
 
 
+
+== Visual quality Quizz ==
+
+==== Visual quality - Blind test [Image 1] ====[standout]
+Who is [Ductus, Pisces, Marlin] ?
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Visual quality - Blind test [Image 2] ====[standout]
+Who is [Ductus, Pisces, Marlin] ?
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Visual quality - Blind test [Image 3] ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+==== Visual quality - Test result [Image 1] ====[standout]
+Answer: Ductus
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
+[nowiki]>
+
+==== Visual quality - Test result [Image 2] ====[standout]
+Answer: Marlin
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
+[nowiki]>
+
+==== Visual quality - Test result [Image 3] ====[standout]
+Answer: Pisces
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
+[nowiki]>
+
+
+==== Marlin visual quality ====[standout]
+Who is [Ductus, Pisces, Marlin] ? 
+
+<[nowiki]
+\hspace*{-1.225cm}
+\begin{tabular}{c c c}
+  \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-ductus_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-marlin_9.png} 
+& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-pisces_9.png} \\
+1. Ductus & 2. Marlin & 3. Pisces
+\end{tabular}
+[nowiki]>
+ ==> Quite an hard challenge !
+
+
+
 == Marlin usage \& benchmarks ==
 
 ==== How to use Marlin ? ====
@@ -415,60 +510,6 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
      ...
 [code]>
 
-
-
-=== Marlin visual quality ===
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test) ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test results) ====[standout]
-Answer: Ductus
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test results) ====[standout]
-Answer: Marlin
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
-[nowiki]>
-
-==== Marlin visual quality (Blind Test results) ====[standout]
-Answer: Pisces
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
-[nowiki]>
-
-
-==== Marlin visual quality ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
-
-<[nowiki]
-\hspace*{-1.225cm}
-\begin{tabular}{c c c}
-  \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-ductus_9.png} 
-& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-marlin_9.png} 
-& \includegraphics[height=3cm,keepaspectratio]{../test_z_625k-pisces_9.png} \\
-Ductus & Marlin & Pisces
-\end{tabular}
-[nowiki]>
- ==> Quite an hard challenge !
 
 
 
@@ -699,7 +740,7 @@ Log-2 values for subpixel \& tile sizes:
 
 ==== Other Java 9 improvements ====
 JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.java.net}
-* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level and iDAT chunk maximum size --> '''set compression level to medium''' [4 vs 9]
+* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level --> '''set compression level to medium''' [4 vs 9]
 
 * \href{https://bugs.openjdk.java.net/browse/JDK-8078464}{JDK-8078464} '''Path2D storage growth algorithms should be less linear'''
 * \href{https://bugs.openjdk.java.net/browse/JDK-8084662}{JDK-8084662} Path2D copy constructors and clone method propagate size of arrays from source path 
@@ -796,7 +837,10 @@ Using Marlin rasterizer (double)
 \end{textblock*}
 
 
+
+
 == Future work ==
+
 ==== Future work ====
 
 I may have still spare time to improve Marlin...
@@ -820,8 +864,9 @@ But your help is needed:
 <<<../LinesTest-original-maskFill-crop.png,height=2.25cm,keepaspectratio>>> \hspace{4pt}
 <<<../LinesTest-gamma-corrected-maskFill-crop.png,height=2.25cm,keepaspectratio>>>
 
-==== Quality Ideas ====
-* Analytical pixel coverage: using signed area coverage for a trapezoid ==> compute the exact pixel area covered by the polygon
+
+==== Quality Ideas (continued) ====
+* '''Analytical pixel coverage''': using signed area coverage for a trapezoid ==> compute the exact pixel area covered by the polygon
 \centering
 <<<../PolygonFillTrapezoidExample.png,height=4.5cm,keepaspectratio>>>
 
@@ -830,61 +875,76 @@ But your help is needed:
 
 ==== Performance ideas ====
 
-* Clipping (coming in release 0.8): 
+* '''Clipping''' ('''coming''' in release 0.8): 
 ** implement early efficient path clipping (major impact on dashes)
-** take care of affine transforms (margin, not always rectangle)
+** take care of affine transforms (margin), stroke's cap \& joins
 
 * Cap \& join processing (Stroker): 
 ** do not emit extra collinear points for squared cap \& miter joins
 ** improve Polygon Simplifier ?
 
-* Scanline processing (8x8 subpixels):
+* '''Scanline processing''' (8x8 subpixels):
 ** 8 scanlines per pixel row ==> compute exact area covered in 1 row
 ** see algorithmic approach (AGG like): \url{http://nothings.org/gamedev/rasterize/}
 ** may be almost as fast but a lot more precise !
 
 
 
+=== First results of the path clipping in Marlin 0.8.1 ===
 
-==== EA Marlin 0.8.1 = Path clipping ====
-
+==== Performance impact of the path clipping (Marlin 0.8.1) ====
+* Marlin path clipper Off vs On [clip 400 x 400]:
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-time.png}
+\hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-time.png}
 [nowiki]>
 
-==== EA Marlin 0.8.1 = Path clipping ====
-
+==== Performance impact of the path clipping (Marlin 0.8.1) ====
+* Gain with Marlin path clipper enabled:
 <[nowiki]
-\hspace*{-0.25cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-gain.png}
+\hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../clip-marlin-gain.png}
 [nowiki]>
+
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Promising Marlin's path clipper}
+* '''25\%''' gain (average)
+* up to '''65\%''' gain (complex shapes)
+\end{block}
+\end{textblock*}
+
 
 
 
 == Conclusion ==
+
 ==== Conclusion ====
-* Marlin rocks in Java 9!
-* Performance goals were met
-** Scales for multiple threads whereas Ductus does not
-** Single threaded performance generally as good or better for complex shapes.
-* Quality goals were met.
-* Marlin is now the default AA renderer for Oracle JDK (and OpenJDK).
-* Implementation, not API. Benefit accrues automatically to apps.
+* '''Marlin renderer rocks in Java 9 !'''
+** '''Performance goals''' met
+*** '''Scales for multiple threads''' whereas Ductus does not
+*** '''Single threaded performance''' generally '''as good or better'''
+** '''Quality goals''' met
+* '''Marlin is now the default AA renderer''' for Oracle JDK (and OpenJDK).
+* '''MarlinFX''' will be the '''default renderer in OpenJFX-10'''
+* '''Coming patches''' are promising for '''OpenJDK-10'''...
+
+
 
 
 ==== That's all folks ! ====
 
-* Please ask your questions 
+* '''Please ask your questions'''
 * or send them to \url{marlin-renderer@googlegroups.com}
 
 --0.6em--
 
 Special thanks to:
-* Andréa Aimé \& GeoServer team
-* OpenJDK teams for their help, reviews \& support: 
-** Jim Graham \& Phil Race (Java2D)
+* '''Andréa Aimé \& GeoServer team'''
+* '''OpenJDK''' teams for their help, reviews \& support: 
+** '''Jim Graham \& Phil Race''' (Java2D)
 ** Mario Torre \& Dalibor Topic
 ** Mark Reinhold
 * ALL Marlin users
+
+
 
 
 ==== JavaOne Sponsors (gofundme) ====
@@ -958,7 +1018,7 @@ Special Thanks to all my donators:
 * J. M.
 
 
-== ==[Extra]
+== Extra ==
 
 <[nowiki]
 \appendix
@@ -1014,15 +1074,17 @@ Special Thanks to all my donators:
 [nowiki]>
 
 
+
+
 === Comparing Marlin renderer releases using JDK-8 ===
 
-==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
+==== Performance evolution between Marlin 0.3 \& 0.8.1 (JDK-8) ====
 * Marlin 0.3 (2014.1) \& 0.5.6 (2015) \& 0.7.4 (JDK-9) \& 0.8.1 (2017)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-time.png}
 [nowiki]>
 
-==== Marlin Performance evolution between 0.3 \& 0.8.1 (JDK-8) ====
+==== Performance evolution between Marlin 0.3 \& 0.8.1 (JDK-8) ====
 * Marlin 0.5.6 \& 0.7.4 \& 0.8.1 vs 0.3
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../release-marlin-gain.png}
@@ -1036,18 +1098,20 @@ Special Thanks to all my donators:
 \end{textblock*}
 
 
+
+
 === Performance impact of the subpixel tuning ===
+
 ==== Performance impact of the subpixel tuning ====
-* Subpixel settings (1x1 to 6x6):
+* Subpixel settings [1x1 to 6x6]:
 <[nowiki]
 \hspace*{-1.cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-time.png}
 [nowiki]>
 
-==== Performance impact of the subpixel tuning ====
-* Gain \& Loss of Subpixel settings (1x1 to 6x6) VS 3x3:
+==== Performance gain \& loss of the subpixel tuning ====
+* Gain \& Loss of Subpixel settings [1 x 1 to 6 x 6] VS [3 x 3]:
 <[nowiki]
 \hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-gain.png}
 [nowiki]>
-
 
 
