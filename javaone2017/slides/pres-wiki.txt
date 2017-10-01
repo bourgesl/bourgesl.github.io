@@ -6,7 +6,7 @@ usepackage={ragged2e}
 usepackage={hyperref}
 usepackage={appendixnumberbeamer}
 usepackage=[absolute,overlay]{textpos}
-hypersetup={colorlinks=false}
+hypersetup={colorlinks=true,linkcolor=,urlcolor=RoyalBlue}
 documentclass=[aspectratio=169,12pt,xcolor=dvipsnames]{beamer}
 title={Marlin renderer, a JDK9 Success Story}
 subtitle={Vector Graphics on Steroids for Java 2D and JavaFX}
@@ -33,6 +33,17 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 \setbeamerfont{block title}{size=\fontsize{9pt}{10.8}}
 
 \setcounter{tocdepth}{1}
+
+% My macros
+\newcommand<>{\mCN}[1]{
+\texttt{\textbf{#1}}
+}
+\newcommand<>{\mB}[1]{
+\textbf{#1}
+}
+\newcommand<>{\mS}[1]{
+\small{#1}
+}
 
 
 {\setbeamertemplate{background canvas}{ \includegraphics[height=\paperheight, width=\paperwidth]{../javaone-2017.jpg} }
@@ -151,13 +162,13 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 
 ==== Java2D API in a nutshell ====
 '''Java2D is a great \& powerful Graphics API''':
-* \texttt{Shape} interface (\texttt{java.awt.geom})
-** Primitives: \texttt{Rectangle2D, Line2D, Ellipse2D, Arc2D ...}
-** General \texttt{Path2D}: \texttt{moveTo(), lineTo(), quadTo(), curveTo(), closeTo()}
-* \texttt{Stroke} interface: \texttt{BasicStroke} (\texttt{width, dashes} fields)
-* \texttt{Paint} interface: \texttt{Color, GradientPaint, TexturePaint}
-* \texttt{Composite} interface: \texttt{AlphaComposite} (Porter/Duff blending rules)
-* \texttt{Graphics} interface: '''\texttt{Graphics2D draw(Shape) or fill(Shape)} performs shape rendering operations'''
+* \mCN{Shape} interface (\texttt{java.awt.geom})
+** Primitives: \mCN{Rectangle2D, Line2D, Ellipse2D, Arc2D} ...
+** General \mCN{Path2D}: \mCN{moveTo(), lineTo(), quadTo(), curveTo(), closeTo()}
+* \mCN{Stroke} interface: \mCN{BasicStroke} (width, dashes fields)
+* \mCN{Paint} interface: \mCN{Color, GradientPaint, TexturePaint}
+* \mCN{Composite} interface: \mCN{AlphaComposite}\mS{(Porter/Duff blending rules)}
+* \mCN{Graphics} interface: '''\mCN{Graphics2D draw(Shape) or fill(Shape)} performs shape rendering operations'''
 
 
 
@@ -168,12 +179,12 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 ** Ductus provides '''high performance, but single threaded'''
 ** State of the art for its time
 ** Ductus still ships with Oracle JDK 9
-** \texttt{sun.dc.DuctusRenderingEngine} (native C code)
+** \mCN{sun.dc.DuctusRenderingEngine} (native C code)
 
 * However '''OpenJDK''' 1.6 replaced Ductus with '''"Pisces"'''
 ** Pisces developed + owned by Sun, in part for Java ME
 ** So could be '''open-sourced but performance much poorer'''
-** \texttt{java2d.pisces.PiscesRenderingEngine} (java code)
+** \mCN{java2d.pisces.PiscesRenderingEngine} (java code)
 
 Note: '''Other renderers for non-AA cases'''
 
@@ -182,7 +193,7 @@ Note: '''Other renderers for non-AA cases'''
 
 ==== Marlin renderer = OpenJDK's Pisces fork ====
 Status in 2013:
-* '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except \href{https://brandonborkholder.github.io/glg2d/}{glg2d}
+* '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except the \href{https://brandonborkholder.github.io/glg2d/}{glg2d} \mCN{Graphics2D} implementation
 * '''Pisces is slower''' but '''open-source''' (GPL)
 
 '''2013.3: My first patches to OpenJDK 8''':
@@ -233,7 +244,7 @@ Status in 2013:
 
  ==> I joined the '''graphics-rasterizer''' project in march 2015 to '''contribute Marlin as a new standalone renderer for OpenJDK9'''
 
-* '''I worked really hard''' (again, single developer) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches = '''10,000 LOC''' !
+* '''I worked really hard''' (again, single developer) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches $\approx$ '''10,000 LOC''' !
 * Reviews improved a lot the code and Computer Grapĥics algorithms
 
 
@@ -266,15 +277,15 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 <[nowiki]
 {\small
 \begin{tabular}{l | l} \hline
-\textbf{Release} & Main features \\ \hline
-\textbf{0.3 \tiny{[2014.1]}} & Initial: renderer context, array cache, dirty array \\ \hline
-\textbf{0.4} & Internal settings made customizable from system properties \\ \hline
-\textbf{0.5 \tiny{[2014.3]}} & Use \textbf{sun.misc.Unsafe} (off-heap memory) (may crash your JVM) \\ \hline
-\textbf{0.5.6 \tiny{[2015.3]}} & \textbf{Optimized merge sort} for newly added edges \\ \hline
-\textbf{0.7 \tiny{[2015.8]}} & Improve \textbf{coordinate rounding around sub-pixel center} \\
-& Perform \textbf{DDA in scan-line edge processing} \\
-& Optimized \textbf{cubic / quad flattening} \\ \hline
-\textbf{0.7.1} & Hybrid approach (raw or \textbf{RLE}) to copy pixel coverages into mask \\ \hline
+\mB{Release} & Main features \\ \hline
+\mB{0.3 \tiny{[2014.1]}} & Initial: renderer context, array cache, dirty array \\ \hline
+\mB{0.4} & Internal settings made customizable from system properties \\ \hline
+\mB{0.5 \tiny{[2014.3]}} & Use \mB{sun.misc.Unsafe} (off-heap memory) (may crash your JVM) \\ \hline
+\mB{0.5.6 \tiny{[2015.3]}} & \mB{Optimized merge sort} for newly added edges \\ \hline
+\mB{0.7 \tiny{[2015.8]}} & Improve \mB{coordinate rounding around sub-pixel center} \\
+& Perform \mB{DDA in scan-line edge processing} \\
+& Optimized \mB{cubic / quad flattening} \\ \hline
+\mB{0.7.1} & Hybrid approach (raw or \mB{RLE}) to copy pixel coverages into mask \\ \hline
 \end{tabular}
 }
 [nowiki]>
@@ -287,15 +298,15 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 <[nowiki]
 {\small
 \begin{tabular}{l | l} \hline
-\textbf{Release} & Main features \\ \hline
-\textbf{0.7.2 \tiny{[2015.11]}} & \textbf{Improve large pixel chunk copies} (coverage) \\ \hline
-\textbf{0.7.3.3} & \textbf{Handle coordinate overflow}: ignore (NaN / Infinity) \\ \hline
-\textbf{0.7.4 \tiny{[2016.6]}} & \textbf{Array cache refactoring \& tuning [--> JDK-9]} \\ \hline
-\textbf{0.7.5 \tiny{[2016.12]}} & Added the \textbf{Double pipeline for higher accuracy [--> JDK-10]} \\
+\mB{Release} & Main features \\ \hline
+\mB{0.7.2 \tiny{[2015.11]}} & \mB{Improve large pixel chunk copies} (coverage) \\ \hline
+\mB{0.7.3.3} & \mB{Handle coordinate overflow}: ignore (NaN / Infinity) \\ \hline
+\mB{0.7.4 \tiny{[2016.6]}} & \mB{Array cache refactoring \& tuning [--> JDK-9]} \\ \hline
+\mB{0.7.5 \tiny{[2016.12]}} & Added the \mB{Double pipeline for higher accuracy [--> JDK-10]} \\
 & Optimized tile filling (almost empty / full) \\
-& \textbf{Higher precision of the curve conversion} to line segments \\ \hline
-\textbf{0.8.0 \tiny{[2017.8]}} & Added \textbf{path clipper for stroked shapes} (cap, joins, tx) \\ \hline
-\textbf{0.8.1} & Added \textbf{path clipper for filled shapes} (N.Z. winding rule) \\ \hline
+& \mB{Higher precision of the curve conversion} to line segments \\ \hline
+\mB{0.8.0 \tiny{[2017.8]}} & Added \mB{path clipper for stroked shapes} (cap, joins, tx) \\ \hline
+\mB{0.8.1} & Added \mB{path clipper for filled shapes} (N.Z. winding rule) \\ \hline
 \end{tabular}
 }
 [nowiki]>
@@ -309,7 +320,7 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 * '''License issue: OCA''' for all contributors, no third-party code !
 * '''Webrev process: great but heavy task''':
 ** Create webrevs (hg status, webrev.ksh with options)
-** Push on \url{cr.openjdk.java.net/~<mylogin>/}
+** Push on \url{http://cr.openjdk.java.net/~lbourges/}
 ** Long review threads on mailing lists for my patches (~50 mails)
 ** Timezone difference: delays + no direct discussion
 * '''Few Java2D / computer graphics skills''': small field + NO DOC !
@@ -495,14 +506,15 @@ Who is [Ductus, Pisces, Marlin] ?
 
 ==== How to use Marlin ? ====
 
-* Just download any Oracle or OpenJDK-9 release
-** \url{https://jdk9.java.net/}
+* Just download any Oracle or OpenJDK 9 release
+** \href{http://www.oracle.com/technetwork/java/javase/downloads/index.html}{Oracle JDK}
+** OpenJDK builds: \href{https://adoptopenjdk.net/}{AdoptOpenJDK.net} or \href{http://zulu.org/download/}{zulu.org}
 
---0.4em--
+--0.6em--
 
 * For JDK 1.7 or JDK-8: 
 ** Download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release @ github}
-* Howto: \url{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}
+* See \href{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}{How to use}
 * Start your java program with:
 <[code][style=basic, language=bash]
 java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
@@ -516,7 +528,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 ==== MapBench benchmarks ====
 
 * MapBench tool:
-** Multi-threaded java2d benchmark that replays serialized graphics commands: see \texttt{ShapeDumperGraphics2D}
+** Multi-threaded java2d benchmark that replays serialized graphics commands: see \mCN{ShapeDumperGraphics2D}
 ** Calibration \& warm-up phase at startup + correct statistics [95th percentile...]
 * Protocol:
 ** Disable Hyper-Threading (in BIOS)
@@ -715,17 +727,17 @@ Debugging:
 \hline	
 System property \\ {\scriptsize -Dsun.java2d.renderer.<KEY>=} & Values & Description \\ \hline
 \hline	
-useThreadLocal & \textbf{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
-useRef & \textbf{soft} - weak - hard & Reference type to RdrCtx \\ \hline
+useThreadLocal & \mB{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
+useRef & \mB{soft} - weak - hard & Reference type to RdrCtx \\ \hline
 \hline	
-pixelsize & \textbf{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
-subPixel\_log2\_X & \textbf{3} in [1-8] & Sub-pixel count on X axis \\ \hline
-subPixel\_log2\_Y & \textbf{3} in [1-8] & Sub-pixel count in Y axis \\ \hline
-tileSize\_log2 & \textbf{5} in [3-8] & Pixel width/height for tiles \\ \hline
+pixelsize & \mB{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
+subPixel\_log2\_X & \mB{3} in [1-8] & Sub-pixel count on X axis \\ \hline
+subPixel\_log2\_Y & \mB{3} in [1-8] & Sub-pixel count in Y axis \\ \hline
+tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 \hline	
-doStats & true - \textbf{false} & Log rendering statistics \\ \hline
-doChecks & true - \textbf{false} & Perform array checks \\ \hline
-useLogger & true - \textbf{false} & Use j.u.l.Logger \\ \hline
+doStats & true - \mB{false} & Log rendering statistics \\ \hline
+doChecks & true - \mB{false} & Perform array checks \\ \hline
+useLogger & true - \mB{false} & Use j.u.l.Logger \\ \hline
 \end{tabular}
 \end{table}
 }
@@ -754,16 +766,16 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 ==== MarlinFX project ====
 
-2016: Port Marlin into JavaFX Prism engine
-* \url{https://github.com/bourgesl/marlin-renderer-fx}
+2016: '''Port Marlin into JavaFX''' Prism engine
+* \url{https://github.com/bourgesl/marlin-fx}
 * Prism integration:
-** Complete mask no more tiles
-** GPU back-end is faster (upload texture may be costly)
+** Complete mask, no more tiles
+** GPU back-end is faster but uploading texture may be costly
 ** but single-threaded (GUI)
 
-* Double-precision variant to improve accuracy on very large shapes (stroke / dashes)
+* '''Double-precision variant to improve accuracy''' on very large shapes (stroke / dashes)
 
-* Integrated in OpenJFX9 (dec 2016) but disabled by default
+* '''Integrated in OpenJFX-9''' (dec 2016) but disabled by default
 
 
 
@@ -775,7 +787,7 @@ TODO: complete
 
 ==== My feedback on contributing to OpenJFX ====
 
-Contrary to Marlin, OpenJFX patches were more quickly integrated into OpenJFX9 (Jim Graham, again) !
+Contrary to Marlin, OpenJFX patches were more quickly integrated into OpenJFX-9 (Jim Graham, again) !
 
 TODO: complete
 
@@ -783,14 +795,14 @@ TODO: complete
 == MarlinFX usage \& benchmarks ==
 
 ==== How to use MarlinFX ? ====
- MarlinFX is only available in JDK-9:
+'''MarlinFX is only available in JDK-9 builds''':
 * Enable MarlinFX using prism settings:
 <[code][style=basic, language=bash]
 java -Dprism.marlinrasterizer=true ...
 [code]>* Select Marlin Double or Float variant:
 <[code][style=basic, language=bash]
 java -Dprism.marlinrasterizer=true -Dprism.marlin.double=true ...
-[code]>* To enable the Prism log, add \texttt{-Dprism.verbose=true}:
+[code]>* To enable the Prism log, add \mCN{-Dprism.verbose=true}:
 <[code][style=basic, language=bash]
 Prism pipeline init order: es2 
 Using Marlin rasterizer (double)
@@ -798,15 +810,20 @@ Using Marlin rasterizer (double)
 
 
 ==== DemoFX benchmarks ====
-* OpenJFX9 b146 first results with DemoFX Triangle test (VSYNC)
-** '''58 fps vs 48 fps = 20\% gain''' <<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
+* OpenJFX-9 b146 '''first results with DemoFX''' Triangle test \mCN{[VSYNC]}
+<[columns]
+[[[0.45\textwidth]]]
+\hspace*{0.5cm} '''58 fps vs 48 fps = 20\% gain'''
+[[[0.5\textwidth]]]
+<<<../chris_demoFX_marlinFX9.png,height=6cm,keepaspectratio>>>
+[columns]>
 
 
 ==== MapBenchFX benchmarks ====
 
-* MapBenchFX: JavaFX application to render maps
-* Port of the Java2D MapBench benchmark using FXGraphics2D
-* \url{https://github.com/bourgesl/mapbench-fx}
+* '''MapBenchFX''': JavaFX application to render maps
+** Port of the '''Java2D MapBench benchmark''' using FXGraphics2D
+** \url{https://github.com/bourgesl/mapbench-fx}
 
 <[nowiki]
 \begin{tabular}{c c c}
@@ -824,7 +841,7 @@ Using Marlin rasterizer (double)
 [nowiki]>
 
 ==== MarlinFX vs Native \& Java Pisces (Oracle JDK-9 EA b181) ====
-* Native Pisces (red) \& Java Pisces (blue) \& MarlinFX (green)
+* Native Pisces (red) \& Java Pisces (blue) vs MarlinFX
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx9-marlin-gain.png}
 [nowiki]>
@@ -839,18 +856,18 @@ Using Marlin rasterizer (double)
 
 
 
-== Future work ==
+== Perspectives and Future Work ==
 
-==== Future work ====
+==== We want You ====
 
-I may have still spare time to improve Marlin...
+'''I may have still spare time''' to improve Marlin... '''but no more alone''' !
 
---1em--
-
-But your help is needed:
-* Try your applications \& use cases with the Marlin renderer
-* Contribute to the Marlin project: let's implement new algorithms (gamma correction, clipping ...)
-* Provide feedback, please !
+--0.5em--
+!'''We want You'''! = your help is needed:
+* adopt the '''Java Client''' group
+* '''Try your applications''' \& use cases with the Marlin renderer
+* '''Contribute to the Marlin project''': let's implement new algorithms (gamma correction, clipping ...)
+* Provide '''feedback''', please !
 
 
 
@@ -925,13 +942,14 @@ But your help is needed:
 * '''Marlin is now the default AA renderer''' for Oracle JDK (and OpenJDK).
 * '''MarlinFX''' will be the '''default renderer in OpenJFX-10'''
 * '''Coming patches''' are promising for '''OpenJDK-10'''...
+* !'''What future for Java Client \& Desktop ?'''!
 
 
 
 
 ==== That's all folks ! ====
 
-* '''Please ask your questions'''
+* '''Please ask your questions''' or '''talk with me'''
 * or send them to \url{marlin-renderer@googlegroups.com}
 
 --0.6em--
