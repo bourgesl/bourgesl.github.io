@@ -124,7 +124,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 
 == Context \& History ==
 
-==== Role of an Antialiasing Renderer ====
+==== Role of an Anti-aliasing Renderer ====
 * Geometry is defined by a '''mathematical description of a path'''
 * '''Shapes''' may be complex: concave, convex, intersecting ...
 * To draw to any kind of raster surface (image, screen), need to map the rendering of ideal path to raster coordinates
@@ -163,7 +163,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 
 
 ==== Background (before Marlin) ====
-'''Antialiasing renderers available''' in Java:
+'''Anti-aliasing renderers available''' in Java:
 * '''JDK 1.2''' included licensed '''closed-source''' technology from '''Ductus'''
 ** Ductus provides '''high performance, but single threaded'''
 ** State of the art for its time
@@ -185,8 +185,8 @@ Status in 2013:
 * '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except \href{https://brandonborkholder.github.io/glg2d/}{glg2d}
 * '''Pisces is slower''' but '''open-source''' (GPL)
 
-'''2013.3: My first patchs to OpenJDK 8''':
-* '''Pisces patchs''' to \url{2d-dev@openjdk.java.net}: too late for JDK-8
+'''2013.3: My first patches to OpenJDK 8''':
+* '''Pisces patches''' to \url{2d-dev@openjdk.java.net}: too late for JDK-8
 * Small interest / few feedbacks
 
 '''Andréa Aimé''' (GeoServer team) '''pushed me to go on''':
@@ -202,7 +202,7 @@ Status in 2013:
 
 * \url{https://github.com/bourgesl/marlin-renderer}
 ** branch ''''openjdk-dev': dev branch'''
-** branch 'openjdk': in synch with OpenJDK-9 \& 10
+** branch 'openjdk': in sync with OpenJDK-9 \& 10
 ** branch ''''use\_Unsafe': main for Marlin releases'''
 ** '''28 \href{https://github.com/bourgesl/marlin-renderer/releases}{Releases}''', \href{https://github.com/bourgesl/marlin-renderer/wiki}{Wiki}
 * \url{https://github.com/bourgesl/mapbench}
@@ -233,7 +233,7 @@ Status in 2013:
 
  ==> I joined the '''graphics-rasterizer''' project in march 2015 to '''contribute Marlin as a new standalone renderer for OpenJDK9'''
 
-* '''I worked really hard''' (again, single developper) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches = '''10,000 LOC''' !
+* '''I worked really hard''' (again, single developer) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches = '''10,000 LOC''' !
 * Reviews improved a lot the code and Computer Grapĥics algorithms
 
 
@@ -271,8 +271,8 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 \textbf{0.4} & Internal settings made customizable from system properties \\ \hline
 \textbf{0.5 \tiny{[2014.3]}} & Use \textbf{sun.misc.Unsafe} (off-heap memory) (may crash your JVM) \\ \hline
 \textbf{0.5.6 \tiny{[2015.3]}} & \textbf{Optimized merge sort} for newly added edges \\ \hline
-\textbf{0.7 \tiny{[2015.8]}} & Improve \textbf{coordinate rounding arround subpixel center} \\
-& Perform \textbf{DDA in scanline edge processing} \\
+\textbf{0.7 \tiny{[2015.8]}} & Improve \textbf{coordinate rounding around sub-pixel center} \\
+& Perform \textbf{DDA in scan-line edge processing} \\
 & Optimized \textbf{cubic / quad flattening} \\ \hline
 \textbf{0.7.1} & Hybrid approach (raw or \textbf{RLE}) to copy pixel coverages into mask \\ \hline
 \end{tabular}
@@ -311,7 +311,7 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 ** Create webrevs (hg status, webrev.ksh with options)
 ** Push on \url{cr.openjdk.java.net/~<mylogin>/}
 ** Long review threads on mailing lists for my patches (~50 mails)
-** Timezone difference: delays + no skype
+** Timezone difference: delays + no direct discussion
 * '''Few Java2D / computer graphics skills''': small field + NO DOC !
 
 
@@ -362,11 +362,11 @@ MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
 * Dasher (optional): 
 ** generates path dashes (curved or segments)
 * Stroker (optional): 
-** generates edges arround of every path element
+** generates edges around of every path element
 ** generates edges for decorations (cap \& joins)
 * Renderer:
 ** curve decimation into line segments
-** addLine: basic clipping + convert float to subpixel coordinates
+** addLine: basic clipping + convert float to sub-pixel coordinates
 ** determine the shape bounding box
 ** perform edge rendering into tile strides ie compute pixel coverages
 ** fill the MarlinCache with pixel coverages as byte[] (alpha)
@@ -378,10 +378,10 @@ MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
 
 ==== How Marlin works ? the AA algorithm ====
 
-* Scanline algorithm [8x8 supersampling] to estimate pixel coverages
+* Scan-line algorithm [8x8 super-sampling] to estimate pixel coverages
 = Active Edge table (AET) variant with "java" pointers (integer-based)
-* sort edges at each scanline
-* estimate subpixel coverage and accumulate in the alpha row
+* sort edges at each scan-line
+* estimate sub-pixel coverage and accumulate in the alpha row
 * Once a pixel row is done: copy pixel coverages into cache
 * Once 32 (tile height) pixel rows are done: perform blending \& repeat !
 
@@ -436,7 +436,7 @@ A lot more ...
 
 
 
-== Visual quality Quizz ==
+== Visual quality Quiz ==
 
 ==== Visual quality - Blind test [Image 1] ====[standout]
 Who is [Ductus, Pisces, Marlin] ?
@@ -517,14 +517,14 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 * MapBench tool:
 ** Multi-threaded java2d benchmark that replays serialized graphics commands: see \texttt{ShapeDumperGraphics2D}
-** Calibration \& warmup phase at startup + correct statistics [95th percentile...]
+** Calibration \& warm-up phase at startup + correct statistics [95th percentile...]
 * Protocol:
 ** Disable Hyper-Threading (in BIOS)
-** Use fixed cpu frequencies (2.0 GHz) on my laptop (i7-6820 HQ)
+** Use fixed CPU frequencies (2.0 GHz) on my laptop (i7-6820 HQ)
 ** Setup JVM: select JDK + basic jvm settings = CMS GC 2Gb Heap
 ** Use the profile 'shared images' to reduce GC overhead
 
- ==> Reduce variability (and cpu affinity issues)
+ ==> Reduce variability (and CPU affinity issues)
 
 
 ==== MapBench tests ====
@@ -537,13 +537,13 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 === Comparing AA renderers in JDK-9 (Ductus, Pisces, Marlin) ===
 
 ==== Before Marlin (Oracle JDK-9 EA b181) ====
-* OracleJDK Ductus (red) \& Pisces (blue)
+* Oracle JDK Ductus (red) \& Pisces (blue)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
 
 ==== Before Marlin (Oracle JDK-9 EA b181) ====
-* OracleJDK Ductus (red) \& Pisces (blue)
+* Oracle JDK Ductus (red) \& Pisces (blue)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
@@ -557,13 +557,13 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== With Marlin (Oracle JDK-9 EA b181) ====
-* OracleJDK Ductus (red) \& Pisces (blue) \& Marlin (green)
+* Oracle JDK Ductus (red) \& Pisces (blue) \& Marlin (green)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
 
 ==== With Marlin (Oracle JDK-9 EA b181) ====
-* OracleJDK Ductus (red) \& Pisces (blue) \& Marlin (green)
+* Oracle JDK Ductus (red) \& Pisces (blue) \& Marlin (green)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
@@ -577,7 +577,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (1 thread) ====
-* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
+* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
 [nowiki]>
@@ -591,7 +591,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (2 thread) ====
-* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
+* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
 [nowiki]>
@@ -605,7 +605,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (4 thread) ====
-* Marlin gains over OracleJDK Ductus (red) \& Pisces (blue)
+* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
 [nowiki]>
@@ -692,7 +692,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 ==== Marlin renderer tuning ====
 
 Marlin can be customized by using system properties:
-* adjust subpixel sampling: 
+* adjust sub-pixel sampling: 
 ** X/Y=3: [8x8] (by default)
 ** smaller values are faster but less accurate
 ** higher values are slower but more accurate
@@ -701,7 +701,7 @@ Marlin can be customized by using system properties:
 
 Debugging:
 * log statistics to know what happens
-* enable checks if segfault or artefacts !
+* enable checks if SEG faults or artefacts !
 
 
 
@@ -719,8 +719,8 @@ useThreadLocal & \textbf{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
 useRef & \textbf{soft} - weak - hard & Reference type to RdrCtx \\ \hline
 \hline	
 pixelsize & \textbf{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
-subPixel\_log2\_X & \textbf{3} in [1-8] & Subpixel count on X axis \\ \hline
-subPixel\_log2\_Y & \textbf{3} in [1-8] & Subpixel count in Y axis \\ \hline
+subPixel\_log2\_X & \textbf{3} in [1-8] & Sub-pixel count on X axis \\ \hline
+subPixel\_log2\_Y & \textbf{3} in [1-8] & Sub-pixel count in Y axis \\ \hline
 tileSize\_log2 & \textbf{5} in [3-8] & Pixel width/height for tiles \\ \hline
 \hline	
 doStats & true - \textbf{false} & Log rendering statistics \\ \hline
@@ -731,7 +731,7 @@ useLogger & true - \textbf{false} & Use j.u.l.Logger \\ \hline
 }
 [nowiki]>
 
-Log-2 values for subpixel \& tile sizes:
+Log-2 values for sub-pixel \& tile sizes:
 * subPixel = 3 means 8 x 8 
 * tileSize = 5 means 32 x 32
 
@@ -758,7 +758,7 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 * \url{https://github.com/bourgesl/marlin-renderer-fx}
 * Prism integration:
 ** Complete mask no more tiles
-** GPU backend is faster (upload texture may be costly)
+** GPU back-end is faster (upload texture may be costly)
 ** but single-threaded (GUI)
 
 * Double-precision variant to improve accuracy on very large shapes (stroke / dashes)
@@ -857,7 +857,7 @@ But your help is needed:
 
 ==== Quality Ideas ====
 * '''Handle properly the gamma correction''': 
-** in MaskFill for images (C macros) \& GPU backends
+** in MaskFill for images (C macros) \& GPU back-ends
 ** '''Very important for visual quality'''
 ** note: Stroke's width must compensate the gamma correction to avoid having thiner / fatter shapes.
 
@@ -883,8 +883,8 @@ But your help is needed:
 ** do not emit extra collinear points for squared cap \& miter joins
 ** improve Polygon Simplifier ?
 
-* '''Scanline processing''' (8x8 subpixels):
-** 8 scanlines per pixel row ==> compute exact area covered in 1 row
+* '''Scan-line processing''' (8x8 sub-pixels):
+** 8 scan-lines per pixel row ==> compute exact area covered in 1 row
 ** see algorithmic approach (AGG like): \url{http://nothings.org/gamedev/rasterize/}
 ** may be almost as fast but a lot more precise !
 
@@ -1017,8 +1017,8 @@ Special Thanks to all my donators:
 * M. H.
 * J. M.
 
+[frame]>
 
-== Extra ==
 
 <[nowiki]
 \appendix
@@ -1074,7 +1074,7 @@ Special Thanks to all my donators:
 [nowiki]>
 
 
-
+== Extra ==
 
 === Comparing Marlin renderer releases using JDK-8 ===
 
@@ -1100,16 +1100,16 @@ Special Thanks to all my donators:
 
 
 
-=== Performance impact of the subpixel tuning ===
+=== Performance impact of the sub-pixel tuning ===
 
-==== Performance impact of the subpixel tuning ====
-* Subpixel settings [1x1 to 6x6]:
+==== Performance impact of the sub-pixel tuning ====
+* Sub-pixel settings [1x1 to 6x6]:
 <[nowiki]
 \hspace*{-1.cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-time.png}
 [nowiki]>
 
-==== Performance gain \& loss of the subpixel tuning ====
-* Gain \& Loss of Subpixel settings [1 x 1 to 6 x 6] VS [3 x 3]:
+==== Performance gain \& loss of the sub-pixel tuning ====
+* Gain \& Loss of Sub-pixel settings [1 x 1 to 6 x 6] VS [3 x 3]:
 <[nowiki]
 \hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-gain.png}
 [nowiki]>
