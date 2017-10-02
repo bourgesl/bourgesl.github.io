@@ -8,7 +8,7 @@ usepackage={appendixnumberbeamer}
 usepackage=[absolute,overlay]{textpos}
 hypersetup={colorlinks=true,linkcolor=,urlcolor=RoyalBlue}
 documentclass=[aspectratio=169,12pt,xcolor=dvipsnames]{beamer}
-title={Marlin renderer, a JDK9 Success Story}
+title={Marlin renderer, a JDK-9 Success Story}
 subtitle={Vector Graphics on Steroids for Java 2D and JavaFX}
 author={Laurent Bourgès}
 institute=[OSUG-DC, CNRS]{ \includegraphics[height=1.6cm,keepaspectratio]{../osug.png} \hspace{20pt} \includegraphics[height=1.3cm,keepaspectratio]{../cnrs.jpg} }
@@ -19,6 +19,11 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 <[nowiki]
 \textblockorigin{0pt}{0pt} % position origin (showboxes)
 
+\definecolor{mRed}{RGB}{239, 41, 41}
+\definecolor{mBlue}{RGB}{52, 101, 164}
+\definecolor{mGreen}{RGB}{67, 195, 48}
+\definecolor{mViolet}{RGB}{194, 84, 210}
+\definecolor{mTurquoise}{RGB}{99, 187, 238}
 
 \setbeamercolor{frametitle}{bg=RoyalBlue}
 \setbeamercolor{footlineW}{bg=white}
@@ -43,6 +48,15 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 }
 \newcommand<>{\mS}[1]{
 \small{#1}
+}
+\newcommand<>{\mBRed}[1]{
+\textbf{\textcolor{mRed}{#1}}
+}
+\newcommand<>{\mBBlue}[1]{
+\textbf{\textcolor{mBlue}{#1}}
+}
+\newcommand<>{\mBGreen}[1]{
+\textbf{\textcolor{mGreen}{#1}}
 }
 
 
@@ -178,7 +192,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 * '''JDK 1.2''' included licensed '''closed-source''' technology from '''Ductus'''
 ** Ductus provides '''high performance, but single threaded'''
 ** State of the art for its time
-** Ductus still ships with Oracle JDK 9
+** Ductus still ships with Oracle JDK-9
 ** \mCN{sun.dc.DuctusRenderingEngine} (native C code)
 
 * However '''OpenJDK''' 1.6 replaced Ductus with '''"Pisces"'''
@@ -196,7 +210,7 @@ Status in 2013:
 * '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except the \href{https://brandonborkholder.github.io/glg2d/}{glg2d} \mCN{Graphics2D} implementation
 * '''Pisces is slower''' but '''open-source''' (GPL)
 
-'''2013.3: My first patches to OpenJDK 8''':
+'''2013.3: My first patches to OpenJDK-8''':
 * '''Pisces patches''' to \url{2d-dev@openjdk.java.net}: too late for JDK-8
 * Small interest / few feedbacks
 
@@ -238,11 +252,11 @@ Status in 2013:
 
 
 
-==== Marlin renderer back into OpenJDK 9 ====
+==== Marlin renderer back into OpenJDK-9 ====
 
 * '''FOSDEM 2015''': Great discussion with OpenJDK managers (Dalibor \& Mario) on how to contribute the Marlin renderer back
 
- ==> I joined the '''graphics-rasterizer''' project in march 2015 to '''contribute Marlin as a new standalone renderer for OpenJDK9'''
+ ==> I joined the '''graphics-rasterizer''' project in march 2015 to '''contribute Marlin as a new standalone renderer for OpenJDK-9'''
 
 * '''I worked really hard''' (again, single developer) with Jim Graham \& Phil Race (reviewers) in 2015 to push 4 big patches $\approx$ '''10,000 LOC''' !
 * Reviews improved a lot the code and Computer Grapĥics algorithms
@@ -250,7 +264,7 @@ Status in 2013:
 
 
 
-==== JEP 265: Marlin renderer back into OpenJDK 9 ====
+==== JEP 265: Marlin renderer back into OpenJDK-9 ====
 
 We proposed the JEP 265 in July 2015 and make it completed:
 * '''JEP 265: Marlin Graphics Renderer'''
@@ -506,7 +520,7 @@ Who is [Ductus, Pisces, Marlin] ?
 
 ==== How to use Marlin ? ====
 
-* Just download any Oracle or OpenJDK 9 release
+* Just download any Oracle JDK-9 or OpenJDK-9 release
 ** \href{http://www.oracle.com/technetwork/java/javase/downloads/index.html}{Oracle JDK}
 ** OpenJDK builds: \href{https://adoptopenjdk.net/}{AdoptOpenJDK.net} or \href{http://zulu.org/download/}{zulu.org}
 
@@ -549,13 +563,13 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 === Comparing AA renderers in JDK-9 (Ductus, Pisces, Marlin) ===
 
 ==== Before Marlin (Oracle JDK-9 EA b181) ====
-* Oracle JDK Ductus (red) \& Pisces (blue)
+* Oracle JDK \mBRed{Ductus} \& \mBBlue{Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
 
 ==== Before Marlin (Oracle JDK-9 EA b181) ====
-* Oracle JDK Ductus (red) \& Pisces (blue)
+* Oracle JDK \mBRed{Ductus} \& \mBBlue{Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-before.png}
 [nowiki]>
@@ -569,13 +583,13 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== With Marlin (Oracle JDK-9 EA b181) ====
-* Oracle JDK Ductus (red) \& Pisces (blue) \& Marlin (green)
+* Oracle JDK \mBRed{Ductus}\& \mBBlue{Pisces} \& \mBGreen{Marlin}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
 
 ==== With Marlin (Oracle JDK-9 EA b181) ====
-* Oracle JDK Ductus (red) \& Pisces (blue) \& Marlin (green)
+* Oracle JDK \mBRed{Ductus}\& \mBBlue{Pisces} \& \mBGreen{Marlin}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin.png}
 [nowiki]>
@@ -589,7 +603,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (1 thread) ====
-* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
+* \mBGreen{Marlin} gains over Oracle JDK \mBRed{Ductus}\& \mBBlue{Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-1T.png}
 [nowiki]>
@@ -603,7 +617,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (2 thread) ====
-* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
+* \mBGreen{Marlin} gains over Oracle JDK \mBRed{Ductus}\& \mBBlue{Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-2T.png}
 [nowiki]>
@@ -617,7 +631,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Performance gains (4 thread) ====
-* Marlin gains over Oracle JDK Ductus (red) \& Pisces (blue)
+* \mBGreen{Marlin} gains over Oracle JDK \mBRed{Ductus}\& \mBBlue{Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../compare-with-marlin-gain-4T.png}
 [nowiki]>
@@ -631,9 +645,9 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 ==== Marlin Performance Summary (JDK-9) ====
-* Compared to Ductus:
+* Compared to \mBRed{Ductus}:
 ** Same performance (1T) but better scalability up to 250\% gain (4T)
-* Compared to Pisces:
+* Compared to \mBBlue{Pisces}:
 ** 2x faster: 100\% to 150\% gain
 * Perfect scalability 1T to 4T
 <[nowiki]
@@ -768,10 +782,12 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 2016: '''Port Marlin into JavaFX''' Prism engine
 * \url{https://github.com/bourgesl/marlin-fx}
-* Prism integration:
+* '''Prism integration''':
+** Only concerns complex paths (not ellipse or rounded rect., 3D meshes)
 ** Complete mask, no more tiles
 ** GPU back-end is faster but uploading texture may be costly
 ** but single-threaded (GUI)
+** TBD: use Marlin to implement createStrokedShape()
 
 * '''Double-precision variant to improve accuracy''' on very large shapes (stroke / dashes)
 
@@ -795,7 +811,7 @@ TODO: complete
 == MarlinFX usage \& benchmarks ==
 
 ==== How to use MarlinFX ? ====
-'''MarlinFX is only available in JDK-9 builds''':
+'''MarlinFX is available in all JDK-9 builds''' (Oracle, Zulu, Gluon):
 * Enable MarlinFX using prism settings:
 <[code][style=basic, language=bash]
 java -Dprism.marlinrasterizer=true ...
@@ -835,13 +851,13 @@ Using Marlin rasterizer (double)
 
 
 ==== MarlinFX vs Native \& Java Pisces (Oracle JDK-9 EA b181) ====
-* Native Pisces (red) \& Java Pisces (blue) \& MarlinFX (green)
+* \mBRed{Native Pisces} \& \mBBlue{Java Pisces} \& \mBGreen{MarlinFX}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx9-marlin.png}
 [nowiki]>
 
 ==== MarlinFX vs Native \& Java Pisces (Oracle JDK-9 EA b181) ====
-* Native Pisces (red) \& Java Pisces (blue) vs MarlinFX
+* \mBGreen{MarlinFX} gains over \mBRed{Native Pisces} \& \mBBlue{Java Pisces}
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../fx9-marlin-gain.png}
 [nowiki]>
