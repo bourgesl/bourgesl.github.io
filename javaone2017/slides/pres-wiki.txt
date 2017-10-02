@@ -516,15 +516,16 @@ Who is [Ductus, Pisces, Marlin] ?
 
 
 
+
 == Marlin usage \& benchmarks ==
 
 ==== How to use Marlin ? ====
 
-* Just download any Oracle JDK-9 or OpenJDK-9 release
+* '''Just download any Oracle JDK-9 or OpenJDK-9 release'''
 ** \href{http://www.oracle.com/technetwork/java/javase/downloads/index.html}{Oracle JDK}
 ** OpenJDK builds: \href{https://adoptopenjdk.net/}{AdoptOpenJDK.net} or \href{http://zulu.org/download/}{zulu.org}
 
---0.6em--
+--0.4em--
 
 * For JDK 1.7 or JDK-8: 
 ** Download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release @ github}
@@ -539,14 +540,41 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 
+==== Marlin System properties ====
+<[nowiki]
+{\small
+\begin{table} 
+\begin{tabular}{l | c | l}
+\hline	
+System property <KEY>\\ \mB{\scriptsize -Dsun.java2d.renderer.<KEY>=} & Values & Description \\ \hline
+\hline	
+\mB{log} & true - \mB{false} & Enable Log (initial settings) \\ \hline
+\mB{doStats} & true - \mB{false} & Log rendering statistics \\ \hline
+doChecks & true - \mB{false} & Perform array checks \\ \hline
+\hline	
+useThreadLocal & \mB{true} - false & RdrCtx in TL or CLQ \\ \hline
+useRef & \mB{soft} - weak - hard & Reference type to RdrCtx \\ \hline
+\hline	
+pixelsize & \mB{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
+subPixel\_log2\_X, ...Y & \mB{3} in [1-8] & Sub-pixel count on X, Y axis \\ \hline
+tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
+\end{tabular}
+\end{table}
+}
+[nowiki]>
+
+\small{Log-2 values for sub-pixel \& tile sizes: 3 --> 8, 5 --> 32}
+
+
+
 ==== MapBench benchmarks ====
 
-* MapBench tool:
-** Multi-threaded java2d benchmark that replays serialized graphics commands: see \mCN{ShapeDumperGraphics2D}
+* '''MapBench tool''':
+** '''Multi-threaded java2d benchmark''' that replays serialized graphics commands: see \mCN{ShapeDumperGraphics2D}
 ** Calibration \& warm-up phase at startup + correct statistics [95th percentile...]
-* Protocol:
+* '''Protocol''':
 ** Disable Hyper-Threading (in BIOS)
-** Use fixed CPU frequencies (2.0 GHz) on my laptop (i7-6820 HQ)
+** Use fixed CPU frequencies (2.0 GHz) on my laptop [i7-6820 HQ, 32Gb, Nvidia GPU Quadro M1000, Ubuntu 17.4 64bits]
 ** Setup JVM: select JDK + basic jvm settings = CMS GC 2Gb Heap
 ** Use the profile 'shared images' to reduce GC overhead
 
@@ -692,95 +720,13 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 \end{textblock*}
 
 
-=== Studying Marlin \& Java2D internal stages ===
-
-==== Marlin internal timings ====
-* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
-[nowiki]>
-
-==== Marlin internal timings ====
-* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
-<[nowiki]
-\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
-[nowiki]>
-
-\begin{textblock*}{12cm}(2cm,6.35cm)
-\begin{block}{Stage cost ratios}
-* Path processing: 20 to 30\% (stroked shapes) but 3\% (filled)
-* Blending: '''25\%''' (average) but up to 75\% (large ellipse fills): ''Future work ?'' 
-\end{block}
-\end{textblock*}
-
-
-== Marlin renderer tuning ==
-==== Marlin renderer tuning ====
-
-Marlin can be customized by using system properties:
-* adjust sub-pixel sampling: 
-** X/Y=3: [8x8] (by default)
-** smaller values are faster but less accurate
-** higher values are slower but more accurate
-* pixel sizing: typical largest shape width / height (2048 by default)
-* adjust tile size: 6 [64x64] seems better than 5 [32x32]
-
-Debugging:
-* log statistics to know what happens
-* enable checks if SEG faults or artefacts !
-
-
-
-
-==== Marlin System properties ====
-
-<[nowiki]
-{\small
-\begin{table} 
-\begin{tabular}{l | c | l}
-\hline	
-System property \\ {\scriptsize -Dsun.java2d.renderer.<KEY>=} & Values & Description \\ \hline
-\hline	
-useThreadLocal & \mB{true} - false & RdrCtx in TL or CLQ (false) \\ \hline
-useRef & \mB{soft} - weak - hard & Reference type to RdrCtx \\ \hline
-\hline	
-pixelsize & \mB{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
-subPixel\_log2\_X & \mB{3} in [1-8] & Sub-pixel count on X axis \\ \hline
-subPixel\_log2\_Y & \mB{3} in [1-8] & Sub-pixel count in Y axis \\ \hline
-tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
-\hline	
-doStats & true - \mB{false} & Log rendering statistics \\ \hline
-doChecks & true - \mB{false} & Perform array checks \\ \hline
-useLogger & true - \mB{false} & Use j.u.l.Logger \\ \hline
-\end{tabular}
-\end{table}
-}
-[nowiki]>
-
-Log-2 values for sub-pixel \& tile sizes:
-* subPixel = 3 means 8 x 8 
-* tileSize = 5 means 32 x 32
-
-
-
-
-==== Other Java 9 improvements ====
-JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.java.net}
-* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level --> '''set compression level to medium''' [4 vs 9]
-
-* \href{https://bugs.openjdk.java.net/browse/JDK-8078464}{JDK-8078464} '''Path2D storage growth algorithms should be less linear'''
-* \href{https://bugs.openjdk.java.net/browse/JDK-8084662}{JDK-8084662} Path2D copy constructors and clone method propagate size of arrays from source path 
-* \href{https://bugs.openjdk.java.net/browse/JDK-8074587}{JDK-8074587} Path2D copy constructors do not trim arrays 
-* \href{https://bugs.openjdk.java.net/browse/JDK-8078192}{JDK-8078192} Path2D storage trimming 
-* \href{https://bugs.openjdk.java.net/browse/JDK-8169294}{JDK-8169294} JFX Path2D storage growth algorithms should be less linear 
-
 
 
 == MarlinFX ==
 
 ==== MarlinFX project ====
 
-2016: '''Port Marlin into JavaFX''' Prism engine
+2016.10: '''Port Marlin into JavaFX''' Prism engine
 * \url{https://github.com/bourgesl/marlin-fx}
 * '''Prism integration''':
 ** Only concerns complex paths (not ellipse or rounded rect., 3D meshes)
@@ -795,7 +741,7 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 
 
-==== MarlinFX System properties ====
+==== MarlinFX Prism integration ====
 'sun.java2d.marlin' prefix --> 'javafx.prism.marlin' prefix
 
 TODO: complete
@@ -872,6 +818,19 @@ Using Marlin rasterizer (double)
 
 
 
+==== Other Java 9 improvements ====
+JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.java.net}
+* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level --> '''set compression level to medium''' [4 vs 9]
+
+* \href{https://bugs.openjdk.java.net/browse/JDK-8078464}{JDK-8078464} '''Path2D storage growth algorithms should be less linear'''
+* \href{https://bugs.openjdk.java.net/browse/JDK-8084662}{JDK-8084662} Path2D copy constructors and clone method propagate size of arrays from source path 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8074587}{JDK-8074587} Path2D copy constructors do not trim arrays 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8078192}{JDK-8078192} Path2D storage trimming 
+* \href{https://bugs.openjdk.java.net/browse/JDK-8169294}{JDK-8169294} JFX Path2D storage growth algorithms should be less...
+
+
+
+
 == Perspectives and Future Work ==
 
 ==== We want You ====
@@ -880,9 +839,10 @@ Using Marlin rasterizer (double)
 
 --0.5em--
 !'''We want You'''! = your help is needed:
-* adopt the '''Java Client''' group
 * '''Try your applications''' \& use cases with the Marlin renderer
 * '''Contribute to the Marlin project''': let's implement new algorithms (gamma correction, clipping ...)
+* '''to OpenJFX to improve the rendering pipeline''' (Path, shaders...)
+* Adopt the '''Java Client''' group ?
 * Provide '''feedback''', please !
 
 
@@ -957,6 +917,7 @@ Using Marlin rasterizer (double)
 ** '''Quality goals''' met
 * '''Marlin is now the default AA renderer''' for Oracle JDK (and OpenJDK).
 * '''MarlinFX''' will be the '''default renderer in OpenJFX-10'''
+* '''JavaFX''' needs a '''proper Path''' node ...
 * '''Coming patches''' are promising for '''OpenJDK-10'''...
 * !'''What future for Java Client \& Desktop ?'''!
 
@@ -1147,5 +1108,28 @@ Special Thanks to all my donators:
 <[nowiki]
 \hspace*{-1cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../subpixel-marlin-gain.png}
 [nowiki]>
+
+
+
+=== Studying Marlin \& Java2D internal stages ===
+
+==== Marlin internal timings ====
+* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
+[nowiki]>
+
+==== Marlin internal timings ====
+* 3 stages in Java2D pipeline: Path Processing --> Rendering --> Blending
+<[nowiki]
+\hspace*{-1.0cm}\includegraphics[width=\paperwidth-1.5cm,keepaspectratio]{../pipeline-marlin-gain.png}
+[nowiki]>
+
+\begin{textblock*}{12cm}(2cm,6.35cm)
+\begin{block}{Stage cost ratios}
+* Path processing: 20 to 30\% (stroked shapes) but 3\% (filled)
+* Blending: '''25\%''' (average) but up to 75\% (large ellipse fills): ''Future work ?'' 
+\end{block}
+\end{textblock*}
 
 
