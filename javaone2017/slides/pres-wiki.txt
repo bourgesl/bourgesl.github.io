@@ -10,8 +10,8 @@ hypersetup={colorlinks=true,linkcolor=,urlcolor=RoyalBlue}
 documentclass=[aspectratio=169,12pt,xcolor=dvipsnames]{beamer}
 title={Marlin renderer, a JDK-9 Success Story}
 subtitle={Vector Graphics on Steroids for Java 2D and JavaFX}
-author={Laurent Bourgès}
-institute=[OSUG-DC, CNRS]{ \includegraphics[height=1.6cm,keepaspectratio]{../osug.png} \hspace{20pt} \includegraphics[height=1.3cm,keepaspectratio]{../cnrs.jpg} }
+author=[Laurent Bourgès (CNRS) - Jim Graham]{Laurent Bourgès - The Developer \\ Jim Graham - The Computer Graphics Guru}
+institute=[]{ \includegraphics[height=1.6cm,keepaspectratio]{../osug.png} \hspace{20pt} \includegraphics[height=1.3cm,keepaspectratio]{../cnrs.jpg} }
 date={JavaOne 2017-10-04}
 titleframe=False
 usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progressbar=frametitle]{metropolis}
@@ -86,7 +86,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 {%
   \leavevmode%
   \hbox{\begin{beamercolorbox}[wd=.3\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}%
-    \usebeamerfont{author in head/foot}\insertshortauthor \hspace{2pt} (\insertshortinstitute)
+    \usebeamerfont{author in head/foot}\insertshortauthor
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.45\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
     \usebeamercolor[fg]{normal text}
@@ -1022,7 +1022,7 @@ Special Thanks to all my donators:
 {%
   \leavevmode%
   \hbox{\begin{beamercolorbox}[wd=.3\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}%
-    \usebeamerfont{author in head/foot}\insertshortauthor \hspace{2pt} (\insertshortinstitute)
+    \usebeamerfont{author in head/foot}\insertshortauthor
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.45\paperwidth,ht=2ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footlineW}%
     \usebeamercolor[fg]{normal text}
