@@ -400,6 +400,12 @@ RenderingEngine:
 *** Fill the MarlinCache with pixel coverages as byte[] (alpha)
 ** \mCN{MarlinTileGenerator}:
 *** Provide tile data (32x32) from MarlinCache (packed byte[])
+<[nowiki]
+\begin{textblock*}{7cm}(0.2cm,2.cm)
+\includegraphics[height=6cm,keepaspectratio]{../marlin_pipe.png}
+\end{textblock*}
+[nowiki]>
+
 
 
 
@@ -407,23 +413,23 @@ RenderingEngine:
 ==== How Marlin works ? the AA algorithm ====
 * '''Scan-line algorithm''' [8x8 super-sampling] to estimate pixel coverages = '''Active Edge table''' (AET) variant with "java" pointers (integer-based)
 * (Merge) Sort edges at each scan-line
-* Estimate sub-pixel coverage and accumulate in the alpha row
-* Once a pixel row is done: copy pixel coverages into cache
-* Once 32 (tile height) pixel rows are done: perform blending \& repeat !
-<<<../ATAvR.png,height=3.5cm,keepaspectratio>>>
+* '''Estimate sub-pixel coverages''' [spans] and '''accumulate''' [alpha row]
+* Once a pixel row is done: '''copy pixel coverages''' into the tile cache
+* Once 32 (tile height) pixel rows are done: '''perform blending \& repeat'''
+\hspace*{2.0cm}<<<../ATAvR.png,height=3.5cm,keepaspectratio>>>
 <<<../jsgb-gpu-bg-map.png,height=3cm,keepaspectratio>>>
 
 
 
 
 ==== Marlin performance optimizations ====
-* Initially '''GC allocation issue''':
+* Initially '''GC High allocation rate issue''':
 ** Many '''growing arrays + zero-fill'''
 ** '''Many arrays involved''' to store edge data, alpha pixel row ...
 ** '''Value-Types''' may be very helpful: manually coded here !
-* \mCN{RendererContext} (TL/CLQ) to reuse memory ==> almost no GC
+* \mCN{RendererContext} (TL/CLQ): !'''"zero waste, no GC"'''! (recycling)
 ** Kept by weak / soft reference: see \mCN{ReentrantContext}
-** Class instances + initial arrays takes 512Kb
+** Class instances + '''initial arrays takes $\approx$ 512Kb'''
 ** Weak-referenced '''array cache for larger arrays'''
 * Other considerations: 
 ** Use '''Unsafe''': allocate/free memory + less bound checks
@@ -529,7 +535,7 @@ java -Xbootclasspath/a:../lib/marlin-0.7.5-Unsafe.jar
 
 
 
-==== Marlin System properties ====
+==== Major Marlin System properties ====
 <[nowiki]
 {\small
 \begin{table} 
@@ -539,11 +545,10 @@ System property <KEY>\\ \mB{\scriptsize -Dsun.java2d.renderer.<KEY>=} & Values &
 \hline	
 \mB{log} & true - \mB{false} & Enable Log (initial settings) \\ \hline
 \mB{doStats} & true - \mB{false} & Log rendering statistics \\ \hline
-doChecks & true - \mB{false} & Perform array checks \\ \hline
 \hline	
 useThreadLocal & \mB{true} - false & RdrCtx in TL or CLQ \\ \hline
-useRef & \mB{soft} - weak - hard & Reference type to RdrCtx \\ \hline
 \hline	
+edges & \mB{4096} in [64-64K] & Initial capacity for edges \\ \hline
 pixelsize & \mB{2048} in [64-32K] & Typical shape W/H in pixels \\ \hline
 subPixel\_log2\_X, ...Y & \mB{3} in [1-8] & Sub-pixel count on X, Y axis \\ \hline
 tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
@@ -814,14 +819,15 @@ Using Marlin rasterizer (double)
 
 ==== Other Java 9 improvements ====
 JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.java.net}
-* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level --> '''set compression level to medium''' [4 vs 9]
-
+* \href{https://bugs.openjdk.java.net/browse/JDK-6488522}{JDK-6488522} '''PNG writer''' should permit setting compression level \\ --> '''set compression level to medium''' [4 vs 9]
+--0.01em--
 * \href{https://bugs.openjdk.java.net/browse/JDK-8078464}{JDK-8078464} '''Path2D storage growth algorithms should be less linear'''
 * \href{https://bugs.openjdk.java.net/browse/JDK-8084662}{JDK-8084662} Path2D copy constructors and clone method propagate size of arrays from source path 
 * \href{https://bugs.openjdk.java.net/browse/JDK-8074587}{JDK-8074587} Path2D copy constructors do not trim arrays 
 * \href{https://bugs.openjdk.java.net/browse/JDK-8078192}{JDK-8078192} Path2D storage trimming 
+--0.01em--
 * \href{https://bugs.openjdk.java.net/browse/JDK-8169294}{JDK-8169294} JFX Path2D storage growth algorithms should be less...
-
+* \href{https://bugs.openjdk.java.net/browse/JDK-8178521}{JDK-8178521} '''Severe performance drop for path rendering (HW)'''
 
 
 
@@ -844,9 +850,10 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 ==== Quality Ideas ====
 * '''Handle properly the gamma correction''': 
-** in MaskFill for images (C macros) \& GPU back-ends
-** '''Very important for visual quality'''
-** note: Stroke's width must compensate the gamma correction to avoid having thiner / fatter shapes.
+** '''Very Important for visual quality'''
+** In MaskFill for images (C macros) \& GPU back-ends
+** '''Port SW pixel loops to use new Java Vector instructions (Panama) ?'''
+** Note: Stroke's width must compensate the gamma correction to avoid having thiner / fatter shapes.
 
 <<<../LinesTest-original-maskFill-crop.png,height=2.25cm,keepaspectratio>>> \hspace{4pt}
 <<<../LinesTest-gamma-corrected-maskFill-crop.png,height=2.25cm,keepaspectratio>>>
