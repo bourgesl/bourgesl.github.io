@@ -207,16 +207,16 @@ Note: '''Other renderers for non-AA cases'''
 
 ==== Marlin renderer = OpenJDK's Pisces fork ====
 Status in 2013:
-* '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending), except the \href{https://brandonborkholder.github.io/glg2d/}{glg2d} \mCN{Graphics2D} implementation
-* '''Pisces is slower''' but '''open-source''' (GPL)
+* '''OpenGL \& D3D pipelines provide only few accelerated operations''' (blending surfaces), except the \href{https://brandonborkholder.github.io/glg2d/}{glg2d} \mCN{Graphics2D}
+* \mCN{BufferedImage} blending made by software loops (C macros)
 
 '''2013.3: My first patches to OpenJDK-8''':
 * '''Pisces patches''' to \url{2d-dev@openjdk.java.net}: too late for JDK-8
 * Small interest / few feedbacks
 
 '''Andréa Aimé''' (GeoServer team) '''pushed me to go on''':
-* New '''MapBench''' tool: serialize \& replay rendering commands
 * '''Fork OpenJDK's Pisces as a new open-source project'''
+* New '''MapBench''' tool: serialize \& replay rendering commands
 
 
 
@@ -335,7 +335,7 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 * '''Webrev process: great but heavy task''':
 ** Create webrevs (hg status, webrev.ksh with options)
 ** Push on \url{http://cr.openjdk.java.net/~lbourges/}
-** Long review threads on mailing lists for my patches (~50 mails)
+** Long review threads on mailing lists for my patches ($\approx$ 50 mails)
 ** Timezone difference: delays + no direct discussion
 * '''Few Java2D / computer graphics skills''': small field + NO DOC !
 
@@ -357,20 +357,26 @@ In General:
 
 ==== How the Java2D pipeline works ? ====
 
-Java2D uses only 1 RenderingEngine implementation at runtime:
-* SunGraphics2D.draw/fill(shape)
-* AAShapePipe.renderPath(shape, stroke)
-** aatg = RenderingEngine.getAATileGenerator(shape, at)
-*** Coverage mask computation (tiles) as alpha transparency [0-255]
-** aatg.getAlpha(byte[] alpha, ...) to get next tile ...
-** output pipeline.renderPathTile(byte[] alpha):
-*** MaskFill operations (software / OpenGL pipeline) on dest surface
-
+\mCN{Java2D} uses one \mCN{RenderingEngine} implementation at runtime:
+* '''Custom impl.''' using the System property \mB{'sun.java2d.renderer'}
+* Called by \mCN{SunGraphics2D.draw/fill(shape)} in Java2D pipeline
 <[code][style=basic, language=java]
 RenderingEngine:
     public static synchronized RenderingEngine getInstance();
     public AATileGenerator getAATileGenerator(Shape s, 
 				AffineTransform at, ...);
+[code]>* The \mCN{AATileGenerator} interface defines the tile coverage provider
+
+
+==== How the Java2D pipeline works ? ====
+* \mCN{AAShapePipe.renderPath(shape, stroke)}
+** Use \mCN{RenderingEngine.getAATileGenerator(shape, at)}
+*** '''Coverage mask computation''' (tiles) as alpha transparency [00-FF]
+** \mCN{getAlpha(byte[] alpha, ...)} to get next tile ...
+** Output: \mCN{pipeline.renderPathTile(byte[] alpha)}
+*** '''Pixel blending''' (software / OpenGL pipeline) on dest surface
+
+<[code][style=basic, language=java]
  AATileGenerator:
     public int getTypicalAlpha();
     public void nextTile();
@@ -381,78 +387,62 @@ RenderingEngine:
 
 
 ==== How Marlin works ? Pisces / Marlin pipeline ====
-
-MarlinRenderingEngine.getAATileGenerator(shape, stroke...):
-* use shape.getPathIterator() ==> apply the pipeline to path elements:
-* Dasher (optional): 
-** generates path dashes (curved or segments)
-* Stroker (optional): 
-** generates edges around of every path element
-** generates edges for decorations (cap \& joins)
-* Renderer:
-** curve decimation into line segments
-** addLine: basic clipping + convert float to sub-pixel coordinates
-** determine the shape bounding box
-** perform edge rendering into tile strides ie compute pixel coverages
-** fill the MarlinCache with pixel coverages as byte[] (alpha)
-* MarlinTileGenerator:
-** provide tile data (32x32) from MarlinCache (packed byte[])
+* \mCN{MarlinRenderingEngine} pipeline:
+** Apply the pipeline to path elements \mCN{Shape.getPathIterator()}
+** \mCN{Dasher} (optional): 
+*** Generates path dashes (curved or segments)
+** \mCN{Stroker} (optional): 
+*** Generates edges around of every path element \& cap \& joins
+** \mCN{Renderer}:
+*** Curve decimation into line segments
+*** \mCN{AddLine()}: basic clipping + convert float to sub-pixel coordinates
+*** Perform edge rendering into tile strides ie compute pixel coverages
+*** Fill the MarlinCache with pixel coverages as byte[] (alpha)
+** \mCN{MarlinTileGenerator}:
+*** Provide tile data (32x32) from MarlinCache (packed byte[])
 
 
 
 
 ==== How Marlin works ? the AA algorithm ====
-
-* Scan-line algorithm [8x8 super-sampling] to estimate pixel coverages
-= Active Edge table (AET) variant with "java" pointers (integer-based)
-* sort edges at each scan-line
-* estimate sub-pixel coverage and accumulate in the alpha row
+* '''Scan-line algorithm''' [8x8 super-sampling] to estimate pixel coverages = '''Active Edge table''' (AET) variant with "java" pointers (integer-based)
+* (Merge) Sort edges at each scan-line
+* Estimate sub-pixel coverage and accumulate in the alpha row
 * Once a pixel row is done: copy pixel coverages into cache
 * Once 32 (tile height) pixel rows are done: perform blending \& repeat !
-
 <<<../ATAvR.png,height=3.5cm,keepaspectratio>>>
 <<<../jsgb-gpu-bg-map.png,height=3cm,keepaspectratio>>>
 
 
-==== How Marlin works ? the AA algorithm ====
-* Java2D's internal drawing renders rectangular tiles.
-* Marlin starts with the path defining the shape
-* Takes the elements of the path and flattens curves
-* Uses 8x8 super-sampling to estimate coverage.
-* For each sample line calculates intersections.
-* Sorts where the path edges cross the scan line
-* Output is one byte per pixel representing alpha coverage.
-* Process 32 entire pixel rows at a time and cache sample-line intersection info
-* Provide 32x32 rectangular tiles needed by the internal Java2D rendering pipelines
 
 
 ==== Marlin performance optimizations ====
-* Initially GC allocation issue:
-** Many growing arrays + zero-fill
-** Many arrays involved to store edge data, alpha pixel row ...
-** Value-Types may be very helpful: manually coded here !
-* Marlin RendererContext (TL/CLQ) = reused memory ==> almost no GC
-** kept by weak / soft reference
-** class instances + initial arrays takes 512Kb
-** weak-referenced array cache for larger arrays
+* Initially '''GC allocation issue''':
+** Many '''growing arrays + zero-fill'''
+** '''Many arrays involved''' to store edge data, alpha pixel row ...
+** '''Value-Types''' may be very helpful: manually coded here !
+* \mCN{RendererContext} (TL/CLQ) to reuse memory ==> almost no GC
+** Kept by weak / soft reference: see \mCN{ReentrantContext}
+** Class instances + initial arrays takes 512Kb
+** Weak-referenced '''array cache for larger arrays'''
 * Other considerations: 
-** Unsafe: allocate/free memory + less bound checks
-** zero-fill (recycle arrays) on used parts only !
-** use dirty arrays when possible: C like !
+** Use '''Unsafe''': allocate/free memory + less bound checks
+** '''Optimized Zero-fill''' (recycle arrays) on used parts only !
+** Use '''dirty arrays''' when possible: C like !
 
 
 
 
 ==== Marlin performance optimizations ====
-* Need good profiler: use oprofile + gather internal metrics
+* '''Need good profiler''': netbeans + oprofile + internal metrics
 
-* Fine tuning of Pisces algorithms:
-** Optimized Merge Sort (in-place)
+* '''Fine tuning''' of Pisces algorithms:
+** Optimized '''Merge Sort''' (in-place)
 ** Custom rounding [float to int]
-** DDA in Renderer with correct pixel center handling
+** '''DDA in Renderer''' with correct pixel center handling
 ** Tile stride approach (32px) instead of all shape mask 
 ** Pixel alpha transfers (RLE) ==> adaptive approach
-** Optimized Pixel copies (block flags)
+** '''Optimized Pixel copies''' (block flags)
 
 --0.3em--
 
@@ -525,10 +515,9 @@ Who is [Ductus, Pisces, Marlin] ?
 ** \href{http://www.oracle.com/technetwork/java/javase/downloads/index.html}{Oracle JDK}
 ** OpenJDK builds: \href{https://adoptopenjdk.net/}{AdoptOpenJDK.net} or \href{http://zulu.org/download/}{zulu.org}
 
---0.4em--
-
 * For JDK 1.7 or JDK-8: 
-** Download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release @ github}
+** Use '''Zulu 8 or JetBrains JDK-8u''' (marlin integrated)
+** or download the latest \href{https://github.com/bourgesl/marlin-renderer/releases/}{Marlin release @ github}
 * See \href{https://github.com/bourgesl/marlin-renderer/wiki/How-to-use}{How to use}
 * Start your java program with:
 <[code][style=basic, language=bash]
@@ -733,7 +722,7 @@ tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 ** Complete mask, no more tiles
 ** GPU back-end is faster but uploading texture may be costly
 ** but single-threaded (GUI)
-** TBD: use Marlin to implement createStrokedShape()
+** TBD: use Marlin to implement Shape.createStrokedShape()
 
 * '''Double-precision variant to improve accuracy''' on very large shapes (stroke / dashes)
 
@@ -745,11 +734,16 @@ tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 'sun.java2d.marlin' prefix --> 'javafx.prism.marlin' prefix
 
 TODO: complete
+* Accelerated pipelines (shader) vs software pipeline
+* Area class issues (cpu / memory consuming) (inner / outer strokes)
+* Uploading texture masks can be very costly (bottleneck ?)
 
 
 ==== My feedback on contributing to OpenJFX ====
 
 Contrary to Marlin, OpenJFX patches were more quickly integrated into OpenJFX-9 (Jim Graham, again) !
+
+Few documentation about Prism (pipelines, shader graphics) or rendering internals (Shape, Canvas...)
 
 TODO: complete
 
@@ -810,8 +804,8 @@ Using Marlin rasterizer (double)
 
 \begin{textblock*}{12cm}(2cm,6.35cm)
 \begin{block}{MarlinFX renderer is the winner (on linux) }
-* vs Native Pisces: '''65\%''' (average)
-* vs Java Pisces: '''70\%''' (average)
+* vs Native Pisces: '''65\%''' (average), up to 155\%
+* vs Java Pisces: '''70\%''' (average), up to 170\%
 \end{block}
 \end{textblock*}
 
@@ -869,18 +863,18 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 ==== Performance ideas ====
 
 * '''Clipping''' ('''coming''' in release 0.8): 
-** implement early efficient path clipping (major impact on dashes)
-** take care of affine transforms (margin), stroke's cap \& joins
-
-* Cap \& join processing (Stroker): 
-** do not emit extra collinear points for squared cap \& miter joins
-** improve Polygon Simplifier ?
+** Implement early efficient path clipping (major impact on dashes)
+** Take care of affine transforms (margin), stroke's cap \& joins
 
 * '''Scan-line processing''' (8x8 sub-pixels):
 ** 8 scan-lines per pixel row ==> compute exact area covered in 1 row
-** see algorithmic approach (AGG like): \url{http://nothings.org/gamedev/rasterize/}
+** see \url{http://nothings.org/gamedev/rasterize/}
 ** may be almost as fast but a lot more precise !
 
+* Cap \& join processing (Stroker): 
+** Do not emit extra collinear points for squared cap \& miter joins
+
+* Optimize the \mCN{Area} class (allocation + CPU) ?
 
 
 === First results of the path clipping in Marlin 0.8.1 ===
