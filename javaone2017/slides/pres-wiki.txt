@@ -912,15 +912,14 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 ==== Conclusion ====
 * '''Marlin renderer rocks in Java 9 !'''
-** '''Performance goals''' met
-*** '''Scales for multiple threads''' whereas Ductus does not
+** '''Performance \& Quality goals''' met
 *** '''Single threaded performance''' generally '''as good or better'''
-** '''Quality goals''' met
-* '''Marlin is now the default AA renderer''' for Oracle JDK (and OpenJDK).
+*** '''Scales for multiple threads''' whereas Ductus does not
+* '''Marlin is now the default AA renderer''' for OpenJDK
 * '''MarlinFX''' will be the '''default renderer in OpenJFX-10'''
-* '''JavaFX''' needs a '''proper Path''' node ...
 * '''Coming patches''' are promising for '''OpenJDK-10'''...
-* !'''What future for Java Client \& Desktop ?'''!
+* '''Optimizing JavaFX Graphics performance needs you''' !
+* !'''What future for Java Client \& Desktop ?'''! \\ ==> '''\mBBlue{Adopt OpenJDK's Client group.}'''
 
 
 
