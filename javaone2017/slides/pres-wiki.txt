@@ -192,7 +192,7 @@ usetheme=[inner/subsectionpage=progressbar,outer/numbering=fraction,outer/progre
 * '''JDK 1.2''' included licensed '''closed-source''' technology from '''Ductus'''
 ** Ductus provides '''high performance, but single threaded'''
 ** State of the art for its time
-** Ductus still ships with Oracle JDK-9 (disabled)
+** Ductus still ships with Oracle JDK-9 (no longer default)
 ** \mCN{sun.dc.DuctusRenderingEngine} (native C code)
 
 * However '''OpenJDK 1.6 replaced Ductus with "Pisces"'''
@@ -242,7 +242,7 @@ Status in 2013:
 * Improve rendering '''quality'''
 * Compatible with both Oracle \& Open JDK 7 / 8 / 9
 
-'''Very big personal work''':
+'''Huge personal work''' on my spare time:
 
 * '''Performance \& Test Driven Development''':
 ** '''Regression''' tests: MapDisplay (diff Pisces vs Marlin outputs)
@@ -266,7 +266,7 @@ Status in 2013:
 
 ==== JEP 265: Marlin renderer back into OpenJDK-9 ====
 
-We proposed the JEP 265 in July 2015 and completed it:
+We proposed the JEP 265 in July 2015 and mark it completed:
 * '''JEP 265: Marlin Graphics Renderer'''
 * \href{http://openjdk.java.net/jeps/265}{http://openjdk.java.net/jeps/265}
 * '''Developer: Laurent Bourgès'''
@@ -338,7 +338,8 @@ Major \href{https://github.com/bourgesl/marlin-renderer/releases/}{Releases}:
 ** Long review threads on mailing lists for my patches ($\approx$ 50 mails)
 ** Timezone difference: delays + no direct discussion
 * '''Few Java2D / computer graphics skills''': 
-** Small \& Legacy field + NO DOC !
+** Small \& Legacy field
+** NO documentation !
 
 
 
@@ -393,11 +394,11 @@ RenderingEngine:
 ** \mCN{Dasher} (optional): 
 *** Generates path dashes (curved or segments)
 ** \mCN{Stroker} (optional): 
-*** Generates edges around of every path element \& cap \& joins
+*** Generates edges around every path element, cap \& joins
 ** \mCN{Renderer}:
 *** Curve decimation into line segments
 *** \mCN{AddLine()}: basic clipping + convert float to sub-pixel coordinates
-*** Perform edge rendering into tile strides ie compute pixel coverages
+*** Perform edge rendering into tile strides i.e. compute pixel coverages
 *** Fill the MarlinCache with pixel coverages as byte[] (alpha)
 ** \mCN{MarlinTileGenerator}:
 *** Provide tile data (32x32) from MarlinCache (packed byte[])
@@ -433,7 +434,7 @@ RenderingEngine:
 ** Class instances + '''initial arrays takes $\approx$ 512Kb'''
 ** Weak-referenced '''array cache for larger arrays'''
 * Other considerations: 
-** Use '''Unsafe''': allocate/free memory + less bound checks
+** Use '''Unsafe''': allocate/free memory + fewer bound checks
 ** '''Optimized Zero-fill''' (recycle arrays) on used parts only !
 ** Use '''dirty arrays''' when possible: C like !
 
@@ -461,44 +462,44 @@ A lot more ...
 == Visual quality Quiz ==
 
 ==== Visual quality - Blind test [Image 1] ====[standout]
-Who is [Ductus, Pisces, Marlin] ?
+Which is [Ductus, Pisces, Marlin] ?
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
 [nowiki]>
 
 ==== Visual quality - Blind test [Image 2] ====[standout]
-Who is [Ductus, Pisces, Marlin] ?
+Which is [Ductus, Pisces, Marlin] ?
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
 [nowiki]>
 
 ==== Visual quality - Blind test [Image 3] ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
+Which is [Ductus, Pisces, Marlin] ? 
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
 [nowiki]>
 
 ==== Visual quality - Test result [Image 1] ====[standout]
-Answer: Ductus
+Answer: [Ductus]
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-ductus_9.png}
 [nowiki]>
 
 ==== Visual quality - Test result [Image 2] ====[standout]
-Answer: Marlin
+Answer: [Marlin]
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-marlin_9.png}
 [nowiki]>
 
 ==== Visual quality - Test result [Image 3] ====[standout]
-Answer: Pisces
+Answer: [Pisces]
 <[nowiki]
 \hspace*{-1.0cm}\includegraphics[height=\paperheight-3cm,keepaspectratio]{../test_z_625k-pisces_9.png}
 [nowiki]>
 
 
 ==== Marlin visual quality ====[standout]
-Who is [Ductus, Pisces, Marlin] ? 
+Which is [Ductus, Pisces, Marlin] ? 
 
 <[nowiki]
 \hspace*{-1.225cm}
@@ -509,7 +510,7 @@ Who is [Ductus, Pisces, Marlin] ?
 1. Ductus & 2. Marlin & 3. Pisces
 \end{tabular}
 [nowiki]>
- ==> Quite an hard challenge !
+ ==> Quite a hard challenge !
 
 
 
@@ -723,10 +724,11 @@ tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 
 2016.10: '''Port Marlin into JavaFX''' Prism engine
 * \url{https://github.com/bourgesl/marlin-fx}
-* '''Prism integration''':
-** '''Only concerns sw pipeline or for shader (d3d / es2) pipelines''':
-*** '''Complex or dashed Paths''': not ellipse, rounded rect., nor 3D meshes
-** '''Complete shape mask''' (cached), no more tiles !
+* '''Marlin integration into Prism''':
+** '''In action with the [SW] pipeline anyway '''
+** '''In action with [D3D / ES2] shader pipelines''':
+*** Only '''Complex or dashed Paths''': not ellipse, rounded rect., nor 3D meshes
+** '''Complete shape mask''', no more tiles !
 ** GPU back-end is faster but uploading texture may be costly
 ** But '''JavaFX rendering is single-threaded''' (GUI)
 ** TBD: use Marlin to implement Shape.createStrokedShape()
@@ -736,10 +738,9 @@ tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 ==== MarlinFX Prism integration ====
 * MarlinFX provides '''software rasterization''' (AA \& non AA):
 ** System property prefix 'sun.java2d.marlin' --> 'javafx.prism.marlin'
-
 * '''Double-precision variant to improve accuracy''' on very large shapes (stroke / dashes)
 
-* \mCN{BaseShaderGraphics}, \mCN{CachingShapeRep} or \mCN{SWContext}:
+* \mCN{BaseShaderGraphics}, \mCN{SWContext <-- SWGraphics} or \mCN{CachingShapeRep}:
 ** Calls \mCN{ShapeUtil.rasterizeShape(shape, stroke...)}
 ** to get \mCN{MaskData} information (cacheable)
 
@@ -750,7 +751,7 @@ tileSize\_log2 & \mB{5} in [3-8] & Pixel width/height for tiles \\ \hline
 * '''Few documentation about Prism''' (pipelines, shaders) or rendering internals (\mCN{Shape}, \mCN{Canvas}...)
 * '''OpenJFX patches were more quickly integrated''' into OpenJFX-9 \\ (Jim Graham, again) as only the integration layer is different
 * '''Code duplication''' between Marlin (Java2D) \& MarlinFX (JavaJFX) to deal with different interfaces:
-** '''MarlinFX AA \& nonAA renderer variants + Float / Double variants'''
+** '''MarlinFX [AA / nonAA] renderer variants + [Float / Double] pipelines'''
 ** More branches to merge / sync the code among github, OpenJDK \& OpenJFX (9 \& 10)
 
 * Note: JavaFX Shape node uses the Area class (CPU \& memory issues)
@@ -838,7 +839,7 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 ==== We want You ====
 
-'''I may have still spare time''' to improve Marlin... '''but no more alone''' !
+'''I may still have spare time''' to improve Marlin... '''but not alone''' !
 
 --0.5em--
 !'''We want You'''! = your help is needed:
@@ -852,11 +853,11 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 
 
 ==== Quality Ideas ====
-* '''Handle properly the gamma correction''': 
+* '''Properly Handle the gamma correction''': 
 ** '''Very Important for visual quality'''
 ** In MaskFill for images (C macros) \& GPU back-ends
 ** '''Port SW pixel loops to use new Java Vector instructions (Panama) ?'''
-** Note: Stroke's width must compensate the gamma correction to avoid having thinner / fatter shapes.
+** Note: Stroke's width must compensate for gamma correction to avoid having thinner / fatter shapes.
 
 <<<../LinesTest-original-maskFill-crop.png,height=2.25cm,keepaspectratio>>> \hspace{4pt}
 <<<../LinesTest-gamma-corrected-maskFill-crop.png,height=2.25cm,keepaspectratio>>>
@@ -918,11 +919,11 @@ JDK-9 bug fixes from \href{http://bugs.openjdk.java.net}{http://bugs.openjdk.jav
 ** '''Performance \& Quality goals''' met
 *** '''Single threaded performance''' generally '''as good or better'''
 *** '''Scales for multiple threads''' whereas Ductus does not
-* '''Marlin is now the default AA renderer''' for OpenJDK
+* '''Marlin is now the default AA renderer''' for OpenJDK-9
 * '''MarlinFX''' is the '''default renderer in OpenJFX-10'''
 * '''Coming patches''' are promising for '''OpenJDK-10'''...
 * '''Optimizing JavaFX Graphics performance needs you''' (GPU) !
-* !'''What future for Java Client \& Desktop ?'''! \\ ==> '''\mBBlue{Contribute to OpenJDK or OpenJFX groups}'''
+* !'''What future for Java Client \& Desktop ?'''! \\ ==> '''\mBBlue{Contribute to Client or OpenJFX groups}'''
 
 
 
