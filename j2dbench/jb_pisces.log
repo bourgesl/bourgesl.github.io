@@ -1,0 +1,46 @@
+All test results:
+Test(graphics.render.tests.drawLine) averaged 1149548.5794748613 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.drawLine) averaged 1648173.9272846382 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.fillRect) averaged 2.211370021484052E7 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.fillRect) averaged 2.1364795918367347E8 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.drawRect) averaged 3299494.3414399233 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.drawRect) averaged 3367653.5197204193 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.fillOval) averaged 1.5111199692386568E7 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.fillOval) averaged 1.8028747348005068E8 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.drawOval) averaged 1710048.7804878047 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.drawOval) averaged 1957636.5616621985 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.fillPoly) averaged 1.5899499374217773E7 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.fillPoly) averaged 1.9266814957690394E8 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.drawPoly) averaged 2049181.2479366127 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.drawPoly) averaged 2300317.5102169127 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.shape.fillCubic) averaged 6380271.32720529 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.shape.fillCubic) averaged 8.353553167143442E7 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.shape.drawCubic) averaged 680098.812516252 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.shape.drawCubic) averaged 805897.8182388949 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.shape.fillEllipse2D) averaged 1.485440240480962E7 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.shape.fillEllipse2D) averaged 1.801749397686478E8 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+Test(graphics.render.tests.shape.drawEllipse2D) averaged 1681883.0603687002 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 20x20, ident
+Test(graphics.render.tests.shape.drawEllipse2D) averaged 1927594.5494994437 pixels/sec
+    with Default, !alphacolor, to VolatileImg(), !clip, bounce, width1, SrcOver, !xormode, random, antialias, !extraalpha, 250x250, ident
+
