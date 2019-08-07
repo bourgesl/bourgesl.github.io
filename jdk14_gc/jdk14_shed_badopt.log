@@ -1,0 +1,22 @@
+./display.sh 
+CPU_CORE_IDS: 3
+date:
+mercredi 7 août 2019, 21:06:52 (UTC+0200)
+CLASSPATH:   ../lib/mapbench-0.5.0.jar
+Boot CP:     
+Java opts:   -Dsun.java2d.renderer.log=true -DMapBench.skipDraw=false -DMapBench.skipFill=false -DMapBench.clip.small=false -DMapBench.qualityMode=true -DMapBench.premultiplied=true -DMapBench.acceleration=false -DMapBench.volatile=false -XX:+PrintCommandLineFlags -XX:+PrintFlagsFinal
+Java tuning: -Xms2g -Xmx2g -XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=passive -Xlog:gc
+JVM path
+/home/bourgesl/libs/graphics-rasterizer/jdk/client/build/linux-x86_64-server-release/images/jdk//bin//java
+Java version
+openjdk version "14-internal" 2020-03-17
+OpenJDK Runtime Environment (build 14-internal+0-adhoc.bourgesl.client)
+OpenJDK 64-Bit Server VM (build 14-internal+0-adhoc.bourgesl.client, mixed mode, sharing)
+[0.001s][info][gc] Min heap equals to max heap, disabling ShenandoahUncommit
+[0.001s][info][gc] Consider -XX:+ClassUnloadingWithConcurrentMark if large pause times are observed on class-unloading sensitive workloads
+-XX:InitialHeapSize=2147483648 -XX:MaxHeapSize=2147483648 -XX:MinHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+PrintFlagsFinal -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:ShenandoahGCHeuristics=passive -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseShenandoahGC 
+[0.004s][info][gc] Heuristics ergonomically sets -XX:+ExplicitGCInvokesConcurrent
+[0.004s][info][gc] Heuristics ergonomically sets -XX:+ShenandoahImplicitGCInvokesConcurrent
+Error occurred during initialization of VM
+Unknown -XX:ShenandoahGCHeuristics option
+
