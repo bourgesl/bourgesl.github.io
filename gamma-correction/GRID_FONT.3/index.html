@@ -1,0 +1,100 @@
+<html>
+<body>
+<h1>Alpha blending comparison (2020.06.17)</h1>
+
+<p>
+This page presents different alpha blending algorithms being implemented in the <a href="https://github.com/bourgesl/marlin-renderer">Marlin renderer</a>'s new Compositor. 
+<br/>This new compositor is developped in the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev">unsafe-dev</a> branch, see the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev/src/main/java/org/marlin/pipe">pipe package</a>.
+
+<br/>This images are produced by the <a href="https://github.com/bourgesl/marlin-renderer/blob/unsafe-dev/src/main/java/test/LineWidthColorGridTest.java">LineWidthColorGridTest</a> class and stored in the PNG format (sRGB INT RGBA format).
+
+<h2>TOC:</h2>
+<a href="#func">Color functions</a>
+<a href="#comp">Comparison</a>
+<a href="#out">Output files</a>
+</p>
+
+<div>
+<a name="func"/>
+<h2>Color Functions (sRGB, L* profiles, gamma 2.2)</h2>
+<br/>
+<img src="ColorFunctions.png"/>
+</div>
+
+<hr/>
+
+<div>
+<a name="comp"/>
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB + contrast correction L)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with luminance corrected based on true Y (ICC REC 709) => L (contrast = 1.0)
+</th>
+</tr>
+<tr>
+<td>
+<img src="LineWidthColorGridTest_8x3_REF.png"/>
+</td>
+<td>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_contrast_1.0_lumaY_L(Y).png"/>
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB + luminance fix)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with luminance corrected based on true Y (ICC REC 709) => sRGB (contrast = 1.0)
+</th>
+</tr>
+<tr>
+<td>
+<img src="LineWidthColorGridTest_8x3_REF.png"/>
+</td>
+<td>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_lum_lumaY_YtoL.png"/>
+</td>
+</tr>
+</table>
+</div>
+ 
+<div>
+<a name="out"/>
+<h2>Output files</h2>
+<div>
+<h3>Reference sRGB non-linear = Original Java2D approach</h3>
+<img src="LineWidthColorGridTest_8x3_REF.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with luminance corrected based on true Y (ICC REC 709) => L (contrast = 1.0)</h3>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_contrast_0.8_lumaY_YtoL.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with luminance corrected based on SRGB => Y (contrast = 1.0)</h3>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_contrast_1.0_lumaY_L(sRGB).png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with luminance corrected based on gamma 2.2 => Y (contrast = 1.0)</h3>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_contrast_1.0_lumaY_L(2.2).png"/>
+</div>
+<div>
+<h3>Gamma-corrected sRGB (linear) with luminance fix</h3>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_lum_lumaY_YtoL.png"/>
+</div>
+</div>
+
+</body>
+</html>
