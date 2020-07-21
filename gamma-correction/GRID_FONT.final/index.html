@@ -1,0 +1,128 @@
+<html>
+<body>
+<h1>Alpha blending FINAL comparison (2020.07.21)</h1>
+
+<p>
+This page presents the different alpha blending methods implemented in the <a href="https://github.com/bourgesl/marlin-renderer">Marlin renderer</a>'s new Compositor. 
+<br/>This new compositor is developped in the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev">unsafe-dev</a> branch, see the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev/src/main/java/org/marlin/pipe">pipe package</a>.
+
+<br/>This images are produced by the <a href="https://github.com/bourgesl/marlin-renderer/blob/unsafe-dev/src/main/java/test/LineWidthColorGridTest.java">LineWidthColorGridTest</a> class and stored in the PNG format (sRGB INT RGBA format).
+
+<h2>TOC:</h2>
+<a href="#comp">Comparison</a>
+<a href="#out">Output files</a>
+</p>
+
+
+<div>
+<a name="comp"/>
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - linear mode)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with no correction
+</th>
+<th>
+Image difference (scaled to max delta):
+</th>
+</tr>
+<tr>
+<td>
+<img src="ref/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="linear/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="linear/diff_LineWidthColorGridTest.ser.png"/>
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - hybrid mode)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with hybrid mode: contrast correction on darker shades
+</th>
+<th>
+Image difference (scaled to max delta):
+</th>
+</tr>
+<tr>
+<td>
+<img src="ref/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="hybrid/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="hybrid/diff_LineWidthColorGridTest.ser.png"/>
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - perceptual mode)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with perceptual mode: contrast correction on all shades (L*)
+</th>
+<th>
+Image difference (scaled to max delta):
+</th>
+</tr>
+<tr>
+<td>
+<img src="ref/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="perceptual/LineWidthColorGridTest.ser.png"/>
+</td>
+<td>
+<img src="perceptual/diff_LineWidthColorGridTest.ser.png"/>
+</td>
+</tr>
+</table>
+
+</div>
+ 
+<div>
+<a name="out"/>
+<h2>Output files</h2>
+<div>
+<h3>Reference sRGB non-linear = Original Java2D approach</h3>
+<img src="ref/LineWidthColorGridTest.ser.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with no correction</h3>
+<img src="linear/LineWidthColorGridTest.ser.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with hybrid mode: contrast correction on darker shades</h3>
+<img src="hybrid/LineWidthColorGridTest.ser.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with perceptual mode: contrast correction on all shades (L*)</h3>
+<img src="perceptual/LineWidthColorGridTest.ser.png"/>
+</div>
+</div>
+
+</body>
+</html>
