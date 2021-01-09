@@ -1,0 +1,129 @@
+<html>
+<body>
+<h1>Alpha blending comparison sRGB vs CIE / OK Lab color spaces (2021.01.09)</h1>
+
+<p>
+This page presents the different alpha blending methods implemented in the <a href="https://github.com/bourgesl/marlin-renderer">Marlin renderer</a>'s new Compositor. 
+<br/>This new compositor is developped in the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev">unsafe-dev</a> branch, see the <a href="https://github.com/bourgesl/marlin-renderer/tree/unsafe-dev/src/main/java/org/marlin/pipe">pipe package</a>.
+
+<br/>This images are produced by the <a href="https://github.com/bourgesl/marlin-renderer/blob/unsafe-dev/src/main/java/test/LineWidthColorGridTest.java">LineWidthColorGridTest</a> class and stored in the PNG format (sRGB INT RGBA format).
+
+<br/>
+<br/>
+<b>
+    This page compares sRGB color mixing (perceptual mode) with CIE Lab and <a href="https://bottosson.github.io/posts/oklab/">OK Lab</a> perceptual color spaces.
+    <br/>See <a href="https://bottosson.github.io/posts/oklab/">OK Lab</a> page for more details.
+</b>
+
+<br/><br/>Notes:
+<ul>
+    <li>CIE Lab blue to yellow is wrong: too much red in transition, OK Lab is lot better.</li>
+    <li>OK Lab blue to white is better: hue transition looks better.</li>
+</ul>
+
+<b>Conclusion:
+<br/>- Marlin's new Compositor looks very good in this perceptual comparison: mixing primaries looks a lot better, L correction is as good as more complex color spaces like CIE/OK Lab (floating point ops).
+<br/>- OK Lab gives slightly better transitions on large hue transitions, but it is too costly and may only be visible to color experts and look different to usual color mixing.
+</b>
+
+<h2>TOC:</h2>
+<a href="#comp">Comparison</a>
+<a href="#out">Output files</a>
+</p>
+
+
+<div>
+<a name="comp"/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - perceptual mode)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB (linear) with perceptual mode: contrast correction on all shades (L*)
+</th>
+</tr>
+<tr>
+<td>
+<img src="LineWidthColorGridTest_3x3_BOX.png"/>
+</td>
+<td>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_speed_mode_perceptual_contrastL_1.0_lumaY_lerp_L-Y.png"/>
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - CIE Lab)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB - CIE Lab
+</th>
+</tr>
+<tr>
+<td>
+<img src="LineWidthColorGridTest_3x3_BOX.png"/>
+</td>
+<td>
+<img src="LineWidthColorGridTest_3x3_BOX_CIE_Lab_mixL.png"/>
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<h2>Comparison (original Java2D approach) vs (Gamma-corrected sRGB - Ok Lab)</h2>
+<table>
+<tr>
+<th>
+Original Java2D approach
+</th>
+<th>
+Gamma-corrected sRGB - Ok Lab
+</th>
+</tr>
+<tr>
+<td>
+<img src="LineWidthColorGridTest_3x3_BOX.png"/>
+</td>
+<td>
+<img src="LineWidthColorGridTest_3x3_BOX_CIE_OkLab_mixL.png"/>
+</td>
+</tr>
+</table>
+
+</div>
+ 
+<div>
+<a name="out"/>
+<h2>Output files</h2>
+<div>
+<h3>Reference sRGB non-linear = Original Java2D approach</h3>
+<img src="LineWidthColorGridTest_3x3_BOX.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB (linear) with perceptual mode: contrast correction on all shades (L*)</h3>
+<img src="LineWidthColorGridTest_8x3_comp_gamma_sRGB_speed_mode_perceptual_contrastL_1.0_lumaY_lerp_L-Y.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB - CIE Lab</h3>
+<img src="LineWidthColorGridTest_3x3_BOX_CIE_Lab_mixL.png"/>
+</div>
+
+<div>
+<h3>Gamma-corrected sRGB - Ok Lab</h3>
+<img src="LineWidthColorGridTest_3x3_BOX_CIE_OkLab_mixL.png"/>
+</div>
+</div>
+
+</body>
+</html>
