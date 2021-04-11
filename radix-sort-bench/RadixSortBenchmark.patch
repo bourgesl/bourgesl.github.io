@@ -1,0 +1,80 @@
+diff --git a/src/main/java/io/github/richardstartin/radixsort/RadixSortBenchmark.java b/src/main/java/io/github/richardstartin/radixsort/RadixSortBenchmark.java
+index 89d07a7..8c5756c 100644
+--- a/src/main/java/io/github/richardstartin/radixsort/RadixSortBenchmark.java
++++ b/src/main/java/io/github/richardstartin/radixsort/RadixSortBenchmark.java
+@@ -43,7 +43,7 @@ public class RadixSortBenchmark {
+   }
+ 
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] basic() {
+     RadixSort.basic(data);
+     return data;
+@@ -55,58 +55,55 @@ public class RadixSortBenchmark {
+     return data;
+   }
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unroll() {
+     RadixSort.unroll(data);
+     return data;
+   }
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unrollBuffer() {
+     RadixSort.unroll(data, buffer);
+     return data;
+   }
+ 
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unrollOnePass() {
+     RadixSort.unrollOnePassHistograms(data);
+     return data;
+   }
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unrollOnePassBuffer() {
+     RadixSort.unrollOnePassHistograms(data, buffer);
+     return data;
+   }
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unrollOnePassSkipLevels() {
+     RadixSort.unrollOnePassHistogramsSkipLevels(data);
+     return data;
+   }
+ 
+-
+-  @Benchmark
+-  public int[] unrollOnePassSkipLevelsBuffer() {
++ /*  @Benchmark */
++ public int[] unrollOnePassSkipLevelsBuffer() {
+     RadixSort.unrollOnePassHistogramsSkipLevels(data, buffer);
+     return data;
+   }
+ 
+-  @Benchmark
++/*  @Benchmark */
+   public int[] unrollOnePassSkipLevelsWithDetection() {
+     RadixSort.unrollOnePassHistogramsSkipLevelsWithDetection(data);
+     return data;
+   }
+ 
+-
+   @Benchmark
+   public int[] unrollOnePassSkipLevelsBufferWithDetection() {
+     RadixSort.unrollOnePassHistogramsSkipLevels(data, buffer);
+     return data;
+   }
+ 
+-
+   @Benchmark
+   public int[] arraysSort() {
+     Arrays.sort(data);

@@ -1,0 +1,46 @@
+Benchmark                                                      (bits)  (padding)          (scenario)  (seed)  (size)   Mode  Cnt        Score       Error  Units
+RadixSortBenchmark.arraysSort                                      17          7             UNIFORM       0    1000  thrpt    5    60851,182 ±   617,008  ops/s
+RadixSortBenchmark.arraysSort                                      17          7          CONTIGUOUS       0    1000  thrpt    5  2697503,264 ± 10320,483  ops/s
+RadixSortBenchmark.arraysSort                                      17          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5   969548,371 ±   615,865  ops/s
+RadixSortBenchmark.arraysSort                                      17          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5   219174,124 ±  1065,642  ops/s
+RadixSortBenchmark.arraysSort                                      17          7              SORTED       0    1000  thrpt    5   194480,485 ±  1991,017  ops/s
+RadixSortBenchmark.arraysSort                                      17          7       ALMOST_SORTED       0    1000  thrpt    5    73449,755 ±   709,002  ops/s
+RadixSortBenchmark.arraysSort                                      17          7                 EXP       0    1000  thrpt    5    59462,292 ±   636,922  ops/s
+RadixSortBenchmark.arraysSort                                      23          7             UNIFORM       0    1000  thrpt    5    64558,248 ±   249,467  ops/s
+RadixSortBenchmark.arraysSort                                      23          7          CONTIGUOUS       0    1000  thrpt    5  2699305,611 ± 10047,061  ops/s
+RadixSortBenchmark.arraysSort                                      23          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5   969070,782 ±   322,200  ops/s
+RadixSortBenchmark.arraysSort                                      23          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5   217443,889 ±   636,065  ops/s
+RadixSortBenchmark.arraysSort                                      23          7              SORTED       0    1000  thrpt    5  2693540,420 ±  1606,879  ops/s
+RadixSortBenchmark.arraysSort                                      23          7       ALMOST_SORTED       0    1000  thrpt    5   295582,451 ±  1598,826  ops/s
+RadixSortBenchmark.arraysSort                                      23          7                 EXP       0    1000  thrpt    5    58865,885 ±  4432,021  ops/s
+
+RadixSortBenchmark.basicBuffer                                     17          7             UNIFORM       0    1000  thrpt    5    69263,475 ±  1629,638  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7          CONTIGUOUS       0    1000  thrpt    5    64705,993 ±   836,054  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5    64817,373 ±  1061,920  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5    64594,191 ±  1361,315  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7              SORTED       0    1000  thrpt    5    69427,576 ±   810,273  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7       ALMOST_SORTED       0    1000  thrpt    5    69626,570 ±   723,106  ops/s
+RadixSortBenchmark.basicBuffer                                     17          7                 EXP       0    1000  thrpt    5    64940,290 ±   827,202  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7             UNIFORM       0    1000  thrpt    5    76201,256 ±  1121,511  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7          CONTIGUOUS       0    1000  thrpt    5    64805,683 ±   769,416  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5    64902,893 ±   876,380  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5    64672,052 ±  1383,013  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7              SORTED       0    1000  thrpt    5    75753,972 ±   540,766  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7       ALMOST_SORTED       0    1000  thrpt    5    76083,953 ±   958,832  ops/s
+RadixSortBenchmark.basicBuffer                                     23          7                 EXP       0    1000  thrpt    5    64582,249 ±   815,436  ops/s
+
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7             UNIFORM       0    1000  thrpt    5   103354,122 ±  3689,252  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7          CONTIGUOUS       0    1000  thrpt    5   155660,394 ±  1068,507  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5   153488,466 ±   743,214  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5   154970,352 ±   477,961  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7              SORTED       0    1000  thrpt    5   102274,004 ±  8561,440  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7       ALMOST_SORTED       0    1000  thrpt    5   102701,491 ±  2872,100  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      17          7                 EXP       0    1000  thrpt    5    94566,247 ±  1369,048  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7             UNIFORM       0    1000  thrpt    5   120124,493 ±  3313,488  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7          CONTIGUOUS       0    1000  thrpt    5   155577,188 ±   914,895  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7  CONTIGUOUS_REVERSE       0    1000  thrpt    5   154947,193 ±   552,187  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7   ALMOST_CONTIGUOUS       0    1000  thrpt    5   154892,881 ±   595,360  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7              SORTED       0    1000  thrpt    5   113996,371 ±  3418,265  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7       ALMOST_SORTED       0    1000  thrpt    5   114565,694 ±  2775,148  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7                 EXP       0    1000  thrpt    5    98878,761 ±  3069,231  ops/s
+

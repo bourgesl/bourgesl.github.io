@@ -1,0 +1,12 @@
+Run Radix-Sort-benchmark from:
+https://github.com/richardstartin/radix-sort-benchmark.git
+
+1. Build:
+mvn verify
+
+2. Run:
+(set your jdk)
+
+./run.sh
+
+
