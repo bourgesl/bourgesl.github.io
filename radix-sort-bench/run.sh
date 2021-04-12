@@ -1,25 +1,26 @@
 #!/bin/bash
 
-#source ~/test-jdk11u.sh
-#source ~/test-jdk16.sh
-
 java -version
 
 SIZES="1000"
+#SIZES="1000000"
 
 # do not force GC as setupTrial does cleanup() and sorters use pre-allocation
 GC=false
 FORK=1
 
 # min iter = 10 (to sample all distributions)
-WITER=4
+WITER=5
 WTIME=1s
 ITER=5
 TIME=2s
 
-OPTS="-p size=$SIZES -p bits=17,23"
+OPTS="-p size=$SIZES -p bits=23"
+# bits=17,23
 
-# -Djmh.blackhole.mode=COMPILER
+echo "OPTS: $OPTS"
+
+
 JAVA_OPTS="-Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation"
 echo "JAVA_OPTS: $JAVA_OPTS"
 
