@@ -1,0 +1,964 @@
+OPTS: -p size=1000000 -p bits=23
+JAVA_OPTS: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+Running JMH ...
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = UNIFORM, seed = 0, size = 1000000)
+
+# Run progress: 0,00% complete, ETA 00:07:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,758 ops/s
+# Warmup Iteration   2: 15,204 ops/s
+# Warmup Iteration   3: 15,397 ops/s
+# Warmup Iteration   4: 15,244 ops/s
+# Warmup Iteration   5: 15,438 ops/s
+Iteration   1: 15,520 ops/s
+Iteration   2: 15,315 ops/s
+Iteration   3: 15,592 ops/s
+Iteration   4: 15,523 ops/s
+Iteration   5: 15,668 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  15,523 ±(99.9%) 0,506 ops/s [Average]
+  (min, avg, max) = (15,315, 15,523, 15,668), stdev = 0,131
+  CI (99.9%): [15,017, 16,030] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 3,57% complete, ETA 00:07:17
+# Fork: 1 of 1
+# Warmup Iteration   1: 3248,722 ops/s
+# Warmup Iteration   2: 3698,334 ops/s
+# Warmup Iteration   3: 3642,134 ops/s
+# Warmup Iteration   4: 3695,873 ops/s
+# Warmup Iteration   5: 3688,933 ops/s
+Iteration   1: 3683,166 ops/s
+Iteration   2: 3705,261 ops/s
+Iteration   3: 3669,144 ops/s
+Iteration   4: 3335,903 ops/s
+Iteration   5: 3559,923 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  3590,679 ±(99.9%) 589,338 ops/s [Average]
+  (min, avg, max) = (3335,903, 3590,679, 3705,261), stdev = 153,049
+  CI (99.9%): [3001,341, 4180,017] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS_REVERSE, seed = 0, size = 1000000)
+
+# Run progress: 7,14% complete, ETA 00:06:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 1247,411 ops/s
+# Warmup Iteration   2: 1331,960 ops/s
+# Warmup Iteration   3: 1342,361 ops/s
+# Warmup Iteration   4: 1331,977 ops/s
+# Warmup Iteration   5: 1353,415 ops/s
+Iteration   1: 1322,196 ops/s
+Iteration   2: 1374,033 ops/s
+Iteration   3: 1362,480 ops/s
+Iteration   4: 1364,190 ops/s
+Iteration   5: 1384,499 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  1361,479 ±(99.9%) 91,103 ops/s [Average]
+  (min, avg, max) = (1322,196, 1361,479, 1384,499), stdev = 23,659
+  CI (99.9%): [1270,377, 1452,582] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 10,71% complete, ETA 00:06:36
+# Fork: 1 of 1
+# Warmup Iteration   1: 81,813 ops/s
+# Warmup Iteration   2: 105,046 ops/s
+# Warmup Iteration   3: 105,556 ops/s
+# Warmup Iteration   4: 105,270 ops/s
+# Warmup Iteration   5: 104,668 ops/s
+Iteration   1: 106,476 ops/s
+Iteration   2: 106,711 ops/s
+Iteration   3: 106,658 ops/s
+Iteration   4: 106,722 ops/s
+Iteration   5: 106,504 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  106,614 ±(99.9%) 0,448 ops/s [Average]
+  (min, avg, max) = (106,476, 106,614, 106,722), stdev = 0,116
+  CI (99.9%): [106,167, 107,062] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = SORTED, seed = 0, size = 1000000)
+
+# Run progress: 14,29% complete, ETA 00:06:19
+# Fork: 1 of 1
+# Warmup Iteration   1: 25,783 ops/s
+# Warmup Iteration   2: 28,223 ops/s
+# Warmup Iteration   3: 28,899 ops/s
+# Warmup Iteration   4: 29,286 ops/s
+# Warmup Iteration   5: 29,145 ops/s
+Iteration   1: 29,202 ops/s
+Iteration   2: 29,243 ops/s
+Iteration   3: 29,395 ops/s
+Iteration   4: 29,335 ops/s
+Iteration   5: 29,314 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  29,298 ±(99.9%) 0,293 ops/s [Average]
+  (min, avg, max) = (29,202, 29,298, 29,395), stdev = 0,076
+  CI (99.9%): [29,005, 29,591] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_SORTED, seed = 0, size = 1000000)
+
+# Run progress: 17,86% complete, ETA 00:06:03
+# Fork: 1 of 1
+# Warmup Iteration   1: 15,738 ops/s
+# Warmup Iteration   2: 23,238 ops/s
+# Warmup Iteration   3: 23,085 ops/s
+# Warmup Iteration   4: 23,240 ops/s
+# Warmup Iteration   5: 23,198 ops/s
+Iteration   1: 23,311 ops/s
+Iteration   2: 23,282 ops/s
+Iteration   3: 23,322 ops/s
+Iteration   4: 23,250 ops/s
+Iteration   5: 23,356 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  23,304 ±(99.9%) 0,154 ops/s [Average]
+  (min, avg, max) = (23,250, 23,304, 23,356), stdev = 0,040
+  CI (99.9%): [23,150, 23,459] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort
+# Parameters: (bits = 23, padding = 7, scenario = EXP, seed = 0, size = 1000000)
+
+# Run progress: 21,43% complete, ETA 00:05:47
+# Fork: 1 of 1
+# Warmup Iteration   1: 15,178 ops/s
+# Warmup Iteration   2: 18,096 ops/s
+# Warmup Iteration   3: 18,093 ops/s
+# Warmup Iteration   4: 18,111 ops/s
+# Warmup Iteration   5: 18,076 ops/s
+Iteration   1: 18,143 ops/s
+Iteration   2: 18,179 ops/s
+Iteration   3: 18,202 ops/s
+Iteration   4: 18,148 ops/s
+Iteration   5: 18,165 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.arraysSort":
+  18,168 ±(99.9%) 0,093 ops/s [Average]
+  (min, avg, max) = (18,143, 18,168, 18,202), stdev = 0,024
+  CI (99.9%): [18,075, 18,260] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = UNIFORM, seed = 0, size = 1000000)
+
+# Run progress: 25,00% complete, ETA 00:05:32
+# Fork: 1 of 1
+# Warmup Iteration   1: 34,824 ops/s
+# Warmup Iteration   2: 49,116 ops/s
+# Warmup Iteration   3: 50,340 ops/s
+# Warmup Iteration   4: 50,990 ops/s
+# Warmup Iteration   5: 50,494 ops/s
+Iteration   1: 50,760 ops/s
+Iteration   2: 50,723 ops/s
+Iteration   3: 50,767 ops/s
+Iteration   4: 50,989 ops/s
+Iteration   5: 51,213 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  50,890 ±(99.9%) 0,803 ops/s [Average]
+  (min, avg, max) = (50,723, 50,890, 51,213), stdev = 0,209
+  CI (99.9%): [50,087, 51,693] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 28,57% complete, ETA 00:05:15
+# Fork: 1 of 1
+# Warmup Iteration   1: 1111,955 ops/s
+# Warmup Iteration   2: 1358,728 ops/s
+# Warmup Iteration   3: 1365,964 ops/s
+# Warmup Iteration   4: 1363,803 ops/s
+# Warmup Iteration   5: 1371,864 ops/s
+Iteration   1: 1362,615 ops/s
+Iteration   2: 1378,772 ops/s
+Iteration   3: 1379,419 ops/s
+Iteration   4: 1373,902 ops/s
+Iteration   5: 1371,584 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  1373,259 ±(99.9%) 26,176 ops/s [Average]
+  (min, avg, max) = (1362,615, 1373,259, 1379,419), stdev = 6,798
+  CI (99.9%): [1347,082, 1399,435] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS_REVERSE, seed = 0, size = 1000000)
+
+# Run progress: 32,14% complete, ETA 00:04:59
+# Fork: 1 of 1
+# Warmup Iteration   1: 648,637 ops/s
+# Warmup Iteration   2: 806,829 ops/s
+# Warmup Iteration   3: 809,289 ops/s
+# Warmup Iteration   4: 809,976 ops/s
+# Warmup Iteration   5: 814,948 ops/s
+Iteration   1: 826,848 ops/s
+Iteration   2: 815,619 ops/s
+Iteration   3: 821,633 ops/s
+Iteration   4: 825,633 ops/s
+Iteration   5: 827,843 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  823,515 ±(99.9%) 19,275 ops/s [Average]
+  (min, avg, max) = (815,619, 823,515, 827,843), stdev = 5,006
+  CI (99.9%): [804,240, 842,790] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 35,71% complete, ETA 00:04:43
+# Fork: 1 of 1
+# Warmup Iteration   1: 71,671 ops/s
+# Warmup Iteration   2: 97,002 ops/s
+# Warmup Iteration   3: 96,777 ops/s
+# Warmup Iteration   4: 97,299 ops/s
+# Warmup Iteration   5: 96,692 ops/s
+Iteration   1: 97,029 ops/s
+Iteration   2: 97,765 ops/s
+Iteration   3: 97,465 ops/s
+Iteration   4: 97,974 ops/s
+Iteration   5: 97,566 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  97,560 ±(99.9%) 1,367 ops/s [Average]
+  (min, avg, max) = (97,029, 97,560, 97,974), stdev = 0,355
+  CI (99.9%): [96,193, 98,927] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = SORTED, seed = 0, size = 1000000)
+
+# Run progress: 39,29% complete, ETA 00:04:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 26,603 ops/s
+# Warmup Iteration   2: 29,148 ops/s
+# Warmup Iteration   3: 29,703 ops/s
+# Warmup Iteration   4: 29,942 ops/s
+# Warmup Iteration   5: 29,935 ops/s
+Iteration   1: 30,077 ops/s
+Iteration   2: 29,898 ops/s
+Iteration   3: 30,164 ops/s
+Iteration   4: 30,126 ops/s
+Iteration   5: 30,098 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  30,073 ±(99.9%) 0,397 ops/s [Average]
+  (min, avg, max) = (29,898, 30,073, 30,164), stdev = 0,103
+  CI (99.9%): [29,675, 30,470] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_SORTED, seed = 0, size = 1000000)
+
+# Run progress: 42,86% complete, ETA 00:04:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 46,126 ops/s
+# Warmup Iteration   2: 69,977 ops/s
+# Warmup Iteration   3: 71,057 ops/s
+# Warmup Iteration   4: 71,125 ops/s
+# Warmup Iteration   5: 69,796 ops/s
+Iteration   1: 71,025 ops/s
+Iteration   2: 71,365 ops/s
+Iteration   3: 71,127 ops/s
+Iteration   4: 71,431 ops/s
+Iteration   5: 71,783 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  71,346 ±(99.9%) 1,138 ops/s [Average]
+  (min, avg, max) = (71,025, 71,346, 71,783), stdev = 0,295
+  CI (99.9%): [70,209, 72,484] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort
+# Parameters: (bits = 23, padding = 7, scenario = EXP, seed = 0, size = 1000000)
+
+# Run progress: 46,43% complete, ETA 00:03:56
+# Fork: 1 of 1
+# Warmup Iteration   1: 37,246 ops/s
+# Warmup Iteration   2: 49,383 ops/s
+# Warmup Iteration   3: 50,977 ops/s
+# Warmup Iteration   4: 51,341 ops/s
+# Warmup Iteration   5: 50,878 ops/s
+Iteration   1: 50,762 ops/s
+Iteration   2: 50,895 ops/s
+Iteration   3: 50,104 ops/s
+Iteration   4: 51,195 ops/s
+Iteration   5: 51,314 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04NoAllocSort":
+  50,854 ±(99.9%) 1,828 ops/s [Average]
+  (min, avg, max) = (50,104, 50,854, 51,314), stdev = 0,475
+  CI (99.9%): [49,026, 52,681] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = UNIFORM, seed = 0, size = 1000000)
+
+# Run progress: 50,00% complete, ETA 00:03:40
+# Fork: 1 of 1
+# Warmup Iteration   1: 34,222 ops/s
+# Warmup Iteration   2: 48,922 ops/s
+# Warmup Iteration   3: 50,462 ops/s
+# Warmup Iteration   4: 51,044 ops/s
+# Warmup Iteration   5: 50,423 ops/s
+Iteration   1: 50,914 ops/s
+Iteration   2: 50,809 ops/s
+Iteration   3: 50,867 ops/s
+Iteration   4: 51,093 ops/s
+Iteration   5: 51,076 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  50,952 ±(99.9%) 0,489 ops/s [Average]
+  (min, avg, max) = (50,809, 50,952, 51,093), stdev = 0,127
+  CI (99.9%): [50,463, 51,440] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 53,57% complete, ETA 00:03:24
+# Fork: 1 of 1
+# Warmup Iteration   1: 1091,581 ops/s
+# Warmup Iteration   2: 1361,198 ops/s
+# Warmup Iteration   3: 1359,498 ops/s
+# Warmup Iteration   4: 1363,632 ops/s
+# Warmup Iteration   5: 1367,216 ops/s
+Iteration   1: 1355,836 ops/s
+Iteration   2: 1371,587 ops/s
+Iteration   3: 1369,736 ops/s
+Iteration   4: 1370,504 ops/s
+Iteration   5: 1370,289 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  1367,590 ±(99.9%) 25,434 ops/s [Average]
+  (min, avg, max) = (1355,836, 1367,590, 1371,587), stdev = 6,605
+  CI (99.9%): [1342,157, 1393,024] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS_REVERSE, seed = 0, size = 1000000)
+
+# Run progress: 57,14% complete, ETA 00:03:08
+# Fork: 1 of 1
+# Warmup Iteration   1: 657,466 ops/s
+# Warmup Iteration   2: 793,554 ops/s
+# Warmup Iteration   3: 805,971 ops/s
+# Warmup Iteration   4: 807,762 ops/s
+# Warmup Iteration   5: 804,655 ops/s
+Iteration   1: 809,800 ops/s
+Iteration   2: 806,510 ops/s
+Iteration   3: 812,306 ops/s
+Iteration   4: 809,757 ops/s
+Iteration   5: 814,301 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  810,535 ±(99.9%) 11,336 ops/s [Average]
+  (min, avg, max) = (806,510, 810,535, 814,301), stdev = 2,944
+  CI (99.9%): [799,199, 821,871] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 60,71% complete, ETA 00:02:52
+# Fork: 1 of 1
+# Warmup Iteration   1: 70,647 ops/s
+# Warmup Iteration   2: 97,129 ops/s
+# Warmup Iteration   3: 96,312 ops/s
+# Warmup Iteration   4: 97,495 ops/s
+# Warmup Iteration   5: 96,096 ops/s
+Iteration   1: 97,329 ops/s
+Iteration   2: 97,720 ops/s
+Iteration   3: 97,976 ops/s
+Iteration   4: 98,238 ops/s
+Iteration   5: 97,906 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  97,834 ±(99.9%) 1,301 ops/s [Average]
+  (min, avg, max) = (97,329, 97,834, 98,238), stdev = 0,338
+  CI (99.9%): [96,532, 99,135] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = SORTED, seed = 0, size = 1000000)
+
+# Run progress: 64,29% complete, ETA 00:02:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 26,705 ops/s
+# Warmup Iteration   2: 29,013 ops/s
+# Warmup Iteration   3: 29,673 ops/s
+# Warmup Iteration   4: 30,024 ops/s
+# Warmup Iteration   5: 29,839 ops/s
+Iteration   1: 30,085 ops/s
+Iteration   2: 29,992 ops/s
+Iteration   3: 30,118 ops/s
+Iteration   4: 30,107 ops/s
+Iteration   5: 29,983 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  30,057 ±(99.9%) 0,249 ops/s [Average]
+  (min, avg, max) = (29,983, 30,057, 30,118), stdev = 0,065
+  CI (99.9%): [29,808, 30,305] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_SORTED, seed = 0, size = 1000000)
+
+# Run progress: 67,86% complete, ETA 00:02:21
+# Fork: 1 of 1
+# Warmup Iteration   1: 46,445 ops/s
+# Warmup Iteration   2: 70,083 ops/s
+# Warmup Iteration   3: 71,170 ops/s
+# Warmup Iteration   4: 70,948 ops/s
+# Warmup Iteration   5: 70,155 ops/s
+Iteration   1: 70,905 ops/s
+Iteration   2: 71,180 ops/s
+Iteration   3: 71,288 ops/s
+Iteration   4: 71,524 ops/s
+Iteration   5: 71,546 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  71,289 ±(99.9%) 1,020 ops/s [Average]
+  (min, avg, max) = (70,905, 71,289, 71,546), stdev = 0,265
+  CI (99.9%): [70,269, 72,308] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort
+# Parameters: (bits = 23, padding = 7, scenario = EXP, seed = 0, size = 1000000)
+
+# Run progress: 71,43% complete, ETA 00:02:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 37,135 ops/s
+# Warmup Iteration   2: 49,521 ops/s
+# Warmup Iteration   3: 50,878 ops/s
+# Warmup Iteration   4: 51,192 ops/s
+# Warmup Iteration   5: 51,297 ops/s
+Iteration   1: 51,030 ops/s
+Iteration   2: 51,145 ops/s
+Iteration   3: 51,069 ops/s
+Iteration   4: 51,351 ops/s
+Iteration   5: 51,391 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.dpqs21_04Sort":
+  51,197 ±(99.9%) 0,634 ops/s [Average]
+  (min, avg, max) = (51,030, 51,197, 51,391), stdev = 0,165
+  CI (99.9%): [50,563, 51,832] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = UNIFORM, seed = 0, size = 1000000)
+
+# Run progress: 75,00% complete, ETA 00:01:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 127,510 ops/s
+# Warmup Iteration   2: 137,761 ops/s
+# Warmup Iteration   3: 139,238 ops/s
+# Warmup Iteration   4: 139,973 ops/s
+# Warmup Iteration   5: 139,706 ops/s
+Iteration   1: 140,781 ops/s
+Iteration   2: 140,347 ops/s
+Iteration   3: 140,398 ops/s
+Iteration   4: 140,634 ops/s
+Iteration   5: 140,431 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  140,518 ±(99.9%) 0,704 ops/s [Average]
+  (min, avg, max) = (140,347, 140,518, 140,781), stdev = 0,183
+  CI (99.9%): [139,814, 141,222] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 78,57% complete, ETA 00:01:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 38,000 ops/s
+# Warmup Iteration   2: 43,217 ops/s
+# Warmup Iteration   3: 43,546 ops/s
+# Warmup Iteration   4: 43,559 ops/s
+# Warmup Iteration   5: 43,005 ops/s
+Iteration   1: 43,114 ops/s
+Iteration   2: 42,990 ops/s
+Iteration   3: 43,212 ops/s
+Iteration   4: 43,062 ops/s
+Iteration   5: 43,084 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  43,093 ±(99.9%) 0,312 ops/s [Average]
+  (min, avg, max) = (42,990, 43,093, 43,212), stdev = 0,081
+  CI (99.9%): [42,781, 43,404] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = CONTIGUOUS_REVERSE, seed = 0, size = 1000000)
+
+# Run progress: 82,14% complete, ETA 00:01:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 37,240 ops/s
+# Warmup Iteration   2: 42,181 ops/s
+# Warmup Iteration   3: 42,081 ops/s
+# Warmup Iteration   4: 41,535 ops/s
+# Warmup Iteration   5: 41,750 ops/s
+Iteration   1: 41,545 ops/s
+Iteration   2: 41,494 ops/s
+Iteration   3: 41,581 ops/s
+Iteration   4: 41,765 ops/s
+Iteration   5: 42,532 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  41,783 ±(99.9%) 1,658 ops/s [Average]
+  (min, avg, max) = (41,494, 41,783, 42,532), stdev = 0,431
+  CI (99.9%): [40,125, 43,442] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_CONTIGUOUS, seed = 0, size = 1000000)
+
+# Run progress: 85,71% complete, ETA 00:01:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 38,454 ops/s
+# Warmup Iteration   2: 43,864 ops/s
+# Warmup Iteration   3: 43,958 ops/s
+# Warmup Iteration   4: 44,295 ops/s
+# Warmup Iteration   5: 44,049 ops/s
+Iteration   1: 44,328 ops/s
+Iteration   2: 44,449 ops/s
+Iteration   3: 44,082 ops/s
+Iteration   4: 43,632 ops/s
+Iteration   5: 44,173 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  44,133 ±(99.9%) 1,207 ops/s [Average]
+  (min, avg, max) = (43,632, 44,133, 44,449), stdev = 0,313
+  CI (99.9%): [42,926, 45,340] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = SORTED, seed = 0, size = 1000000)
+
+# Run progress: 89,29% complete, ETA 00:00:47
+# Fork: 1 of 1
+# Warmup Iteration   1: 126,243 ops/s
+# Warmup Iteration   2: 137,326 ops/s
+# Warmup Iteration   3: 138,051 ops/s
+# Warmup Iteration   4: 139,133 ops/s
+# Warmup Iteration   5: 136,572 ops/s
+Iteration   1: 139,134 ops/s
+Iteration   2: 140,566 ops/s
+Iteration   3: 139,579 ops/s
+Iteration   4: 139,515 ops/s
+Iteration   5: 139,947 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  139,748 ±(99.9%) 2,081 ops/s [Average]
+  (min, avg, max) = (139,134, 139,748, 140,566), stdev = 0,540
+  CI (99.9%): [137,667, 141,829] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = ALMOST_SORTED, seed = 0, size = 1000000)
+
+# Run progress: 92,86% complete, ETA 00:00:31
+# Fork: 1 of 1
+# Warmup Iteration   1: 124,751 ops/s
+# Warmup Iteration   2: 137,507 ops/s
+# Warmup Iteration   3: 136,417 ops/s
+# Warmup Iteration   4: 137,859 ops/s
+# Warmup Iteration   5: 139,631 ops/s
+Iteration   1: 139,388 ops/s
+Iteration   2: 139,401 ops/s
+Iteration   3: 140,995 ops/s
+Iteration   4: 141,119 ops/s
+Iteration   5: 141,224 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  140,425 ±(99.9%) 3,636 ops/s [Average]
+  (min, avg, max) = (139,388, 140,425, 141,224), stdev = 0,944
+  CI (99.9%): [136,789, 144,062] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 16, OpenJDK 64-Bit Server VM, 16+36
+# VM invoker: /home/bourgesl/apps/jdk-16/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseParallelGC -XX:-BackgroundCompilation
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection
+# Parameters: (bits = 23, padding = 7, scenario = EXP, seed = 0, size = 1000000)
+
+# Run progress: 96,43% complete, ETA 00:00:15
+# Fork: 1 of 1
+# Warmup Iteration   1: 115,066 ops/s
+# Warmup Iteration   2: 127,123 ops/s
+# Warmup Iteration   3: 128,235 ops/s
+# Warmup Iteration   4: 128,274 ops/s
+# Warmup Iteration   5: 127,858 ops/s
+Iteration   1: 128,656 ops/s
+Iteration   2: 127,734 ops/s
+Iteration   3: 127,638 ops/s
+Iteration   4: 127,736 ops/s
+Iteration   5: 129,398 ops/s
+
+
+Result "io.github.richardstartin.radixsort.RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection":
+  128,233 ±(99.9%) 2,974 ops/s [Average]
+  (min, avg, max) = (127,638, 128,233, 129,398), stdev = 0,772
+  CI (99.9%): [125,258, 131,207] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:07:19
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                      (bits)  (padding)          (scenario)  (seed)   (size)   Mode  Cnt     Score     Error  Units
+RadixSortBenchmark.arraysSort                                      23          7             UNIFORM       0  1000000  thrpt    5    15,523 ±   0,506  ops/s
+RadixSortBenchmark.arraysSort                                      23          7          CONTIGUOUS       0  1000000  thrpt    5  3590,679 ± 589,338  ops/s
+RadixSortBenchmark.arraysSort                                      23          7  CONTIGUOUS_REVERSE       0  1000000  thrpt    5  1361,479 ±  91,103  ops/s
+RadixSortBenchmark.arraysSort                                      23          7   ALMOST_CONTIGUOUS       0  1000000  thrpt    5   106,614 ±   0,448  ops/s
+RadixSortBenchmark.arraysSort                                      23          7              SORTED       0  1000000  thrpt    5    29,298 ±   0,293  ops/s
+RadixSortBenchmark.arraysSort                                      23          7       ALMOST_SORTED       0  1000000  thrpt    5    23,304 ±   0,154  ops/s
+RadixSortBenchmark.arraysSort                                      23          7                 EXP       0  1000000  thrpt    5    18,168 ±   0,093  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7             UNIFORM       0  1000000  thrpt    5    50,890 ±   0,803  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7          CONTIGUOUS       0  1000000  thrpt    5  1373,259 ±  26,176  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7  CONTIGUOUS_REVERSE       0  1000000  thrpt    5   823,515 ±  19,275  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7   ALMOST_CONTIGUOUS       0  1000000  thrpt    5    97,560 ±   1,367  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7              SORTED       0  1000000  thrpt    5    30,073 ±   0,397  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7       ALMOST_SORTED       0  1000000  thrpt    5    71,346 ±   1,138  ops/s
+RadixSortBenchmark.dpqs21_04NoAllocSort                            23          7                 EXP       0  1000000  thrpt    5    50,854 ±   1,828  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7             UNIFORM       0  1000000  thrpt    5    50,952 ±   0,489  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7          CONTIGUOUS       0  1000000  thrpt    5  1367,590 ±  25,434  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7  CONTIGUOUS_REVERSE       0  1000000  thrpt    5   810,535 ±  11,336  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7   ALMOST_CONTIGUOUS       0  1000000  thrpt    5    97,834 ±   1,301  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7              SORTED       0  1000000  thrpt    5    30,057 ±   0,249  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7       ALMOST_SORTED       0  1000000  thrpt    5    71,289 ±   1,020  ops/s
+RadixSortBenchmark.dpqs21_04Sort                                   23          7                 EXP       0  1000000  thrpt    5    51,197 ±   0,634  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7             UNIFORM       0  1000000  thrpt    5   140,518 ±   0,704  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7          CONTIGUOUS       0  1000000  thrpt    5    43,093 ±   0,312  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7  CONTIGUOUS_REVERSE       0  1000000  thrpt    5    41,783 ±   1,658  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7   ALMOST_CONTIGUOUS       0  1000000  thrpt    5    44,133 ±   1,207  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7              SORTED       0  1000000  thrpt    5   139,748 ±   2,081  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7       ALMOST_SORTED       0  1000000  thrpt    5   140,425 ±   3,636  ops/s
+RadixSortBenchmark.unrollOnePassSkipLevelsBufferWithDetection      23          7                 EXP       0  1000000  thrpt    5   128,233 ±   2,974  ops/s
