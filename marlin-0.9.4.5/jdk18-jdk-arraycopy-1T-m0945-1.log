@@ -1,0 +1,483 @@
+CPU_CORE_IDS: 3
+date:
+ven. 26 nov. 2021 11:32:49 CET
+JAVA_HOME: /home/bourgesl/apps/openjdk-jdk-linux-x86_64-server-release/jdk-arraycopy/
+CLASSPATH:   ../lib/mapbench-0.5.0.jar:../lib/org.jfree.svg-4.1-bourgesl-0.1.jar
+Boot CP:     
+Java opts:   -Dsun.java2d.renderer.useDPQS=true --patch-module java.desktop=../lib/marlin-0.9.4.5-Unsafe-OpenJDK11.jar -Dsun.java2d.renderer.clip=true -Dsun.java2d.renderer.log=true -Dsun.java2d.renderer.logCreateContext=false -Dsun.java2d.renderer.logUnsafeMalloc=false -Dsun.java2d.renderer.clip.curves= -Dsun.java2d.renderer.subPixel_log2_X=8 -Dsun.java2d.renderer.subPixel_log2_Y=3 -Dsun.java2d.renderer.useThreadLocal=true -Dsun.java2d.renderer.useSimplifier=false -Dsun.java2d.renderer.useRef=soft -Dsun.java2d.renderer.pixelWidth=4096 -Dsun.java2d.renderer.pixelHeight=2176 -Dsun.java2d.renderer.tileSize_log2=6 -Dsun.java2d.renderer.tileWidth_log2=7 -Dsun.java2d.renderer=sun.java2d.marlin.DMarlinRenderingEngine -Dsun.java2d.renderer.clip.subdivider=true -Dsun.java2d.renderer.clip.subdivider.minLength=100.0 -DMapBench.noAAclear=true -DMapBench.skipDraw=false -DMapBench.skipFill=false -DMapBench.clip.small=false -DMapBench.qualityMode=true -DMapBench.premultiplied=true -DMapBench.acceleration=false -DMapBench.volatile=false -DMapBench.4bytes=false -server
+Java tuning:  -Xms2g  -Xmx2g -XX:+UseParallelGC -XX:+AlwaysPreTouch -XX:+UseTransparentHugePages
+JVM path
+/home/bourgesl/apps/openjdk-jdk-linux-x86_64-server-release/jdk-arraycopy//bin//java
+Java version
+openjdk version "18-testing" 2022-03-15
+OpenJDK Runtime Environment (build 18-testing+0-builds.shipilev.net-openjdk-jdk-arraycopy-b2-20211125)
+OpenJDK 64-Bit Server VM (build 18-testing+0-builds.shipilev.net-openjdk-jdk-arraycopy-b2-20211125, mixed mode, sharing)
+##############################################################
+# Java: 18-testing+0-builds.shipilev.net-openjdk-jdk-arraycopy-b2-20211125
+#   VM: OpenJDK 64-Bit Server VM 18-testing+0-builds.shipilev.net-openjdk-jdk-arraycopy-b2-20211125 (mixed mode)
+#   OS: Linux 5.4.0-90-generic (amd64)
+# CPUs: 4 (virtual)
+##############################################################
+ERROR: Unable to get RenderingEngine.getInstance()
+# Renderer: unknown 
+# Quality mode: QUALITY...
+# Filter shape on size: DISABLED...
+# disableAA:         false 
+# disableAAForClear: true 
+# skipDraw:     false 
+# skipFill:     false 
+# useClipSmall: false 
+INFO: ===============================================================================
+INFO: Marlin software rasterizer           = ENABLED
+INFO: Version                              = [marlin-0.9.4.5-Unsafe-OpenJDK]
+INFO: sun.java2d.renderer                  = sun.java2d.marlin.DMarlinRenderingEngine
+INFO: sun.java2d.renderer.useThreadLocal   = true
+INFO: sun.java2d.renderer.useRef           = soft
+INFO: sun.java2d.renderer.edges            = 4096
+INFO: sun.java2d.renderer.pixelWidth       = 4096
+INFO: sun.java2d.renderer.pixelHeight      = 2176
+INFO: sun.java2d.renderer.profile          = quality
+INFO: sun.java2d.renderer.subPixel_log2_X  = 8
+INFO: sun.java2d.renderer.subPixel_log2_Y  = 3
+INFO: sun.java2d.renderer.tileSize_log2    = 6
+INFO: sun.java2d.renderer.tileWidth_log2   = 7
+INFO: sun.java2d.renderer.blockSize_log2   = 5
+INFO: sun.java2d.renderer.forceRLE         = false
+INFO: sun.java2d.renderer.forceNoRLE       = false
+INFO: sun.java2d.renderer.useTileFlags     = true
+INFO: sun.java2d.renderer.useTileFlags.useHeuristics = true
+INFO: sun.java2d.renderer.rleMinWidth      = 64
+INFO: sun.java2d.renderer.useSimplifier    = false
+INFO: sun.java2d.renderer.usePathSimplifier= false
+INFO: sun.java2d.renderer.pathSimplifier.pixTol = 0.125
+INFO: sun.java2d.renderer.clip             = true
+INFO: sun.java2d.renderer.clip.runtime.enable = false
+INFO: sun.java2d.renderer.clip.subdivider  = true
+INFO: sun.java2d.renderer.clip.subdivider.minLength = 100.0
+INFO: sun.java2d.renderer.doStats          = false
+INFO: sun.java2d.renderer.doMonitors       = false
+INFO: sun.java2d.renderer.doChecks         = false
+INFO: sun.java2d.renderer.useLogger        = false
+INFO: sun.java2d.renderer.logCreateContext = false
+INFO: sun.java2d.renderer.logUnsafeMalloc  = false
+INFO: sun.java2d.renderer.curve_len_err    = 0.01
+INFO: sun.java2d.renderer.cubic_dec_d2     = 1.0
+INFO: sun.java2d.renderer.cubic_inc_d1     = 0.2
+INFO: sun.java2d.renderer.quad_dec_d2      = 0.5
+INFO: Renderer settings:
+INFO: MergeSort: DPQS_THRESHOLD: 256
+INFO: MergeSort: DISABLE_ISORT_THRESHOLD: 1000
+INFO: SORT         = DPQS_20191112
+INFO: CUB_DEC_BND  = 256.0
+INFO: CUB_INC_BND  = 51.20000076293945
+INFO: QUAD_DEC_BND = 128.0
+INFO: INITIAL_EDGES_CAPACITY               = 98304
+INFO: INITIAL_CROSSING_COUNT               = 1024
+INFO: ===============================================================================
+# Using BufferedImage INT_ARGB_PRE...
+##############################################################
+profileName: shared_1T
+Loading profile file: /home/marlin/mapbench/bin/../profiles/shared_1T.properties
+Loading scale file: /home/marlin/mapbench/bin/../profiles/mapbench-scales.properties
+Profile properties (merged with defaults):
+  dashLength=3.0
+  doClip=false
+  doCreateStrokedShape=false
+  doRotate=false
+  doScale=false
+  doShear=false
+  doTranslate=false
+  doUseDashedStroke=false
+  doUseGradient=false
+  doUseTexture=false
+  doUseWingRuleEvenOdd=false
+  doUseWingRuleNonZero=false
+  imageX=NaN
+  imageY=NaN
+  iteration=1
+  maxThreads=1
+  minDuration=10000.0
+  minLoops=20
+  minThreads=1
+  pass=1
+  rotateAngle=17.333
+  scaleX=0.1
+  scaleY=0.1
+  shearX=2.0
+  shearY=2.0
+  translateX=0.0
+  translateY=0.0
+  useSharedImage=true
+  warmupCalibration=true
+  warmupLoopsMax=160
+  warmupLoopsMin=80
+  warmupLoopsMinTest=20
+### Test Scales:
+  dc_shp_alllayers_2013-00-30-07-00-47.ser=800
+  dc_spearfish_2013-11-30-06-11-19.ser=5
+  dc_boulder_2013-13-30-06-13-17.ser=100
+  dc_boulder_2013-13-30-06-13-20.ser=50
+  test_z_300k.ser=150
+  dc_topp:states_2013-11-30-06-11-07.ser=10
+  test_z_2.5M.ser=50
+  EllipseTests-fill-false.ser=200
+  test_z_1.25M.ser=100
+  test_z_150k.ser=100
+  dc_spearfish_2013-11-30-06-11-15.ser=10
+  spiralTest-fill.ser=800
+  test_z_10M.ser=50
+  spiralTest-dash-false.ser=1000
+  CircleTests.ser=50
+  EllipseTests-fill-true.ser=350
+  dc_shp_alllayers_2013-00-30-07-00-43.ser=50
+  test_z_625k.ser=150
+  test_z_5M.ser=50
+  dc_topp:states_2013-11-30-06-11-06.ser=10
+##############################################################
+# Min duration per test = 10000.0 ms.
+##############################################################
+Loading maps from = /home/marlin/mapbench/bin/../maps
+Results format: 
+Test                                         	Threads	Ops	Med	Pct95	Avg	StdDev	Min	Max	FPS(med)	TotalOps	Scale	[ms/op]
+
+Calibrating up with 1 threads and 3000 loops
+cleanup (explicit Full GC): 2,016,285,464 / 2,047,055,488 bytes free.
+No scaling factor found for test [[calibration]], use scale = 1.0
+Calibration up took 351.882812 ms
+[calibration]                                	1	3000	0.112	0.120	0.113	0.005	0.111	0.345	8924.667	3000	1.000
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/CircleTests.ser
+Loaded DrawingCommands: DrawingCommands{width=2048, height=2048, commands=2001}
+drawing[CircleTests.ser][width = 2048, height = 2048] ...
+
+Warming up with 1 threads and 80 loops on /home/marlin/mapbench/bin/../maps/CircleTests.ser
+cleanup (explicit Full GC): 2,029,089,728 / 2,046,410,432 bytes free.
+Warm up took 5346.683895 ms
+CircleTests.ser                              	1	80	61.292	62.574	66.801	28.138	61.035	252.610	16.315	80	2.000
+
+Warming up with 1 threads and 160 loops on /home/marlin/mapbench/bin/../maps/CircleTests.ser
+cleanup (explicit Full GC): 2,000,888,160 / 2,056,864,792 bytes free.
+Warm up took 9766.37317 ms
+CircleTests.ser                              	1	160	60.975	61.314	61.028	0.143	60.833	61.455	16.400	160	2.000
+cleanup (explicit Full GC): 2,018,528,744 / 2,056,863,240 bytes free.
+Initial test: 60.803487 ms.
+
+Warming up with 2 threads and 51 loops on /home/marlin/mapbench/bin/../maps/CircleTests.ser
+cleanup (explicit Full GC): 2,025,713,496 / 2,056,865,624 bytes free.
+Warm up took 6209.186659 ms
+CircleTests.ser                              	2	102	60.778	61.168	60.845	0.163	60.674	61.446	16.453	102	2.000
+cleanup (explicit Full GC): 2,005,345,496 / 2,056,863,944 bytes free.
+Initial test: 60.777194 ms.
+Testing file /home/marlin/mapbench/bin/../maps/CircleTests.ser for 173 loops ...
+cleanup (explicit Full GC): 2,025,714,200 / 2,056,865,464 bytes free.
+1 threads and 173 loops per thread, time: 10527.420871 ms
+CircleTests.ser                              	1	173	60.782	61.163	60.842	0.150	60.655	61.379	16.452	173	2.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/EllipseTests-fill-false.ser
+Loaded DrawingCommands: DrawingCommands{width=2000, height=2000, commands=198}
+drawing[EllipseTests-fill-false.ser][width = 2000, height = 2000] ...
+cleanup (explicit Full GC): 2,004,156,888 / 2,057,636,832 bytes free.
+Initial test: 276.636097 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/EllipseTests-fill-false.ser
+cleanup (explicit Full GC): 2,014,688,376 / 2,057,279,472 bytes free.
+Warm up took 10991.735851 ms
+EllipseTests-fill-false.ser                  	2	40	274.741	275.262	274.733	0.316	274.059	275.462	3.640	40	0.500
+cleanup (explicit Full GC): 2,009,110,376 / 2,057,278,712 bytes free.
+Initial test: 274.711044 ms.
+Testing file /home/marlin/mapbench/bin/../maps/EllipseTests-fill-false.ser for 38 loops ...
+cleanup (explicit Full GC): 2,025,109,632 / 2,057,279,400 bytes free.
+1 threads and 38 loops per thread, time: 10450.034952 ms
+EllipseTests-fill-false.ser                  	1	38	274.944	275.555	274.967	0.335	274.570	276.502	3.637	38	0.500
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/EllipseTests-fill-true.ser
+Loaded DrawingCommands: DrawingCommands{width=2000, height=2000, commands=198}
+drawing[EllipseTests-fill-true.ser][width = 2000, height = 2000] ...
+cleanup (explicit Full GC): 2,025,110,320 / 2,057,638,680 bytes free.
+Initial test: 327.353094 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/EllipseTests-fill-true.ser
+cleanup (explicit Full GC): 2,025,469,600 / 2,057,279,336 bytes free.
+Warm up took 12996.696971 ms
+EllipseTests-fill-true.ser                   	2	40	324.704	326.317	324.858	1.111	323.413	327.909	3.080	40	0.286
+cleanup (explicit Full GC): 1,998,330,848 / 2,057,278,608 bytes free.
+Initial test: 323.480811 ms.
+Testing file /home/marlin/mapbench/bin/../maps/EllipseTests-fill-true.ser for 32 loops ...
+cleanup (explicit Full GC): 2,025,109,528 / 2,057,279,296 bytes free.
+1 threads and 32 loops per thread, time: 10417.843381 ms
+EllipseTests-fill-true.ser                   	1	32	325.479	326.246	325.515	0.484	324.373	326.546	3.072	32	0.286
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/LineWidthColorGridTest.ser
+Loaded DrawingCommands: DrawingCommands{width=1260, height=1260, commands=3808}
+drawing[LineWidthColorGridTest.ser][width = 1260, height = 1260] ...
+cleanup (explicit Full GC): 2,025,110,216 / 2,056,472,616 bytes free.
+No scaling factor found for test [LineWidthColorGridTest.ser], use scale = 1.0
+Initial test: 57.951999 ms.
+
+Warming up with 2 threads and 54 loops on /home/marlin/mapbench/bin/../maps/LineWidthColorGridTest.ser
+cleanup (explicit Full GC): 2,040,303,552 / 2,056,113,032 bytes free.
+No scaling factor found for test [LineWidthColorGridTest.ser], use scale = 1.0
+Warm up took 5813.3202 ms
+LineWidthColorGridTest.ser                   	2	108	53.613	55.307	53.808	0.553	53.493	56.496	18.652	108	1.000
+cleanup (explicit Full GC): 2,022,814,144 / 2,056,111,256 bytes free.
+No scaling factor found for test [LineWidthColorGridTest.ser], use scale = 1.0
+Initial test: 54.12355 ms.
+Testing file /home/marlin/mapbench/bin/../maps/LineWidthColorGridTest.ser for 194 loops ...
+cleanup (explicit Full GC): 2,039,942,192 / 2,056,113,032 bytes free.
+No scaling factor found for test [LineWidthColorGridTest.ser], use scale = 1.0
+1 threads and 194 loops per thread, time: 10455.33319 ms
+LineWidthColorGridTest.ser                   	1	194	53.850	54.170	53.885	0.131	53.665	54.355	18.570	194	1.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-17.ser
+Loaded DrawingCommands: DrawingCommands{width=1400, height=800, commands=4398}
+drawing[dc_boulder_2013-13-30-06-13-17.ser][width = 1400, height = 800] ...
+cleanup (explicit Full GC): 2,007,605,464 / 2,055,978,152 bytes free.
+Initial test: 298.75812 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-17.ser
+cleanup (explicit Full GC): 2,029,029,712 / 2,055,456,120 bytes free.
+Warm up took 3535.767808 ms
+dc_boulder_2013-13-30-06-13-17.ser           	2	40	88.188	88.985	88.345	0.415	87.893	89.901	11.339	40	1.000
+cleanup (explicit Full GC): 2,033,897,352 / 2,055,455,216 bytes free.
+Initial test: 88.391581 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-17.ser for 119 loops ...
+cleanup (explicit Full GC): 2,039,286,152 / 2,055,455,904 bytes free.
+1 threads and 119 loops per thread, time: 10554.293934 ms
+dc_boulder_2013-13-30-06-13-17.ser           	1	119	88.592	89.227	88.678	0.264	88.409	89.505	11.288	119	1.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-20.ser
+Loaded DrawingCommands: DrawingCommands{width=1400, height=800, commands=2425}
+drawing[dc_boulder_2013-13-30-06-13-20.ser][width = 1400, height = 800] ...
+cleanup (explicit Full GC): 2,023,117,728 / 2,056,788,080 bytes free.
+Initial test: 45.985564 ms.
+
+Warming up with 2 threads and 68 loops on /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-20.ser
+cleanup (explicit Full GC): 2,029,839,640 / 2,056,403,552 bytes free.
+Warm up took 6138.25101 ms
+dc_boulder_2013-13-30-06-13-20.ser           	2	136	44.958	45.821	45.123	0.393	44.893	46.701	22.243	136	2.000
+cleanup (explicit Full GC): 2,034,844,784 / 2,056,401,328 bytes free.
+Initial test: 45.17515 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_boulder_2013-13-30-06-13-20.ser for 233 loops ...
+cleanup (explicit Full GC): 2,040,232,264 / 2,056,403,552 bytes free.
+1 threads and 233 loops per thread, time: 10488.152198 ms
+dc_boulder_2013-13-30-06-13-20.ser           	1	233	44.926	45.560	45.008	0.203	44.862	45.962	22.259	233	2.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-43.ser
+Loaded DrawingCommands: DrawingCommands{width=1400, height=800, commands=568}
+drawing[dc_shp_alllayers_2013-00-30-07-00-43.ser][width = 1400, height = 800] ...
+cleanup (explicit Full GC): 2,024,065,376 / 2,057,292,160 bytes free.
+Initial test: 37.649291 ms.
+
+Warming up with 2 threads and 83 loops on /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-43.ser
+cleanup (explicit Full GC): 2,041,123,096 / 2,056,929,984 bytes free.
+Warm up took 6263.580785 ms
+dc_shp_alllayers_2013-00-30-07-00-43.ser     	2	166	37.669	38.108	37.726	0.146	37.632	38.402	26.547	166	2.000
+cleanup (explicit Full GC): 2,040,760,920 / 2,056,927,280 bytes free.
+Initial test: 37.701674 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-43.ser for 279 loops ...
+cleanup (explicit Full GC): 2,040,758,216 / 2,056,929,984 bytes free.
+1 threads and 279 loops per thread, time: 10519.746523 ms
+dc_shp_alllayers_2013-00-30-07-00-43.ser     	1	279	37.653	38.032	37.702	0.131	37.622	38.445	26.559	279	2.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-47.ser
+Loaded DrawingCommands: DrawingCommands{width=1400, height=800, commands=135213}
+drawing[dc_shp_alllayers_2013-00-30-07-00-47.ser][width = 1400, height = 800] ...
+cleanup (explicit Full GC): 1,894,861,640 / 2,017,985,920 bytes free.
+Initial test: 884.705542 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-47.ser
+cleanup (explicit Full GC): 1,985,647,736 / 2,013,665,720 bytes free.
+Warm up took 35489.686278 ms
+dc_shp_alllayers_2013-00-30-07-00-47.ser     	2	40	887.007	887.400	887.033	0.266	886.628	888.099	1.127	40	0.125
+cleanup (explicit Full GC): 1,825,026,128 / 2,013,665,032 bytes free.
+Initial test: 884.490451 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_shp_alllayers_2013-00-30-07-00-47.ser for 20 loops ...
+cleanup (explicit Full GC): 1,986,716,560 / 2,013,665,720 bytes free.
+1 threads and 20 loops per thread, time: 17719.916602 ms
+dc_shp_alllayers_2013-00-30-07-00-47.ser     	1	20	885.801	886.266	885.716	0.521	884.165	886.285	1.129	20	0.125
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-15.ser
+Loaded DrawingCommands: DrawingCommands{width=512, height=359, commands=1232}
+drawing[dc_spearfish_2013-11-30-06-11-15.ser][width = 512, height = 359] ...
+cleanup (explicit Full GC): 1,900,482,016 / 2,057,236,248 bytes free.
+Initial test: 14.505741 ms.
+
+Warming up with 2 threads and 217 loops on /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-15.ser
+cleanup (explicit Full GC): 2,041,067,184 / 2,056,835,936 bytes free.
+Warm up took 5290.518274 ms
+dc_spearfish_2013-11-30-06-11-15.ser         	2	434	12.169	12.204	12.189	0.174	12.141	14.750	82.174	434	10.000
+cleanup (explicit Full GC): 2,013,718,384 / 2,056,828,584 bytes free.
+Initial test: 12.244832 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-15.ser for 859 loops ...
+cleanup (explicit Full GC): 2,040,659,520 / 2,056,835,576 bytes free.
+1 threads and 859 loops per thread, time: 10512.262473 ms
+dc_spearfish_2013-11-30-06-11-15.ser         	1	859	12.235	12.252	12.237	0.016	12.213	12.578	81.730	859	10.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-19.ser
+Loaded DrawingCommands: DrawingCommands{width=512, height=359, commands=349}
+drawing[dc_spearfish_2013-11-30-06-11-19.ser][width = 512, height = 359] ...
+cleanup (explicit Full GC): 2,008,328,288 / 2,057,513,872 bytes free.
+Initial test: 6.112024 ms.
+
+Warming up with 2 threads and 516 loops on /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-19.ser
+cleanup (explicit Full GC): 2,041,344,808 / 2,057,158,624 bytes free.
+Warm up took 6190.250186 ms
+dc_spearfish_2013-11-30-06-11-19.ser         	2	1032	5.985	5.999	5.998	0.126	5.972	7.708	167.080	1032	20.000
+cleanup (explicit Full GC): 2,030,210,152 / 2,057,142,064 bytes free.
+Initial test: 5.995458 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_spearfish_2013-11-30-06-11-19.ser for 1755 loops ...
+cleanup (explicit Full GC): 2,040,973,000 / 2,057,158,624 bytes free.
+1 threads and 1755 loops per thread, time: 10505.178518 ms
+dc_spearfish_2013-11-30-06-11-19.ser         	1	1755	5.984	5.994	5.985	0.010	5.971	6.176	167.104	1755	20.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-06.ser
+Loaded DrawingCommands: DrawingCommands{width=780, height=330, commands=119}
+drawing[dc_topp:states_2013-11-30-06-11-06.ser][width = 780, height = 330] ...
+cleanup (explicit Full GC): 2,014,041,072 / 2,057,455,312 bytes free.
+Initial test: 11.337619 ms.
+
+Warming up with 2 threads and 278 loops on /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-06.ser
+cleanup (explicit Full GC): 2,041,286,248 / 2,057,119,856 bytes free.
+Warm up took 6300.428959 ms
+dc_topp:states_2013-11-30-06-11-06.ser       	2	556	11.328	11.345	11.331	0.019	11.309	11.676	88.274	556	10.000
+cleanup (explicit Full GC): 2,040,950,792 / 2,057,110,912 bytes free.
+Initial test: 11.32571 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-06.ser for 929 loops ...
+cleanup (explicit Full GC): 2,040,941,848 / 2,057,119,856 bytes free.
+1 threads and 929 loops per thread, time: 10520.203855 ms
+dc_topp:states_2013-11-30-06-11-06.ser       	1	929	11.323	11.336	11.324	0.015	11.300	11.685	88.318	929	10.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-07.ser
+Loaded DrawingCommands: DrawingCommands{width=780, height=330, commands=144}
+drawing[dc_topp:states_2013-11-30-06-11-07.ser][width = 780, height = 330] ...
+cleanup (explicit Full GC): 2,040,950,792 / 2,057,489,760 bytes free.
+Initial test: 7.196124 ms.
+
+Warming up with 2 threads and 438 loops on /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-07.ser
+cleanup (explicit Full GC): 2,041,320,696 / 2,057,140,440 bytes free.
+Warm up took 6364.790883 ms
+dc_topp:states_2013-11-30-06-11-07.ser       	2	876	7.237	7.341	7.265	0.046	7.212	7.516	138.179	876	10.000
+cleanup (explicit Full GC): 2,040,971,376 / 2,057,126,376 bytes free.
+Initial test: 7.300042 ms.
+Testing file /home/marlin/mapbench/bin/../maps/dc_topp:states_2013-11-30-06-11-07.ser for 1441 loops ...
+cleanup (explicit Full GC): 2,030,177,936 / 2,057,140,376 bytes free.
+1 threads and 1441 loops per thread, time: 10411.949635 ms
+dc_topp:states_2013-11-30-06-11-07.ser       	1	1441	7.200	7.290	7.225	0.045	7.169	7.614	138.897	1441	10.000
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/spiralTest-dash-false.ser
+Loaded DrawingCommands: DrawingCommands{width=4096, height=4096, commands=1}
+drawing[spiralTest-dash-false.ser][width = 4096, height = 4096] ...
+cleanup (explicit Full GC): 1,969,699,440 / 2,049,242,896 bytes free.
+Initial test: 1083.889541 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/spiralTest-dash-false.ser
+cleanup (explicit Full GC): 1,885,224,520 / 2,048,871,864 bytes free.
+Warm up took 37139.059708 ms
+spiralTest-dash-false.ser                    	2	40	929.470	930.534	928.275	2.273	924.164	935.084	1.076	40	0.100
+cleanup (explicit Full GC): 1,806,965,232 / 2,048,870,904 bytes free.
+Initial test: 932.437377 ms.
+Testing file /home/marlin/mapbench/bin/../maps/spiralTest-dash-false.ser for 20 loops ...
+cleanup (explicit Full GC): 1,884,852,528 / 2,048,871,592 bytes free.
+1 threads and 20 loops per thread, time: 18645.384051 ms
+spiralTest-dash-false.ser                    	1	20	931.846	932.801	932.071	1.238	931.338	937.307	1.073	20	0.100
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/spiralTest-fill.ser
+Loaded DrawingCommands: DrawingCommands{width=4096, height=4096, commands=1}
+drawing[spiralTest-fill.ser][width = 4096, height = 4096] ...
+cleanup (explicit Full GC): 1,742,390,192 / 2,040,639,960 bytes free.
+Initial test: 784.927036 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/spiralTest-fill.ser
+cleanup (explicit Full GC): 1,961,853,144 / 2,040,247,592 bytes free.
+Warm up took 31456.885741 ms
+spiralTest-fill.ser                          	2	40	786.258	787.731	786.218	1.047	784.467	788.879	1.272	40	0.125
+cleanup (explicit Full GC): 1,894,351,896 / 2,040,246,904 bytes free.
+Initial test: 786.485884 ms.
+Testing file /home/marlin/mapbench/bin/../maps/spiralTest-fill.ser for 20 loops ...
+cleanup (explicit Full GC): 1,961,460,088 / 2,040,247,592 bytes free.
+1 threads and 20 loops per thread, time: 15726.511241 ms
+spiralTest-fill.ser                          	1	20	786.170	787.881	786.128	1.024	784.108	788.065	1.272	20	0.125
+
+
+Loading drawing commands from file: /home/marlin/mapbench/bin/../maps/test_z_625k.ser
+Loaded DrawingCommands: DrawingCommands{width=1272, height=1261, commands=23345}
+drawing[test_z_625k.ser][width = 1272, height = 1261] ...
+cleanup (explicit Full GC): 1,943,494,560 / 2,050,746,264 bytes free.
+Initial test: 151.131668 ms.
+
+Warming up with 2 threads and 20 loops on /home/marlin/mapbench/bin/../maps/test_z_625k.ser
+cleanup (explicit Full GC): 2,025,594,112 / 2,049,578,560 bytes free.
+Warm up took 5992.536354 ms
+test_z_625k.ser                              	2	40	149.698	150.303	149.762	0.265	149.421	150.477	6.680	40	0.667
+cleanup (explicit Full GC): 2,001,841,280 / 2,049,577,872 bytes free.
+Initial test: 149.674023 ms.
+Testing file /home/marlin/mapbench/bin/../maps/test_z_625k.ser for 70 loops ...
+cleanup (explicit Full GC): 2,035,205,096 / 2,049,578,560 bytes free.
+1 threads and 70 loops per thread, time: 10491.644648 ms
+test_z_625k.ser                              	1	70	149.816	150.289	149.858	0.228	149.566	150.433	6.675	70	0.667
+
+
+WARMUP results:
+Test                                         	Threads	Ops	Med	Pct95	Avg	StdDev	Min	Max	FPS(med)	TotalOps	Scale	[ms/op]
+<<< Calib 1
+[calibration]                                	1	3000	0.112	0.120	0.113	0.005	0.111	0.345	8924.667	3000	1.000
+>>> Calib 1
+<<< Warmup 1
+CircleTests.ser                              	1	80	61.292	62.574	66.801	28.138	61.035	252.610	16.315	80	2.000
+>>> Warmup 1
+<<< Warmup 2
+CircleTests.ser                              	1	160	60.975	61.314	61.028	0.143	60.833	61.455	16.400	160	2.000
+>>> Warmup 2
+CircleTests.ser                              	2	102	60.778	61.168	60.845	0.163	60.674	61.446	16.453	102	2.000
+EllipseTests-fill-false.ser                  	2	40	274.741	275.262	274.733	0.316	274.059	275.462	3.640	40	0.500
+EllipseTests-fill-true.ser                   	2	40	324.704	326.317	324.858	1.111	323.413	327.909	3.080	40	0.286
+LineWidthColorGridTest.ser                   	2	108	53.613	55.307	53.808	0.553	53.493	56.496	18.652	108	1.000
+dc_boulder_2013-13-30-06-13-17.ser           	2	40	88.188	88.985	88.345	0.415	87.893	89.901	11.339	40	1.000
+dc_boulder_2013-13-30-06-13-20.ser           	2	136	44.958	45.821	45.123	0.393	44.893	46.701	22.243	136	2.000
+dc_shp_alllayers_2013-00-30-07-00-43.ser     	2	166	37.669	38.108	37.726	0.146	37.632	38.402	26.547	166	2.000
+dc_shp_alllayers_2013-00-30-07-00-47.ser     	2	40	887.007	887.400	887.033	0.266	886.628	888.099	1.127	40	0.125
+dc_spearfish_2013-11-30-06-11-15.ser         	2	434	12.169	12.204	12.189	0.174	12.141	14.750	82.174	434	10.000
+dc_spearfish_2013-11-30-06-11-19.ser         	2	1032	5.985	5.999	5.998	0.126	5.972	7.708	167.080	1032	20.000
+dc_topp:states_2013-11-30-06-11-06.ser       	2	556	11.328	11.345	11.331	0.019	11.309	11.676	88.274	556	10.000
+dc_topp:states_2013-11-30-06-11-07.ser       	2	876	7.237	7.341	7.265	0.046	7.212	7.516	138.179	876	10.000
+spiralTest-dash-false.ser                    	2	40	929.470	930.534	928.275	2.273	924.164	935.084	1.076	40	0.100
+spiralTest-fill.ser                          	2	40	786.258	787.731	786.218	1.047	784.467	788.879	1.272	40	0.125
+test_z_625k.ser                              	2	40	149.698	150.303	149.762	0.265	149.421	150.477	6.680	40	0.667
+
+TEST results:
+Test                                         	Threads	Ops	Med	Pct95	Avg	StdDev	Min	Max	FPS(med)	TotalOps	Scale	[ms/op]
+CircleTests.ser                              	1	173	60.782	61.163	60.842	0.150	60.655	61.379	16.452	173	2.000
+EllipseTests-fill-false.ser                  	1	38	274.944	275.555	274.967	0.335	274.570	276.502	3.637	38	0.500
+EllipseTests-fill-true.ser                   	1	32	325.479	326.246	325.515	0.484	324.373	326.546	3.072	32	0.286
+LineWidthColorGridTest.ser                   	1	194	53.850	54.170	53.885	0.131	53.665	54.355	18.570	194	1.000
+dc_boulder_2013-13-30-06-13-17.ser           	1	119	88.592	89.227	88.678	0.264	88.409	89.505	11.288	119	1.000
+dc_boulder_2013-13-30-06-13-20.ser           	1	233	44.926	45.560	45.008	0.203	44.862	45.962	22.259	233	2.000
+dc_shp_alllayers_2013-00-30-07-00-43.ser     	1	279	37.653	38.032	37.702	0.131	37.622	38.445	26.559	279	2.000
+dc_shp_alllayers_2013-00-30-07-00-47.ser     	1	20	885.801	886.266	885.716	0.521	884.165	886.285	1.129	20	0.125
+dc_spearfish_2013-11-30-06-11-15.ser         	1	859	12.235	12.252	12.237	0.016	12.213	12.578	81.730	859	10.000
+dc_spearfish_2013-11-30-06-11-19.ser         	1	1755	5.984	5.994	5.985	0.010	5.971	6.176	167.104	1755	20.000
+dc_topp:states_2013-11-30-06-11-06.ser       	1	929	11.323	11.336	11.324	0.015	11.300	11.685	88.318	929	10.000
+dc_topp:states_2013-11-30-06-11-07.ser       	1	1441	7.200	7.290	7.225	0.045	7.169	7.614	138.897	1441	10.000
+spiralTest-dash-false.ser                    	1	20	931.846	932.801	932.071	1.238	931.338	937.307	1.073	20	0.100
+spiralTest-fill.ser                          	1	20	786.170	787.881	786.128	1.024	784.108	788.065	1.272	20	0.125
+test_z_625k.ser                              	1	70	149.816	150.289	149.858	0.228	149.566	150.433	6.675	70	0.667
+
+Scores:
+Tests	15	15	
+Threads	1	1	
+Med	99.263	99.263	
+Pct95	99.687	99.687	
+FPS	39.202	39.202	
+

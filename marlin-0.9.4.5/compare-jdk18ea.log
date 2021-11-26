@@ -1,0 +1,36 @@
+ grep "Pct95" jdk18*.log > compare-jdk18ea.log
+
+- 1 to 4 threads:
+ 
+jdk18-jdk-m0945.log:Pct95	102.701	100.111	101.298	106.693
+jdk18-jdk-arraycopy-m0945.log:Pct95	102.441	99.723	101.232	106.368	
+
+
+- 1 thread only:
+
+jdk18-jdk-1T-m0945.log:Pct95	99.794	99.794	
+jdk18-jdk-arraycopy-1T-m0945.log:Pct95	100.341	100.341	
+
+
+jdk18-jdk-1T-m0945-1.log:Pct95	99.648	99.648	
+jdk18-jdk-1T-m0945-2.log:Pct95	100.496	100.496	
+jdk18-jdk-1T-m0945-3.log:Pct95	99.782	99.782	
+jdk18-jdk-1T-m0945-4.log:Pct95	99.234	99.234	
+jdk18-jdk-1T-m0945-5.log:Pct95	99.837	99.837	
+jdk18-jdk-1T-m0945-6.log:Pct95	99.837	99.837	
+jdk18-jdk-1T-m0945-7.log:Pct95	100.390	100.390	
+jdk18-jdk-1T-m0945-8.log:Pct95	99.434	99.434	
+jdk18-jdk-1T-m0945-9.log:Pct95	99.384	99.384	
+
+
+jdk18-jdk-arraycopy-1T-m0945-1.log:Pct95	99.687	99.687	
+jdk18-jdk-arraycopy-1T-m0945-2.log:Pct95	99.707	99.707	
+jdk18-jdk-arraycopy-1T-m0945-3.log:Pct95	98.789	98.789	
+jdk18-jdk-arraycopy-1T-m0945-4.log:Pct95	99.917	99.917	
+jdk18-jdk-arraycopy-1T-m0945-5.log:Pct95	100.522	100.522	
+jdk18-jdk-arraycopy-1T-m0945-6.log:Pct95	100.727	100.727	
+jdk18-jdk-arraycopy-1T-m0945-7.log:Pct95	99.826	99.826	
+jdk18-jdk-arraycopy-1T-m0945-8.log:Pct95	99.688	99.688	
+jdk18-jdk-arraycopy-1T-m0945-9.log:Pct95	99.848	99.848	
+
+
