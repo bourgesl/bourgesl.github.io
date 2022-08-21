@@ -1,0 +1,506 @@
+--- Running JMH ---
+ArraysSort: PARALLELISM = 3
+
+...
+
+# Run complete. Total time: 03:15:17
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                            (size)    (type)  Mode  Cnt    Score    Error  Units
+
+
+Main.Byte.newParallelSort              1000    RANDOM  avgt    4    0,006 ±  0,001  ms/op
+Main.Byte.newParallelSort              1000  REPEATED  avgt    4    0,002 ±  0,003  ms/op
+Main.Byte.newParallelSort              1000   STAGGER  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.newParallelSort              1000   SHUFFLE  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.newParallelSort             10000    RANDOM  avgt    4    0,016 ±  0,002  ms/op
+Main.Byte.newParallelSort             10000  REPEATED  avgt    4    0,012 ±  0,010  ms/op
+Main.Byte.newParallelSort             10000   STAGGER  avgt    4    0,011 ±  0,005  ms/op
+Main.Byte.newParallelSort             10000   SHUFFLE  avgt    4    0,011 ±  0,001  ms/op
+Main.Byte.newParallelSort            100000    RANDOM  avgt    4    0,103 ±  0,022  ms/op
+Main.Byte.newParallelSort            100000  REPEATED  avgt    4    0,087 ±  0,002  ms/op
+Main.Byte.newParallelSort            100000   STAGGER  avgt    4    0,093 ±  0,001  ms/op
+Main.Byte.newParallelSort            100000   SHUFFLE  avgt    4    0,095 ±  0,009  ms/op
+Main.Byte.newParallelSort           1000000    RANDOM  avgt    4    0,893 ±  0,003  ms/op
+Main.Byte.newParallelSort           1000000  REPEATED  avgt    4    0,875 ±  0,010  ms/op
+Main.Byte.newParallelSort           1000000   STAGGER  avgt    4    0,864 ±  0,007  ms/op
+Main.Byte.newParallelSort           1000000   SHUFFLE  avgt    4    0,862 ±  0,018  ms/op
+
+Main.Byte.testParallelSort             1000    RANDOM  avgt    4    0,006 ±  0,001  ms/op
+Main.Byte.testParallelSort             1000  REPEATED  avgt    4    0,002 ±  0,003  ms/op
+Main.Byte.testParallelSort             1000   STAGGER  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.testParallelSort             1000   SHUFFLE  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.testParallelSort            10000    RANDOM  avgt    4    0,016 ±  0,002  ms/op
+Main.Byte.testParallelSort            10000  REPEATED  avgt    4    0,012 ±  0,010  ms/op
+Main.Byte.testParallelSort            10000   STAGGER  avgt    4    0,011 ±  0,005  ms/op
+Main.Byte.testParallelSort            10000   SHUFFLE  avgt    4    0,011 ±  0,001  ms/op
+Main.Byte.testParallelSort           100000    RANDOM  avgt    4    0,103 ±  0,022  ms/op
+Main.Byte.testParallelSort           100000  REPEATED  avgt    4    0,091 ±  0,002  ms/op
+Main.Byte.testParallelSort           100000   STAGGER  avgt    4    0,093 ±  0,001  ms/op
+Main.Byte.testParallelSort           100000   SHUFFLE  avgt    4    0,095 ±  0,013  ms/op
+Main.Byte.testParallelSort          1000000    RANDOM  avgt    4    0,894 ±  0,028  ms/op
+Main.Byte.testParallelSort          1000000  REPEATED  avgt    4    0,876 ±  0,006  ms/op
+Main.Byte.testParallelSort          1000000   STAGGER  avgt    4    0,864 ±  0,002  ms/op
+Main.Byte.testParallelSort          1000000   SHUFFLE  avgt    4    0,863 ±  0,041  ms/op
+
+Main.Byte.newSort                      1000    RANDOM  avgt    4    0,006 ±  0,001  ms/op
+Main.Byte.newSort                      1000  REPEATED  avgt    4    0,002 ±  0,003  ms/op
+Main.Byte.newSort                      1000   STAGGER  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.newSort                      1000   SHUFFLE  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.newSort                     10000    RANDOM  avgt    4    0,016 ±  0,002  ms/op
+Main.Byte.newSort                     10000  REPEATED  avgt    4    0,012 ±  0,010  ms/op
+Main.Byte.newSort                     10000   STAGGER  avgt    4    0,011 ±  0,005  ms/op
+Main.Byte.newSort                     10000   SHUFFLE  avgt    4    0,011 ±  0,001  ms/op
+Main.Byte.newSort                    100000    RANDOM  avgt    4    0,103 ±  0,023  ms/op
+Main.Byte.newSort                    100000  REPEATED  avgt    4    0,087 ±  0,003  ms/op
+Main.Byte.newSort                    100000   STAGGER  avgt    4    0,094 ±  0,001  ms/op
+Main.Byte.newSort                    100000   SHUFFLE  avgt    4    0,095 ±  0,005  ms/op
+Main.Byte.newSort                   1000000    RANDOM  avgt    4    0,890 ±  0,002  ms/op
+Main.Byte.newSort                   1000000  REPEATED  avgt    4    0,874 ±  0,003  ms/op
+Main.Byte.newSort                   1000000   STAGGER  avgt    4    0,864 ±  0,005  ms/op
+Main.Byte.newSort                   1000000   SHUFFLE  avgt    4    0,863 ±  0,022  ms/op
+
+Main.Byte.testSort                     1000    RANDOM  avgt    4    0,006 ±  0,001  ms/op
+Main.Byte.testSort                     1000  REPEATED  avgt    4    0,002 ±  0,003  ms/op
+Main.Byte.testSort                     1000   STAGGER  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.testSort                     1000   SHUFFLE  avgt    4    0,002 ±  0,001  ms/op
+Main.Byte.testSort                    10000    RANDOM  avgt    4    0,016 ±  0,002  ms/op
+Main.Byte.testSort                    10000  REPEATED  avgt    4    0,012 ±  0,010  ms/op
+Main.Byte.testSort                    10000   STAGGER  avgt    4    0,011 ±  0,005  ms/op
+Main.Byte.testSort                    10000   SHUFFLE  avgt    4    0,011 ±  0,001  ms/op
+Main.Byte.testSort                   100000    RANDOM  avgt    4    0,103 ±  0,023  ms/op
+Main.Byte.testSort                   100000  REPEATED  avgt    4    0,087 ±  0,001  ms/op
+Main.Byte.testSort                   100000   STAGGER  avgt    4    0,094 ±  0,001  ms/op
+Main.Byte.testSort                   100000   SHUFFLE  avgt    4    0,095 ±  0,010  ms/op
+Main.Byte.testSort                  1000000    RANDOM  avgt    4    0,895 ±  0,041  ms/op
+Main.Byte.testSort                  1000000  REPEATED  avgt    4    0,875 ±  0,008  ms/op
+Main.Byte.testSort                  1000000   STAGGER  avgt    4    0,864 ±  0,006  ms/op
+Main.Byte.testSort                  1000000   SHUFFLE  avgt    4    0,863 ±  0,007  ms/op
+
+
+Main.Char.newParallelSort              1000    RANDOM  avgt    4    0,058 ±  0,001  ms/op
+Main.Char.newParallelSort              1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Char.newParallelSort              1000   STAGGER  avgt    4    0,027 ±  0,001  ms/op
+Main.Char.newParallelSort              1000   SHUFFLE  avgt    4    0,032 ±  0,001  ms/op
+Main.Char.newParallelSort             10000    RANDOM  avgt    4    0,241 ±  0,002  ms/op
+Main.Char.newParallelSort             10000  REPEATED  avgt    4    0,060 ±  0,013  ms/op
+Main.Char.newParallelSort             10000   STAGGER  avgt    4    0,079 ±  0,047  ms/op
+Main.Char.newParallelSort             10000   SHUFFLE  avgt    4    0,086 ±  0,005  ms/op
+Main.Char.newParallelSort            100000    RANDOM  avgt    4    1,061 ±  0,022  ms/op
+Main.Char.newParallelSort            100000  REPEATED  avgt    4    0,228 ±  0,005  ms/op
+Main.Char.newParallelSort            100000   STAGGER  avgt    4    0,306 ±  0,016  ms/op
+Main.Char.newParallelSort            100000   SHUFFLE  avgt    4    0,305 ±  0,110  ms/op
+Main.Char.newParallelSort           1000000    RANDOM  avgt    4    3,122 ±  0,006  ms/op
+Main.Char.newParallelSort           1000000  REPEATED  avgt    4    1,102 ±  0,016  ms/op
+Main.Char.newParallelSort           1000000   STAGGER  avgt    4    1,543 ±  0,023  ms/op
+Main.Char.newParallelSort           1000000   SHUFFLE  avgt    4    1,408 ±  0,006  ms/op
+
+Main.Char.testParallelSort             1000    RANDOM  avgt    4    0,054 ±  0,001  ms/op
+Main.Char.testParallelSort             1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Char.testParallelSort             1000   STAGGER  avgt    4    0,022 ±  0,001  ms/op
+Main.Char.testParallelSort             1000   SHUFFLE  avgt    4    0,031 ±  0,001  ms/op
+Main.Char.testParallelSort            10000    RANDOM  avgt    4    0,238 ±  0,003  ms/op
+Main.Char.testParallelSort            10000  REPEATED  avgt    4    0,060 ±  0,013  ms/op
+Main.Char.testParallelSort            10000   STAGGER  avgt    4    0,080 ±  0,036  ms/op
+Main.Char.testParallelSort            10000   SHUFFLE  avgt    4    0,081 ±  0,001  ms/op
+Main.Char.testParallelSort           100000    RANDOM  avgt    4    1,061 ±  0,028  ms/op
+Main.Char.testParallelSort           100000  REPEATED  avgt    4    0,229 ±  0,004  ms/op
+Main.Char.testParallelSort           100000   STAGGER  avgt    4    0,306 ±  0,018  ms/op
+Main.Char.testParallelSort           100000   SHUFFLE  avgt    4    0,308 ±  0,074  ms/op
+Main.Char.testParallelSort          1000000    RANDOM  avgt    4    3,131 ±  0,023  ms/op
+Main.Char.testParallelSort          1000000  REPEATED  avgt    4    1,106 ±  0,004  ms/op
+Main.Char.testParallelSort          1000000   STAGGER  avgt    4    1,539 ±  0,018  ms/op
+Main.Char.testParallelSort          1000000   SHUFFLE  avgt    4    1,406 ±  0,009  ms/op
+
+Main.Char.newSort                      1000    RANDOM  avgt    4    0,058 ±  0,001  ms/op
+Main.Char.newSort                      1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Char.newSort                      1000   STAGGER  avgt    4    0,027 ±  0,001  ms/op
+Main.Char.newSort                      1000   SHUFFLE  avgt    4    0,032 ±  0,001  ms/op
+Main.Char.newSort                     10000    RANDOM  avgt    4    0,242 ±  0,002  ms/op
+Main.Char.newSort                     10000  REPEATED  avgt    4    0,060 ±  0,013  ms/op
+Main.Char.newSort                     10000   STAGGER  avgt    4    0,079 ±  0,045  ms/op
+Main.Char.newSort                     10000   SHUFFLE  avgt    4    0,081 ±  0,002  ms/op
+Main.Char.newSort                    100000    RANDOM  avgt    4    1,061 ±  0,016  ms/op
+Main.Char.newSort                    100000  REPEATED  avgt    4    0,227 ±  0,005  ms/op
+Main.Char.newSort                    100000   STAGGER  avgt    4    0,307 ±  0,015  ms/op
+Main.Char.newSort                    100000   SHUFFLE  avgt    4    0,306 ±  0,089  ms/op
+Main.Char.newSort                   1000000    RANDOM  avgt    4    3,135 ±  0,032  ms/op
+Main.Char.newSort                   1000000  REPEATED  avgt    4    1,105 ±  0,011  ms/op
+Main.Char.newSort                   1000000   STAGGER  avgt    4    1,542 ±  0,018  ms/op
+Main.Char.newSort                   1000000   SHUFFLE  avgt    4    1,409 ±  0,031  ms/op
+
+Main.Char.testSort                     1000    RANDOM  avgt    4    0,055 ±  0,001  ms/op
+Main.Char.testSort                     1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Char.testSort                     1000   STAGGER  avgt    4    0,022 ±  0,002  ms/op
+Main.Char.testSort                     1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Char.testSort                    10000    RANDOM  avgt    4    0,244 ±  0,003  ms/op
+Main.Char.testSort                    10000  REPEATED  avgt    4    0,060 ±  0,013  ms/op
+Main.Char.testSort                    10000   STAGGER  avgt    4    0,079 ±  0,035  ms/op
+Main.Char.testSort                    10000   SHUFFLE  avgt    4    0,086 ±  0,004  ms/op
+Main.Char.testSort                   100000    RANDOM  avgt    4    1,055 ±  0,067  ms/op
+Main.Char.testSort                   100000  REPEATED  avgt    4    0,198 ±  0,002  ms/op
+Main.Char.testSort                   100000   STAGGER  avgt    4    0,305 ±  0,033  ms/op
+Main.Char.testSort                   100000   SHUFFLE  avgt    4    0,311 ±  0,070  ms/op
+Main.Char.testSort                  1000000    RANDOM  avgt    4    3,122 ±  0,001  ms/op
+Main.Char.testSort                  1000000  REPEATED  avgt    4    1,103 ±  0,024  ms/op
+Main.Char.testSort                  1000000   STAGGER  avgt    4    1,540 ±  0,030  ms/op
+Main.Char.testSort                  1000000   SHUFFLE  avgt    4    1,406 ±  0,019  ms/op
+
+
+Main.Double.newParallelSort            1000    RANDOM  avgt    4    0,040 ±  0,001  ms/op
+Main.Double.newParallelSort            1000  REPEATED  avgt    4    0,021 ±  0,001  ms/op
+Main.Double.newParallelSort            1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Double.newParallelSort            1000   SHUFFLE  avgt    4    0,026 ±  0,001  ms/op
+Main.Double.newParallelSort           10000    RANDOM  avgt    4    0,337 ±  0,024  ms/op
+Main.Double.newParallelSort           10000  REPEATED  avgt    4    0,100 ±  0,005  ms/op
+Main.Double.newParallelSort           10000   STAGGER  avgt    4    0,079 ±  0,005  ms/op
+Main.Double.newParallelSort           10000   SHUFFLE  avgt    4    0,149 ±  0,011  ms/op
+Main.Double.newParallelSort          100000    RANDOM  avgt    4    2,442 ±  0,049  ms/op
+Main.Double.newParallelSort          100000  REPEATED  avgt    4    0,632 ±  0,036  ms/op
+Main.Double.newParallelSort          100000   STAGGER  avgt    4    0,612 ±  0,021  ms/op
+Main.Double.newParallelSort          100000   SHUFFLE  avgt    4    1,009 ±  0,048  ms/op
+Main.Double.newParallelSort         1000000    RANDOM  avgt    4   25,362 ±  1,183  ms/op
+Main.Double.newParallelSort         1000000  REPEATED  avgt    4    5,262 ±  0,106  ms/op
+Main.Double.newParallelSort         1000000   STAGGER  avgt    4    5,876 ±  0,101  ms/op
+Main.Double.newParallelSort         1000000   SHUFFLE  avgt    4   11,009 ±  0,184  ms/op
+
+Main.Double.testParallelSort           1000    RANDOM  avgt    4    0,062 ±  0,001  ms/op
+Main.Double.testParallelSort           1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Double.testParallelSort           1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Double.testParallelSort           1000   SHUFFLE  avgt    4    0,033 ±  0,001  ms/op
+Main.Double.testParallelSort          10000    RANDOM  avgt    4    0,531 ±  0,003  ms/op
+Main.Double.testParallelSort          10000  REPEATED  avgt    4    0,088 ±  0,001  ms/op
+Main.Double.testParallelSort          10000   STAGGER  avgt    4    0,082 ±  0,005  ms/op
+Main.Double.testParallelSort          10000   SHUFFLE  avgt    4    0,289 ±  0,004  ms/op
+Main.Double.testParallelSort         100000    RANDOM  avgt    4    3,993 ±  0,048  ms/op
+Main.Double.testParallelSort         100000  REPEATED  avgt    4    0,851 ±  0,046  ms/op
+Main.Double.testParallelSort         100000   STAGGER  avgt    4    0,730 ±  0,018  ms/op
+Main.Double.testParallelSort         100000   SHUFFLE  avgt    4    1,781 ±  0,015  ms/op
+Main.Double.testParallelSort        1000000    RANDOM  avgt    4   42,358 ±  0,670  ms/op
+Main.Double.testParallelSort        1000000  REPEATED  avgt    4    5,908 ±  0,039  ms/op
+Main.Double.testParallelSort        1000000   STAGGER  avgt    4    6,319 ±  0,073  ms/op
+Main.Double.testParallelSort        1000000   SHUFFLE  avgt    4   16,307 ±  0,355  ms/op
+
+Main.Double.newSort                    1000    RANDOM  avgt    4    0,040 ±  0,001  ms/op
+Main.Double.newSort                    1000  REPEATED  avgt    4    0,021 ±  0,001  ms/op
+Main.Double.newSort                    1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Double.newSort                    1000   SHUFFLE  avgt    4    0,027 ±  0,001  ms/op
+Main.Double.newSort                   10000    RANDOM  avgt    4    0,499 ±  0,003  ms/op
+Main.Double.newSort                   10000  REPEATED  avgt    4    0,159 ±  0,001  ms/op
+Main.Double.newSort                   10000   STAGGER  avgt    4    0,084 ±  0,003  ms/op
+Main.Double.newSort                   10000   SHUFFLE  avgt    4    0,232 ±  0,003  ms/op
+Main.Double.newSort                  100000    RANDOM  avgt    4    6,370 ±  0,177  ms/op
+Main.Double.newSort                  100000  REPEATED  avgt    4    0,655 ±  0,003  ms/op
+Main.Double.newSort                  100000   STAGGER  avgt    4    0,815 ±  0,015  ms/op
+Main.Double.newSort                  100000   SHUFFLE  avgt    4    2,638 ±  0,049  ms/op
+Main.Double.newSort                 1000000    RANDOM  avgt    4   65,316 ±  1,311  ms/op
+Main.Double.newSort                 1000000  REPEATED  avgt    4    6,201 ±  0,040  ms/op
+Main.Double.newSort                 1000000   STAGGER  avgt    4    8,525 ±  0,100  ms/op
+Main.Double.newSort                 1000000   SHUFFLE  avgt    4   32,661 ±  0,531  ms/op
+
+Main.Double.testSort                   1000    RANDOM  avgt    4    0,062 ±  0,001  ms/op
+Main.Double.testSort                   1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Double.testSort                   1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Double.testSort                   1000   SHUFFLE  avgt    4    0,033 ±  0,001  ms/op
+Main.Double.testSort                  10000    RANDOM  avgt    4    0,828 ±  0,012  ms/op
+Main.Double.testSort                  10000  REPEATED  avgt    4    0,077 ±  0,001  ms/op
+Main.Double.testSort                  10000   STAGGER  avgt    4    0,082 ±  0,004  ms/op
+Main.Double.testSort                  10000   SHUFFLE  avgt    4    0,373 ±  0,002  ms/op
+Main.Double.testSort                 100000    RANDOM  avgt    4   10,324 ±  0,080  ms/op
+Main.Double.testSort                 100000  REPEATED  avgt    4    0,939 ±  0,008  ms/op
+Main.Double.testSort                 100000   STAGGER  avgt    4    0,791 ±  0,011  ms/op
+Main.Double.testSort                 100000   SHUFFLE  avgt    4    3,822 ±  0,060  ms/op
+Main.Double.testSort                1000000    RANDOM  avgt    4  124,939 ±  0,095  ms/op
+Main.Double.testSort                1000000  REPEATED  avgt    4    7,414 ±  0,066  ms/op
+Main.Double.testSort                1000000   STAGGER  avgt    4    8,674 ±  0,384  ms/op
+Main.Double.testSort                1000000   SHUFFLE  avgt    4   41,682 ±  0,190  ms/op
+
+
+Main.Float.newParallelSort             1000    RANDOM  avgt    4    0,020 ±  0,001  ms/op
+Main.Float.newParallelSort             1000  REPEATED  avgt    4    0,012 ±  0,001  ms/op
+Main.Float.newParallelSort             1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Float.newParallelSort             1000   SHUFFLE  avgt    4    0,024 ±  0,001  ms/op
+Main.Float.newParallelSort            10000    RANDOM  avgt    4    0,251 ±  0,005  ms/op
+Main.Float.newParallelSort            10000  REPEATED  avgt    4    0,090 ±  0,003  ms/op
+Main.Float.newParallelSort            10000   STAGGER  avgt    4    0,072 ±  0,003  ms/op
+Main.Float.newParallelSort            10000   SHUFFLE  avgt    4    0,134 ±  0,005  ms/op
+Main.Float.newParallelSort           100000    RANDOM  avgt    4    1,593 ±  0,028  ms/op
+Main.Float.newParallelSort           100000  REPEATED  avgt    4    0,601 ±  0,014  ms/op
+Main.Float.newParallelSort           100000   STAGGER  avgt    4    0,533 ±  0,007  ms/op
+Main.Float.newParallelSort           100000   SHUFFLE  avgt    4    0,802 ±  0,035  ms/op
+Main.Float.newParallelSort          1000000    RANDOM  avgt    4   15,282 ±  0,584  ms/op
+Main.Float.newParallelSort          1000000  REPEATED  avgt    4    4,270 ±  0,081  ms/op
+Main.Float.newParallelSort          1000000   STAGGER  avgt    4    4,240 ±  0,117  ms/op
+Main.Float.newParallelSort          1000000   SHUFFLE  avgt    4    7,758 ±  0,248  ms/op
+
+Main.Float.testParallelSort            1000    RANDOM  avgt    4    0,063 ±  0,001  ms/op
+Main.Float.testParallelSort            1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Float.testParallelSort            1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Float.testParallelSort            1000   SHUFFLE  avgt    4    0,033 ±  0,001  ms/op
+Main.Float.testParallelSort           10000    RANDOM  avgt    4    0,530 ±  0,002  ms/op
+Main.Float.testParallelSort           10000  REPEATED  avgt    4    0,090 ±  0,001  ms/op
+Main.Float.testParallelSort           10000   STAGGER  avgt    4    0,077 ±  0,003  ms/op
+Main.Float.testParallelSort           10000   SHUFFLE  avgt    4    0,291 ±  0,006  ms/op
+Main.Float.testParallelSort          100000    RANDOM  avgt    4    4,105 ±  0,066  ms/op
+Main.Float.testParallelSort          100000  REPEATED  avgt    4    0,813 ±  0,007  ms/op
+Main.Float.testParallelSort          100000   STAGGER  avgt    4    0,687 ±  0,011  ms/op
+Main.Float.testParallelSort          100000   SHUFFLE  avgt    4    1,787 ±  0,047  ms/op
+Main.Float.testParallelSort         1000000    RANDOM  avgt    4   41,818 ±  1,036  ms/op
+Main.Float.testParallelSort         1000000  REPEATED  avgt    4    5,835 ±  0,153  ms/op
+Main.Float.testParallelSort         1000000   STAGGER  avgt    4    5,473 ±  0,068  ms/op
+Main.Float.testParallelSort         1000000   SHUFFLE  avgt    4   16,194 ±  0,171  ms/op
+
+Main.Float.newSort                     1000    RANDOM  avgt    4    0,020 ±  0,001  ms/op
+Main.Float.newSort                     1000  REPEATED  avgt    4    0,012 ±  0,001  ms/op
+Main.Float.newSort                     1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Float.newSort                     1000   SHUFFLE  avgt    4    0,024 ±  0,001  ms/op
+Main.Float.newSort                    10000    RANDOM  avgt    4    0,176 ±  0,001  ms/op
+Main.Float.newSort                    10000  REPEATED  avgt    4    0,085 ±  0,001  ms/op
+Main.Float.newSort                    10000   STAGGER  avgt    4    0,080 ±  0,001  ms/op
+Main.Float.newSort                    10000   SHUFFLE  avgt    4    0,146 ±  0,001  ms/op
+Main.Float.newSort                   100000    RANDOM  avgt    4    2,477 ±  0,012  ms/op
+Main.Float.newSort                   100000  REPEATED  avgt    4    0,655 ±  0,005  ms/op
+Main.Float.newSort                   100000   STAGGER  avgt    4    0,792 ±  0,015  ms/op
+Main.Float.newSort                   100000   SHUFFLE  avgt    4    2,030 ±  0,039  ms/op
+Main.Float.newSort                  1000000    RANDOM  avgt    4   24,789 ±  0,162  ms/op
+Main.Float.newSort                  1000000  REPEATED  avgt    4    6,161 ±  0,023  ms/op
+Main.Float.newSort                  1000000   STAGGER  avgt    4    7,997 ±  1,033  ms/op
+Main.Float.newSort                  1000000   SHUFFLE  avgt    4   21,997 ±  0,426  ms/op
+
+Main.Float.testSort                    1000    RANDOM  avgt    4    0,063 ±  0,001  ms/op
+Main.Float.testSort                    1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Float.testSort                    1000   STAGGER  avgt    4    0,008 ±  0,001  ms/op
+Main.Float.testSort                    1000   SHUFFLE  avgt    4    0,033 ±  0,001  ms/op
+Main.Float.testSort                   10000    RANDOM  avgt    4    0,833 ±  0,008  ms/op
+Main.Float.testSort                   10000  REPEATED  avgt    4    0,079 ±  0,001  ms/op
+Main.Float.testSort                   10000   STAGGER  avgt    4    0,074 ±  0,002  ms/op
+Main.Float.testSort                   10000   SHUFFLE  avgt    4    0,379 ±  0,003  ms/op
+Main.Float.testSort                  100000    RANDOM  avgt    4   10,412 ±  0,116  ms/op
+Main.Float.testSort                  100000  REPEATED  avgt    4    0,938 ±  0,012  ms/op
+Main.Float.testSort                  100000   STAGGER  avgt    4    0,772 ±  0,021  ms/op
+Main.Float.testSort                  100000   SHUFFLE  avgt    4    3,845 ±  0,060  ms/op
+Main.Float.testSort                 1000000    RANDOM  avgt    4  122,152 ±  0,886  ms/op
+Main.Float.testSort                 1000000  REPEATED  avgt    4    7,362 ±  0,222  ms/op
+Main.Float.testSort                 1000000   STAGGER  avgt    4    7,925 ±  0,402  ms/op
+Main.Float.testSort                 1000000   SHUFFLE  avgt    4   40,046 ±  0,515  ms/op
+
+
+Main.Int.newParallelSort               1000    RANDOM  avgt    4    0,014 ±  0,001  ms/op
+Main.Int.newParallelSort               1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Int.newParallelSort               1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Int.newParallelSort               1000   SHUFFLE  avgt    4    0,021 ±  0,001  ms/op
+Main.Int.newParallelSort              10000    RANDOM  avgt    4    0,210 ±  0,046  ms/op
+Main.Int.newParallelSort              10000  REPEATED  avgt    4    0,073 ±  0,006  ms/op
+Main.Int.newParallelSort              10000   STAGGER  avgt    4    0,067 ±  0,007  ms/op
+Main.Int.newParallelSort              10000   SHUFFLE  avgt    4    0,137 ±  0,029  ms/op
+Main.Int.newParallelSort             100000    RANDOM  avgt    4    1,460 ±  0,034  ms/op
+Main.Int.newParallelSort             100000  REPEATED  avgt    4    0,422 ±  0,058  ms/op
+Main.Int.newParallelSort             100000   STAGGER  avgt    4    0,357 ±  0,013  ms/op
+Main.Int.newParallelSort             100000   SHUFFLE  avgt    4    0,654 ±  0,047  ms/op
+Main.Int.newParallelSort            1000000    RANDOM  avgt    4   13,953 ±  1,040  ms/op
+Main.Int.newParallelSort            1000000  REPEATED  avgt    4    2,301 ±  0,111  ms/op
+Main.Int.newParallelSort            1000000   STAGGER  avgt    4    2,410 ±  0,061  ms/op
+Main.Int.newParallelSort            1000000   SHUFFLE  avgt    4    6,781 ±  0,104  ms/op
+
+Main.Int.testParallelSort              1000    RANDOM  avgt    4    0,060 ±  0,001  ms/op
+Main.Int.testParallelSort              1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Int.testParallelSort              1000   STAGGER  avgt    4    0,005 ±  0,001  ms/op
+Main.Int.testParallelSort              1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Int.testParallelSort             10000    RANDOM  avgt    4    0,528 ±  0,011  ms/op
+Main.Int.testParallelSort             10000  REPEATED  avgt    4    0,071 ±  0,001  ms/op
+Main.Int.testParallelSort             10000   STAGGER  avgt    4    0,073 ±  0,004  ms/op
+Main.Int.testParallelSort             10000   SHUFFLE  avgt    4    0,286 ±  0,008  ms/op
+Main.Int.testParallelSort            100000    RANDOM  avgt    4    3,487 ±  0,064  ms/op
+Main.Int.testParallelSort            100000  REPEATED  avgt    4    0,561 ±  0,002  ms/op
+Main.Int.testParallelSort            100000   STAGGER  avgt    4    0,489 ±  0,030  ms/op
+Main.Int.testParallelSort            100000   SHUFFLE  avgt    4    1,726 ±  0,041  ms/op
+Main.Int.testParallelSort           1000000    RANDOM  avgt    4   37,791 ±  1,665  ms/op
+Main.Int.testParallelSort           1000000  REPEATED  avgt    4    3,803 ±  0,075  ms/op
+Main.Int.testParallelSort           1000000   STAGGER  avgt    4    4,436 ±  0,043  ms/op
+Main.Int.testParallelSort           1000000   SHUFFLE  avgt    4   15,101 ±  0,131  ms/op
+
+Main.Int.newSort                       1000    RANDOM  avgt    4    0,014 ±  0,001  ms/op
+Main.Int.newSort                       1000  REPEATED  avgt    4    0,009 ±  0,001  ms/op
+Main.Int.newSort                       1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Int.newSort                       1000   SHUFFLE  avgt    4    0,022 ±  0,001  ms/op
+Main.Int.newSort                      10000    RANDOM  avgt    4    0,177 ±  0,004  ms/op
+Main.Int.newSort                      10000  REPEATED  avgt    4    0,057 ±  0,001  ms/op
+Main.Int.newSort                      10000   STAGGER  avgt    4    0,060 ±  0,001  ms/op
+Main.Int.newSort                      10000   SHUFFLE  avgt    4    0,122 ±  0,003  ms/op
+Main.Int.newSort                     100000    RANDOM  avgt    4    2,948 ±  0,035  ms/op
+Main.Int.newSort                     100000  REPEATED  avgt    4    0,457 ±  0,013  ms/op
+Main.Int.newSort                     100000   STAGGER  avgt    4    0,602 ±  0,007  ms/op
+Main.Int.newSort                     100000   SHUFFLE  avgt    4    2,228 ±  0,053  ms/op
+Main.Int.newSort                    1000000    RANDOM  avgt    4   29,814 ±  0,161  ms/op
+Main.Int.newSort                    1000000  REPEATED  avgt    4    4,243 ±  0,083  ms/op
+Main.Int.newSort                    1000000   STAGGER  avgt    4    5,562 ±  0,351  ms/op
+Main.Int.newSort                    1000000   SHUFFLE  avgt    4   29,370 ±  1,335  ms/op
+
+Main.Int.testSort                      1000    RANDOM  avgt    4    0,060 ±  0,001  ms/op
+Main.Int.testSort                      1000  REPEATED  avgt    4    0,007 ±  0,001  ms/op
+Main.Int.testSort                      1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Int.testSort                      1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Int.testSort                     10000    RANDOM  avgt    4    0,807 ±  0,011  ms/op
+Main.Int.testSort                     10000  REPEATED  avgt    4    0,065 ±  0,001  ms/op
+Main.Int.testSort                     10000   STAGGER  avgt    4    0,057 ±  0,002  ms/op
+Main.Int.testSort                     10000   SHUFFLE  avgt    4    0,373 ±  0,005  ms/op
+Main.Int.testSort                    100000    RANDOM  avgt    4   10,307 ±  0,140  ms/op
+Main.Int.testSort                    100000  REPEATED  avgt    4    0,646 ±  0,002  ms/op
+Main.Int.testSort                    100000   STAGGER  avgt    4    0,555 ±  0,014  ms/op
+Main.Int.testSort                    100000   SHUFFLE  avgt    4    3,745 ±  0,039  ms/op
+Main.Int.testSort                   1000000    RANDOM  avgt    4  113,730 ±  1,201  ms/op
+Main.Int.testSort                   1000000  REPEATED  avgt    4    4,407 ±  0,066  ms/op
+Main.Int.testSort                   1000000   STAGGER  avgt    4    5,631 ±  0,491  ms/op
+Main.Int.testSort                   1000000   SHUFFLE  avgt    4   39,915 ±  0,412  ms/op
+
+
+Main.Long.newParallelSort              1000    RANDOM  avgt    4    0,032 ±  0,001  ms/op
+Main.Long.newParallelSort              1000  REPEATED  avgt    4    0,014 ±  0,001  ms/op
+Main.Long.newParallelSort              1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Long.newParallelSort              1000   SHUFFLE  avgt    4    0,024 ±  0,001  ms/op
+Main.Long.newParallelSort             10000    RANDOM  avgt    4    0,295 ±  0,014  ms/op
+Main.Long.newParallelSort             10000  REPEATED  avgt    4    0,073 ±  0,001  ms/op
+Main.Long.newParallelSort             10000   STAGGER  avgt    4    0,073 ±  0,004  ms/op
+Main.Long.newParallelSort             10000   SHUFFLE  avgt    4    0,128 ±  0,006  ms/op
+Main.Long.newParallelSort            100000    RANDOM  avgt    4    2,288 ±  0,075  ms/op
+Main.Long.newParallelSort            100000  REPEATED  avgt    4    0,546 ±  0,028  ms/op
+Main.Long.newParallelSort            100000   STAGGER  avgt    4    0,415 ±  0,044  ms/op
+Main.Long.newParallelSort            100000   SHUFFLE  avgt    4    0,900 ±  0,031  ms/op
+Main.Long.newParallelSort           1000000    RANDOM  avgt    4   25,270 ±  2,368  ms/op
+Main.Long.newParallelSort           1000000  REPEATED  avgt    4    3,281 ±  0,116  ms/op
+Main.Long.newParallelSort           1000000   STAGGER  avgt    4    4,019 ±  0,121  ms/op
+Main.Long.newParallelSort           1000000   SHUFFLE  avgt    4    9,356 ±  0,427  ms/op
+
+Main.Long.testParallelSort             1000    RANDOM  avgt    4    0,059 ±  0,001  ms/op
+Main.Long.testParallelSort             1000  REPEATED  avgt    4    0,007 ±  0,001  ms/op
+Main.Long.testParallelSort             1000   STAGGER  avgt    4    0,013 ±  0,001  ms/op
+Main.Long.testParallelSort             1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Long.testParallelSort            10000    RANDOM  avgt    4    0,527 ±  0,007  ms/op
+Main.Long.testParallelSort            10000  REPEATED  avgt    4    0,075 ±  0,001  ms/op
+Main.Long.testParallelSort            10000   STAGGER  avgt    4    0,073 ±  0,002  ms/op
+Main.Long.testParallelSort            10000   SHUFFLE  avgt    4    0,290 ±  0,004  ms/op
+Main.Long.testParallelSort           100000    RANDOM  avgt    4    3,923 ±  0,054  ms/op
+Main.Long.testParallelSort           100000  REPEATED  avgt    4    0,570 ±  0,006  ms/op
+Main.Long.testParallelSort           100000   STAGGER  avgt    4    0,576 ±  0,040  ms/op
+Main.Long.testParallelSort           100000   SHUFFLE  avgt    4    1,751 ±  0,038  ms/op
+Main.Long.testParallelSort          1000000    RANDOM  avgt    4   42,511 ±  1,937  ms/op
+Main.Long.testParallelSort          1000000  REPEATED  avgt    4    3,948 ±  0,023  ms/op
+Main.Long.testParallelSort          1000000   STAGGER  avgt    4    4,771 ±  0,133  ms/op
+Main.Long.testParallelSort          1000000   SHUFFLE  avgt    4   16,069 ±  0,760  ms/op
+
+Main.Long.newSort                      1000    RANDOM  avgt    4    0,032 ±  0,001  ms/op
+Main.Long.newSort                      1000  REPEATED  avgt    4    0,014 ±  0,001  ms/op
+Main.Long.newSort                      1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Long.newSort                      1000   SHUFFLE  avgt    4    0,024 ±  0,001  ms/op
+Main.Long.newSort                     10000    RANDOM  avgt    4    0,506 ±  0,004  ms/op
+Main.Long.newSort                     10000  REPEATED  avgt    4    0,100 ±  0,001  ms/op
+Main.Long.newSort                     10000   STAGGER  avgt    4    0,065 ±  0,002  ms/op
+Main.Long.newSort                     10000   SHUFFLE  avgt    4    0,226 ±  0,002  ms/op
+Main.Long.newSort                    100000    RANDOM  avgt    4    6,774 ±  0,151  ms/op
+Main.Long.newSort                    100000  REPEATED  avgt    4    0,481 ±  0,004  ms/op
+Main.Long.newSort                    100000   STAGGER  avgt    4    0,617 ±  0,033  ms/op
+Main.Long.newSort                    100000   SHUFFLE  avgt    4    3,251 ±  0,090  ms/op
+Main.Long.newSort                   1000000    RANDOM  avgt    4   70,309 ±  2,943  ms/op
+Main.Long.newSort                   1000000  REPEATED  avgt    4    4,566 ±  0,013  ms/op
+Main.Long.newSort                   1000000   STAGGER  avgt    4    7,342 ±  0,680  ms/op
+Main.Long.newSort                   1000000   SHUFFLE  avgt    4   34,930 ±  2,091  ms/op
+
+Main.Long.testSort                     1000    RANDOM  avgt    4    0,059 ±  0,001  ms/op
+Main.Long.testSort                     1000  REPEATED  avgt    4    0,007 ±  0,001  ms/op
+Main.Long.testSort                     1000   STAGGER  avgt    4    0,006 ±  0,001  ms/op
+Main.Long.testSort                     1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Long.testSort                    10000    RANDOM  avgt    4    0,817 ±  0,011  ms/op
+Main.Long.testSort                    10000  REPEATED  avgt    4    0,070 ±  0,001  ms/op
+Main.Long.testSort                    10000   STAGGER  avgt    4    0,059 ±  0,002  ms/op
+Main.Long.testSort                    10000   SHUFFLE  avgt    4    0,377 ±  0,002  ms/op
+Main.Long.testSort                   100000    RANDOM  avgt    4   10,297 ±  0,010  ms/op
+Main.Long.testSort                   100000  REPEATED  avgt    4    0,676 ±  0,007  ms/op
+Main.Long.testSort                   100000   STAGGER  avgt    4    0,597 ±  0,020  ms/op
+Main.Long.testSort                   100000   SHUFFLE  avgt    4    3,970 ±  0,024  ms/op
+Main.Long.testSort                  1000000    RANDOM  avgt    4  125,893 ±  0,844  ms/op
+Main.Long.testSort                  1000000  REPEATED  avgt    4    5,016 ±  0,058  ms/op
+Main.Long.testSort                  1000000   STAGGER  avgt    4    7,115 ±  0,958  ms/op
+Main.Long.testSort                  1000000   SHUFFLE  avgt    4   42,079 ±  0,309  ms/op
+
+
+Main.Short.newParallelSort             1000    RANDOM  avgt    4    0,058 ±  0,001  ms/op
+Main.Short.newParallelSort             1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Short.newParallelSort             1000   STAGGER  avgt    4    0,027 ±  0,001  ms/op
+Main.Short.newParallelSort             1000   SHUFFLE  avgt    4    0,032 ±  0,001  ms/op
+Main.Short.newParallelSort            10000    RANDOM  avgt    4    0,237 ±  0,001  ms/op
+Main.Short.newParallelSort            10000  REPEATED  avgt    4    0,065 ±  0,010  ms/op
+Main.Short.newParallelSort            10000   STAGGER  avgt    4    0,077 ±  0,035  ms/op
+Main.Short.newParallelSort            10000   SHUFFLE  avgt    4    0,067 ±  0,002  ms/op
+Main.Short.newParallelSort           100000    RANDOM  avgt    4    1,061 ±  0,115  ms/op
+Main.Short.newParallelSort           100000  REPEATED  avgt    4    0,231 ±  0,002  ms/op
+Main.Short.newParallelSort           100000   STAGGER  avgt    4    0,278 ±  0,004  ms/op
+Main.Short.newParallelSort           100000   SHUFFLE  avgt    4    0,247 ±  0,037  ms/op
+Main.Short.newParallelSort          1000000    RANDOM  avgt    4    3,080 ±  0,044  ms/op
+Main.Short.newParallelSort          1000000  REPEATED  avgt    4    1,067 ±  0,025  ms/op
+Main.Short.newParallelSort          1000000   STAGGER  avgt    4    1,510 ±  0,047  ms/op
+Main.Short.newParallelSort          1000000   SHUFFLE  avgt    4    1,398 ±  0,032  ms/op
+
+Main.Short.testParallelSort            1000    RANDOM  avgt    4    0,055 ±  0,001  ms/op
+Main.Short.testParallelSort            1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Short.testParallelSort            1000   STAGGER  avgt    4    0,022 ±  0,001  ms/op
+Main.Short.testParallelSort            1000   SHUFFLE  avgt    4    0,030 ±  0,001  ms/op
+Main.Short.testParallelSort           10000    RANDOM  avgt    4    0,237 ±  0,001  ms/op
+Main.Short.testParallelSort           10000  REPEATED  avgt    4    0,065 ±  0,011  ms/op
+Main.Short.testParallelSort           10000   STAGGER  avgt    4    0,077 ±  0,036  ms/op
+Main.Short.testParallelSort           10000   SHUFFLE  avgt    4    0,065 ±  0,006  ms/op
+Main.Short.testParallelSort          100000    RANDOM  avgt    4    1,061 ±  0,114  ms/op
+Main.Short.testParallelSort          100000  REPEATED  avgt    4    0,233 ±  0,009  ms/op
+Main.Short.testParallelSort          100000   STAGGER  avgt    4    0,279 ±  0,006  ms/op
+Main.Short.testParallelSort          100000   SHUFFLE  avgt    4    0,248 ±  0,025  ms/op
+Main.Short.testParallelSort         1000000    RANDOM  avgt    4    3,104 ±  0,045  ms/op
+Main.Short.testParallelSort         1000000  REPEATED  avgt    4    1,071 ±  0,018  ms/op
+Main.Short.testParallelSort         1000000   STAGGER  avgt    4    1,508 ±  0,025  ms/op
+Main.Short.testParallelSort         1000000   SHUFFLE  avgt    4    1,398 ±  0,032  ms/op
+
+Main.Short.newSort                     1000    RANDOM  avgt    4    0,058 ±  0,001  ms/op
+Main.Short.newSort                     1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Short.newSort                     1000   STAGGER  avgt    4    0,027 ±  0,001  ms/op
+Main.Short.newSort                     1000   SHUFFLE  avgt    4    0,032 ±  0,001  ms/op
+Main.Short.newSort                    10000    RANDOM  avgt    4    0,237 ±  0,002  ms/op
+Main.Short.newSort                    10000  REPEATED  avgt    4    0,065 ±  0,010  ms/op
+Main.Short.newSort                    10000   STAGGER  avgt    4    0,077 ±  0,018  ms/op
+Main.Short.newSort                    10000   SHUFFLE  avgt    4    0,064 ±  0,002  ms/op
+Main.Short.newSort                   100000    RANDOM  avgt    4    1,064 ±  0,103  ms/op
+Main.Short.newSort                   100000  REPEATED  avgt    4    0,231 ±  0,001  ms/op
+Main.Short.newSort                   100000   STAGGER  avgt    4    0,278 ±  0,007  ms/op
+Main.Short.newSort                   100000   SHUFFLE  avgt    4    0,247 ±  0,033  ms/op
+Main.Short.newSort                  1000000    RANDOM  avgt    4    3,076 ±  0,002  ms/op
+Main.Short.newSort                  1000000  REPEATED  avgt    4    1,073 ±  0,013  ms/op
+Main.Short.newSort                  1000000   STAGGER  avgt    4    1,521 ±  0,034  ms/op
+Main.Short.newSort                  1000000   SHUFFLE  avgt    4    1,404 ±  0,057  ms/op
+
+Main.Short.testSort                    1000    RANDOM  avgt    4    0,055 ±  0,001  ms/op
+Main.Short.testSort                    1000  REPEATED  avgt    4    0,006 ±  0,001  ms/op
+Main.Short.testSort                    1000   STAGGER  avgt    4    0,022 ±  0,001  ms/op
+Main.Short.testSort                    1000   SHUFFLE  avgt    4    0,031 ±  0,001  ms/op
+Main.Short.testSort                   10000    RANDOM  avgt    4    0,237 ±  0,001  ms/op
+Main.Short.testSort                   10000  REPEATED  avgt    4    0,065 ±  0,009  ms/op
+Main.Short.testSort                   10000   STAGGER  avgt    4    0,077 ±  0,036  ms/op
+Main.Short.testSort                   10000   SHUFFLE  avgt    4    0,067 ±  0,002  ms/op
+Main.Short.testSort                  100000    RANDOM  avgt    4    1,063 ±  0,056  ms/op
+Main.Short.testSort                  100000  REPEATED  avgt    4    0,231 ±  0,003  ms/op
+Main.Short.testSort                  100000   STAGGER  avgt    4    0,278 ±  0,010  ms/op
+Main.Short.testSort                  100000   SHUFFLE  avgt    4    0,247 ±  0,017  ms/op
+Main.Short.testSort                 1000000    RANDOM  avgt    4    3,081 ±  0,045  ms/op
+Main.Short.testSort                 1000000  REPEATED  avgt    4    1,076 ±  0,014  ms/op
+Main.Short.testSort                 1000000   STAGGER  avgt    4    1,509 ±  0,040  ms/op
+Main.Short.testSort                 1000000   SHUFFLE  avgt    4    1,397 ±  0,027  ms/op
+
+--- That's All, folks! ---
+
