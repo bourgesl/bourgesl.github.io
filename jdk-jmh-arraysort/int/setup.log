@@ -1,0 +1,16 @@
+Running tests using MICRO control variable 'FORK=1;RESULTS_FORMAT=json'
+Test selection 'micro:java.util.ArraysSort', will run:
+* micro:java.util.ArraysSort
+
+Running test 'micro:java.util.ArraysSort'
+# JMH version: 1.35
+# VM version: JDK 20-internal, OpenJDK 64-Bit Server VM, 20-internal-adhoc.bourgesl.jdk-gh
+# VM invoker: /home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java
+# VM options: -Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 5 s each
+# Measurement: 4 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+

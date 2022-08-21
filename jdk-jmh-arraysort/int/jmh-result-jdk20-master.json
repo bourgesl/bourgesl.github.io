@@ -1,0 +1,2204 @@
+[
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.004049927100178148,
+            "scoreError" : 6.0829292507355167E-5,
+            "scoreConfidence" : [
+                0.003989097807670793,
+                0.004110756392685503
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.00404145216669189,
+                "50.0" : 0.004047431557026708,
+                "90.0" : 0.004063393119967285,
+                "95.0" : 0.004063393119967285,
+                "99.0" : 0.004063393119967285,
+                "99.9" : 0.004063393119967285,
+                "99.99" : 0.004063393119967285,
+                "99.999" : 0.004063393119967285,
+                "99.9999" : 0.004063393119967285,
+                "100.0" : 0.004063393119967285
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.00404145216669189,
+                    0.004047097895059382,
+                    0.004047765218994034,
+                    0.004063393119967285
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 7.684784803413641E-4,
+            "scoreError" : 8.511156959540156E-6,
+            "scoreConfidence" : [
+                7.599673233818239E-4,
+                7.769896373009043E-4
+            ],
+            "scorePercentiles" : {
+                "0.0" : 7.66614535033268E-4,
+                "50.0" : 7.689242769165614E-4,
+                "90.0" : 7.69450832499065E-4,
+                "95.0" : 7.69450832499065E-4,
+                "99.0" : 7.69450832499065E-4,
+                "99.9" : 7.69450832499065E-4,
+                "99.99" : 7.69450832499065E-4,
+                "99.999" : 7.69450832499065E-4,
+                "99.9999" : 7.69450832499065E-4,
+                "100.0" : 7.69450832499065E-4
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    7.66614535033268E-4,
+                    7.69450832499065E-4,
+                    7.693642279626043E-4,
+                    7.684843258705186E-4
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.0018759780754350108,
+            "scoreError" : 2.3891072995539892E-5,
+            "scoreConfidence" : [
+                0.001852087002439471,
+                0.0018998691484305506
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.0018729329541234644,
+                "50.0" : 0.0018748969823853003,
+                "90.0" : 0.001881185382845978,
+                "95.0" : 0.001881185382845978,
+                "99.0" : 0.001881185382845978,
+                "99.9" : 0.001881185382845978,
+                "99.99" : 0.001881185382845978,
+                "99.999" : 0.001881185382845978,
+                "99.9999" : 0.001881185382845978,
+                "100.0" : 0.001881185382845978
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.001881185382845978,
+                    0.0018729329541234644,
+                    0.0018738290733986286,
+                    0.001875964891371972
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.0022848327321553803,
+            "scoreError" : 4.1094104484823595E-5,
+            "scoreConfidence" : [
+                0.0022437386276705565,
+                0.002325926836640204
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.0022784375295973637,
+                "50.0" : 0.002283803921323347,
+                "90.0" : 0.002293285556377464,
+                "95.0" : 0.002293285556377464,
+                "99.0" : 0.002293285556377464,
+                "99.9" : 0.002293285556377464,
+                "99.99" : 0.002293285556377464,
+                "99.999" : 0.002293285556377464,
+                "99.9999" : 0.002293285556377464,
+                "100.0" : 0.002293285556377464
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.0022819520908803053,
+                    0.002285655751766389,
+                    0.0022784375295973637,
+                    0.002293285556377464
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.05947425132805943,
+            "scoreError" : 3.026168822376519E-4,
+            "scoreConfidence" : [
+                0.05917163444582178,
+                0.05977686821029708
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.059436964795603946,
+                "50.0" : 0.059461484205137166,
+                "90.0" : 0.05953707210635945,
+                "95.0" : 0.05953707210635945,
+                "99.0" : 0.05953707210635945,
+                "99.9" : 0.05953707210635945,
+                "99.99" : 0.05953707210635945,
+                "99.999" : 0.05953707210635945,
+                "99.9999" : 0.05953707210635945,
+                "100.0" : 0.05953707210635945
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.05948289093011305,
+                    0.05944007748016128,
+                    0.059436964795603946,
+                    0.05953707210635945
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.006456557153107181,
+            "scoreError" : 1.5650246197861244E-4,
+            "scoreConfidence" : [
+                0.006300054691128569,
+                0.006613059615085794
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.006425548306253894,
+                "50.0" : 0.006459846996641791,
+                "90.0" : 0.006480986312891251,
+                "95.0" : 0.006480986312891251,
+                "99.0" : 0.006480986312891251,
+                "99.9" : 0.006480986312891251,
+                "99.99" : 0.006480986312891251,
+                "99.999" : 0.006480986312891251,
+                "99.9999" : 0.006480986312891251,
+                "100.0" : 0.006480986312891251
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.006469325683974059,
+                    0.006450368309309522,
+                    0.006480986312891251,
+                    0.006425548306253894
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.006895825476057508,
+            "scoreError" : 1.0379757601980626E-4,
+            "scoreConfidence" : [
+                0.0067920279000377014,
+                0.006999623052077315
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.006884005742735584,
+                "50.0" : 0.006890638742595767,
+                "90.0" : 0.006918018676302915,
+                "95.0" : 0.006918018676302915,
+                "99.0" : 0.006918018676302915,
+                "99.9" : 0.006918018676302915,
+                "99.99" : 0.006918018676302915,
+                "99.999" : 0.006918018676302915,
+                "99.9999" : 0.006918018676302915,
+                "100.0" : 0.006918018676302915
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.006918018676302915,
+                    0.006897271653200656,
+                    0.006884005831990878,
+                    0.006884005742735584
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.029737158409133282,
+            "scoreError" : 3.4729988490285577E-4,
+            "scoreConfidence" : [
+                0.029389858524230428,
+                0.030084458294036137
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.029689215199507707,
+                "50.0" : 0.029730503188933645,
+                "90.0" : 0.029798412059158133,
+                "95.0" : 0.029798412059158133,
+                "99.0" : 0.029798412059158133,
+                "99.9" : 0.029798412059158133,
+                "99.99" : 0.029798412059158133,
+                "99.999" : 0.029798412059158133,
+                "99.9999" : 0.029798412059158133,
+                "100.0" : 0.029798412059158133
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.029766045020596075,
+                    0.02969496135727121,
+                    0.029689215199507707,
+                    0.029798412059158133
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.50804738974434,
+            "scoreError" : 0.00881819088122596,
+            "scoreConfidence" : [
+                0.49922919886311407,
+                0.516865580625566
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.5069455653382762,
+                "50.0" : 0.5076026112984416,
+                "90.0" : 0.510038771042201,
+                "95.0" : 0.510038771042201,
+                "99.0" : 0.510038771042201,
+                "99.9" : 0.510038771042201,
+                "99.99" : 0.510038771042201,
+                "99.999" : 0.510038771042201,
+                "99.9999" : 0.510038771042201,
+                "100.0" : 0.510038771042201
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.5069455653382762,
+                    0.5075273440835267,
+                    0.510038771042201,
+                    0.5076778785133566
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.07281113228571552,
+            "scoreError" : 7.662452505452123E-4,
+            "scoreConfidence" : [
+                0.07204488703517031,
+                0.07357737753626073
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.07271886009819771,
+                "50.0" : 0.07277603378602979,
+                "90.0" : 0.07297360147260479,
+                "95.0" : 0.07297360147260479,
+                "99.0" : 0.07297360147260479,
+                "99.9" : 0.07297360147260479,
+                "99.99" : 0.07297360147260479,
+                "99.999" : 0.07297360147260479,
+                "99.9999" : 0.07297360147260479,
+                "100.0" : 0.07297360147260479
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.07297360147260479,
+                    0.07282506197225123,
+                    0.07272700559980835,
+                    0.07271886009819771
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.06347282696326556,
+            "scoreError" : 0.00170592340496722,
+            "scoreConfidence" : [
+                0.06176690355829834,
+                0.06517875036823279
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.06318724410826387,
+                "50.0" : 0.06346127305699599,
+                "90.0" : 0.06378151763080642,
+                "95.0" : 0.06378151763080642,
+                "99.0" : 0.06378151763080642,
+                "99.9" : 0.06378151763080642,
+                "99.99" : 0.06378151763080642,
+                "99.999" : 0.06378151763080642,
+                "99.9999" : 0.06378151763080642,
+                "100.0" : 0.06378151763080642
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.06378151763080642,
+                    0.0635876915666781,
+                    0.06333485454731388,
+                    0.06318724410826387
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.287549300241437,
+            "scoreError" : 0.004399155723665291,
+            "scoreConfidence" : [
+                0.2831501445177717,
+                0.29194845596510227
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.28655772658996487,
+                "50.0" : 0.28779083125840443,
+                "90.0" : 0.28805781185897433,
+                "95.0" : 0.28805781185897433,
+                "99.0" : 0.28805781185897433,
+                "99.9" : 0.28805781185897433,
+                "99.99" : 0.28805781185897433,
+                "99.999" : 0.28805781185897433,
+                "99.9999" : 0.28805781185897433,
+                "100.0" : 0.28805781185897433
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.28805781185897433,
+                    0.2876645700784879,
+                    0.28655772658996487,
+                    0.28791709243832103
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 3.720990821039595,
+            "scoreError" : 0.06445456765233039,
+            "scoreConfidence" : [
+                3.6565362533872645,
+                3.7854453886919255
+            ],
+            "scorePercentiles" : {
+                "0.0" : 3.7082185045703837,
+                "50.0" : 3.721980562271062,
+                "90.0" : 3.7317836550458714,
+                "95.0" : 3.7317836550458714,
+                "99.0" : 3.7317836550458714,
+                "99.9" : 3.7317836550458714,
+                "99.99" : 3.7317836550458714,
+                "99.999" : 3.7317836550458714,
+                "99.9999" : 3.7317836550458714,
+                "100.0" : 3.7317836550458714
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    3.7248866245421244,
+                    3.7317836550458714,
+                    3.7082185045703837,
+                    3.7190745
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.6681819964677591,
+            "scoreError" : 0.0067133501055649724,
+            "scoreConfidence" : [
+                0.6614686463621942,
+                0.6748953465733241
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.6666370531414337,
+                "50.0" : 0.6686415828278776,
+                "90.0" : 0.6688077670738478,
+                "95.0" : 0.6688077670738478,
+                "99.0" : 0.6688077670738478,
+                "99.9" : 0.6688077670738478,
+                "99.99" : 0.6688077670738478,
+                "99.999" : 0.6688077670738478,
+                "99.9999" : 0.6688077670738478,
+                "100.0" : 0.6688077670738478
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.6666370531414337,
+                    0.6688077670738478,
+                    0.6685054736257635,
+                    0.6687776920299917
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.5730669173711928,
+            "scoreError" : 0.017042978147025625,
+            "scoreConfidence" : [
+                0.5560239392241672,
+                0.5901098955182184
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.5705731785830884,
+                "50.0" : 0.5731140990692624,
+                "90.0" : 0.5754662927631579,
+                "95.0" : 0.5754662927631579,
+                "99.0" : 0.5754662927631579,
+                "99.9" : 0.5754662927631579,
+                "99.99" : 0.5754662927631579,
+                "99.999" : 0.5754662927631579,
+                "99.9999" : 0.5754662927631579,
+                "100.0" : 0.5754662927631579
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.5705731785830884,
+                    0.5754662927631579,
+                    0.5710060477280157,
+                    0.5752221504105091
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 1.6100277928650368,
+            "scoreError" : 0.07217511078785763,
+            "scoreConfidence" : [
+                1.5378526820771792,
+                1.6822029036528945
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1.5942276292397661,
+                "50.0" : 1.6139697858160729,
+                "90.0" : 1.6179439705882352,
+                "95.0" : 1.6179439705882352,
+                "99.0" : 1.6179439705882352,
+                "99.9" : 1.6179439705882352,
+                "99.99" : 1.6179439705882352,
+                "99.999" : 1.6179439705882352,
+                "99.9999" : 1.6179439705882352,
+                "100.0" : 1.6179439705882352
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    1.6179439705882352,
+                    1.6100415563380281,
+                    1.6178980152941176,
+                    1.5942276292397661
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 40.52054126923077,
+            "scoreError" : 0.8176380377005075,
+            "scoreConfidence" : [
+                39.702903231530264,
+                41.33817930693127
+            ],
+            "scorePercentiles" : {
+                "0.0" : 40.36357288461539,
+                "50.0" : 40.53036196153846,
+                "90.0" : 40.65786826923077,
+                "95.0" : 40.65786826923077,
+                "99.0" : 40.65786826923077,
+                "99.9" : 40.65786826923077,
+                "99.99" : 40.65786826923077,
+                "99.999" : 40.65786826923077,
+                "99.9999" : 40.65786826923077,
+                "100.0" : 40.65786826923077
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    40.57694065384615,
+                    40.36357288461539,
+                    40.48378326923077,
+                    40.65786826923077
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 3.553523753419809,
+            "scoreError" : 0.03784842968520515,
+            "scoreConfidence" : [
+                3.515675323734604,
+                3.591372183105014
+            ],
+            "scorePercentiles" : {
+                "0.0" : 3.5475406683937822,
+                "50.0" : 3.5527541925734027,
+                "90.0" : 3.561045960138648,
+                "95.0" : 3.561045960138648,
+                "99.0" : 3.561045960138648,
+                "99.9" : 3.561045960138648,
+                "99.99" : 3.561045960138648,
+                "99.999" : 3.561045960138648,
+                "99.9999" : 3.561045960138648,
+                "100.0" : 3.561045960138648
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    3.5475406683937822,
+                    3.5505918981001727,
+                    3.5549164870466323,
+                    3.561045960138648
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 4.54727752535665,
+            "scoreError" : 0.12225898973077694,
+            "scoreConfidence" : [
+                4.425018535625873,
+                4.669536515087427
+            ],
+            "scorePercentiles" : {
+                "0.0" : 4.520801640449438,
+                "50.0" : 4.551297407042253,
+                "90.0" : 4.565713646892656,
+                "95.0" : 4.565713646892656,
+                "99.0" : 4.565713646892656,
+                "99.9" : 4.565713646892656,
+                "99.99" : 4.565713646892656,
+                "99.999" : 4.565713646892656,
+                "99.9999" : 4.565713646892656,
+                "100.0" : 4.565713646892656
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    4.565713646892656,
+                    4.551882546478873,
+                    4.5507122676056335,
+                    4.520801640449438
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testParallelSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 14.601947988888888,
+            "scoreError" : 0.6356632159108109,
+            "scoreConfidence" : [
+                13.966284772978078,
+                15.237611204799698
+            ],
+            "scorePercentiles" : {
+                "0.0" : 14.468538966666667,
+                "50.0" : 14.627302238888888,
+                "90.0" : 14.684648511111112,
+                "95.0" : 14.684648511111112,
+                "99.0" : 14.684648511111112,
+                "99.9" : 14.684648511111112,
+                "99.99" : 14.684648511111112,
+                "99.999" : 14.684648511111112,
+                "99.9999" : 14.684648511111112,
+                "100.0" : 14.684648511111112
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    14.666714844444444,
+                    14.684648511111112,
+                    14.587889633333333,
+                    14.468538966666667
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.004038155551869562,
+            "scoreError" : 4.869328337468502E-5,
+            "scoreConfidence" : [
+                0.003989462268494877,
+                0.004086848835244247
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.004032353085850732,
+                "50.0" : 0.004035865435531954,
+                "90.0" : 0.00404853825056361,
+                "95.0" : 0.00404853825056361,
+                "99.0" : 0.00404853825056361,
+                "99.9" : 0.00404853825056361,
+                "99.99" : 0.00404853825056361,
+                "99.999" : 0.00404853825056361,
+                "99.9999" : 0.00404853825056361,
+                "100.0" : 0.00404853825056361
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.00404853825056361,
+                    0.004032353085850732,
+                    0.004038897408033408,
+                    0.0040328334630305
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 7.694566064399328E-4,
+            "scoreError" : 3.549848226209644E-6,
+            "scoreConfidence" : [
+                7.659067582137232E-4,
+                7.730064546661425E-4
+            ],
+            "scorePercentiles" : {
+                "0.0" : 7.686348113888922E-4,
+                "50.0" : 7.697024076040354E-4,
+                "90.0" : 7.697867991627681E-4,
+                "95.0" : 7.697867991627681E-4,
+                "99.0" : 7.697867991627681E-4,
+                "99.9" : 7.697867991627681E-4,
+                "99.99" : 7.697867991627681E-4,
+                "99.999" : 7.697867991627681E-4,
+                "99.9999" : 7.697867991627681E-4,
+                "100.0" : 7.697867991627681E-4
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    7.686348113888922E-4,
+                    7.696945896574794E-4,
+                    7.697102255505914E-4,
+                    7.697867991627681E-4
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.001911778232275067,
+            "scoreError" : 1.4109984966359224E-5,
+            "scoreConfidence" : [
+                0.001897668247308708,
+                0.0019258882172414262
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.0019097785383716326,
+                "50.0" : 0.0019117753927402627,
+                "90.0" : 0.0019137836052481102,
+                "95.0" : 0.0019137836052481102,
+                "99.0" : 0.0019137836052481102,
+                "99.9" : 0.0019137836052481102,
+                "99.99" : 0.0019137836052481102,
+                "99.999" : 0.0019137836052481102,
+                "99.9999" : 0.0019137836052481102,
+                "100.0" : 0.0019137836052481102
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.0019135478448658496,
+                    0.0019137836052481102,
+                    0.0019097785383716326,
+                    0.0019100029406146756
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.0022944416679957862,
+            "scoreError" : 2.5329724885848467E-5,
+            "scoreConfidence" : [
+                0.0022691119431099377,
+                0.0023197713928816348
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.0022893449178797267,
+                "50.0" : 0.002294824330682189,
+                "90.0" : 0.002298773092739041,
+                "95.0" : 0.002298773092739041,
+                "99.0" : 0.002298773092739041,
+                "99.9" : 0.002298773092739041,
+                "99.99" : 0.002298773092739041,
+                "99.999" : 0.002298773092739041,
+                "99.9999" : 0.002298773092739041,
+                "100.0" : 0.002298773092739041
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.002298773092739041,
+                    0.002294095083699492,
+                    0.0022893449178797267,
+                    0.0022955535776648856
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.059700759292373506,
+            "scoreError" : 6.312039679465929E-4,
+            "scoreConfidence" : [
+                0.05906955532442691,
+                0.0603319632603201
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.05960165321875161,
+                "50.0" : 0.05968324714921014,
+                "90.0" : 0.05983488965232216,
+                "95.0" : 0.05983488965232216,
+                "99.0" : 0.05983488965232216,
+                "99.9" : 0.05983488965232216,
+                "99.99" : 0.05983488965232216,
+                "99.999" : 0.05983488965232216,
+                "99.9999" : 0.05983488965232216,
+                "100.0" : 0.05983488965232216
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.05960165321875161,
+                    0.05967330873831415,
+                    0.059693185560106124,
+                    0.05983488965232216
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.006439470693294637,
+            "scoreError" : 3.873165311886017E-5,
+            "scoreConfidence" : [
+                0.006400739040175777,
+                0.0064782023464134975
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.006430936203773071,
+                "50.0" : 0.0064409845415357315,
+                "90.0" : 0.006444977486334016,
+                "95.0" : 0.006444977486334016,
+                "99.0" : 0.006444977486334016,
+                "99.9" : 0.006444977486334016,
+                "99.99" : 0.006444977486334016,
+                "99.999" : 0.006444977486334016,
+                "99.9999" : 0.006444977486334016,
+                "100.0" : 0.006444977486334016
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.006444977486334016,
+                    0.006440862178184328,
+                    0.006430936203773071,
+                    0.006441106904887135
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.0073965617425202895,
+            "scoreError" : 4.913975004285836E-5,
+            "scoreConfidence" : [
+                0.007347421992477431,
+                0.007445701492563148
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.00738930316210939,
+                "50.0" : 0.007395510071779498,
+                "90.0" : 0.007405923664412768,
+                "95.0" : 0.007405923664412768,
+                "99.0" : 0.007405923664412768,
+                "99.9" : 0.007405923664412768,
+                "99.99" : 0.007405923664412768,
+                "99.999" : 0.007405923664412768,
+                "99.9999" : 0.007405923664412768,
+                "100.0" : 0.007405923664412768
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.007391577038240759,
+                    0.00738930316210939,
+                    0.007405923664412768,
+                    0.007399443105318238
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.029702757576085363,
+            "scoreError" : 3.937838029855847E-4,
+            "scoreConfidence" : [
+                0.029308973773099777,
+                0.03009654137907095
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.02964531682114935,
+                "50.0" : 0.029698186027252556,
+                "90.0" : 0.029769341428687,
+                "95.0" : 0.029769341428687,
+                "99.0" : 0.029769341428687,
+                "99.9" : 0.029769341428687,
+                "99.99" : 0.029769341428687,
+                "99.999" : 0.029769341428687,
+                "99.9999" : 0.029769341428687,
+                "100.0" : 0.029769341428687
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.029739209477521265,
+                    0.029657162576983847,
+                    0.02964531682114935,
+                    0.029769341428687
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 0.7998471998463734,
+            "scoreError" : 0.003506251663511356,
+            "scoreConfidence" : [
+                0.796340948182862,
+                0.8033534515098848
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.7994310604484888,
+                "50.0" : 0.7996575703148566,
+                "90.0" : 0.8006425983072917,
+                "95.0" : 0.8006425983072917,
+                "99.0" : 0.8006425983072917,
+                "99.9" : 0.8006425983072917,
+                "99.99" : 0.8006425983072917,
+                "99.999" : 0.8006425983072917,
+                "99.9999" : 0.8006425983072917,
+                "100.0" : 0.8006425983072917
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.7996052115009746,
+                    0.7994310604484888,
+                    0.7997099291287386,
+                    0.8006425983072917
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.06747428018300206,
+            "scoreError" : 1.8206633251351495E-4,
+            "scoreConfidence" : [
+                0.06729221385048854,
+                0.06765634651551557
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.06744746723109811,
+                "50.0" : 0.06747303819786797,
+                "90.0" : 0.06750357710517416,
+                "95.0" : 0.06750357710517416,
+                "99.0" : 0.06750357710517416,
+                "99.9" : 0.06750357710517416,
+                "99.99" : 0.06750357710517416,
+                "99.999" : 0.06750357710517416,
+                "99.9999" : 0.06750357710517416,
+                "100.0" : 0.06750357710517416
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.06749305265661286,
+                    0.06744746723109811,
+                    0.06745302373912308,
+                    0.06750357710517416
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.07286262829349227,
+            "scoreError" : 5.156228315985589E-4,
+            "scoreConfidence" : [
+                0.07234700546189371,
+                0.07337825112509083
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.07274779604403807,
+                "50.0" : 0.07288686806290483,
+                "90.0" : 0.07292898100412139,
+                "95.0" : 0.07292898100412139,
+                "99.0" : 0.07292898100412139,
+                "99.9" : 0.07292898100412139,
+                "99.99" : 0.07292898100412139,
+                "99.999" : 0.07292898100412139,
+                "99.9999" : 0.07292898100412139,
+                "100.0" : 0.07292898100412139
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.07289984122028288,
+                    0.07274779604403807,
+                    0.07287389490552677,
+                    0.07292898100412139
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "10000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 0.36135867659750737,
+            "scoreError" : 0.006749640208310856,
+            "scoreConfidence" : [
+                0.3546090363891965,
+                0.36810831680581824
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.360736514764856,
+                "50.0" : 0.3608888506229221,
+                "90.0" : 0.3629204903793293,
+                "95.0" : 0.3629204903793293,
+                "99.0" : 0.3629204903793293,
+                "99.9" : 0.3629204903793293,
+                "99.99" : 0.3629204903793293,
+                "99.999" : 0.3629204903793293,
+                "99.9999" : 0.3629204903793293,
+                "100.0" : 0.3629204903793293
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.3608378123974476,
+                    0.3609398888483965,
+                    0.3629204903793293,
+                    0.360736514764856
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 9.946685396168988,
+            "scoreError" : 0.13168925383663932,
+            "scoreConfidence" : [
+                9.81499614233235,
+                10.078374650005626
+            ],
+            "scorePercentiles" : {
+                "0.0" : 9.935636996108949,
+                "50.0" : 9.936937663424125,
+                "90.0" : 9.97722926171875,
+                "95.0" : 9.97722926171875,
+                "99.0" : 9.97722926171875,
+                "99.9" : 9.97722926171875,
+                "99.99" : 9.97722926171875,
+                "99.999" : 9.97722926171875,
+                "99.9999" : 9.97722926171875,
+                "100.0" : 9.97722926171875
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    9.936271879377433,
+                    9.935636996108949,
+                    9.937603447470817,
+                    9.97722926171875
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 0.7121693632122523,
+            "scoreError" : 0.0015431426168120849,
+            "scoreConfidence" : [
+                0.7106262205954402,
+                0.7137125058290644
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.7119854518388792,
+                "50.0" : 0.7120857706569343,
+                "90.0" : 0.7125204596962617,
+                "95.0" : 0.7125204596962617,
+                "99.0" : 0.7125204596962617,
+                "99.9" : 0.7125204596962617,
+                "99.99" : 0.7125204596962617,
+                "99.999" : 0.7125204596962617,
+                "99.9999" : 0.7125204596962617,
+                "100.0" : 0.7125204596962617
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.7125204596962617,
+                    0.7120883293430657,
+                    0.7120832119708029,
+                    0.7119854518388792
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 0.7035034840364125,
+            "scoreError" : 0.004150195062697066,
+            "scoreConfidence" : [
+                0.6993532889737154,
+                0.7076536790991096
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.7026755912435615,
+                "50.0" : 0.703562987911933,
+                "90.0" : 0.7042123690782226,
+                "95.0" : 0.7042123690782226,
+                "99.0" : 0.7042123690782226,
+                "99.9" : 0.7042123690782226,
+                "99.99" : 0.7042123690782226,
+                "99.999" : 0.7042123690782226,
+                "99.9999" : 0.7042123690782226,
+                "100.0" : 0.7042123690782226
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.7042123690782226,
+                    0.7037086567219153,
+                    0.7026755912435615,
+                    0.7034173191019507
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "100000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 3.688146862137239,
+            "scoreError" : 0.10403073557716996,
+            "scoreConfidence" : [
+                3.584116126560069,
+                3.792177597714409
+            ],
+            "scorePercentiles" : {
+                "0.0" : 3.6668955553505533,
+                "50.0" : 3.6898448648148148,
+                "90.0" : 3.7060021635687734,
+                "95.0" : 3.7060021635687734,
+                "99.0" : 3.7060021635687734,
+                "99.9" : 3.7060021635687734,
+                "99.99" : 3.7060021635687734,
+                "99.999" : 3.7060021635687734,
+                "99.9999" : 3.7060021635687734,
+                "100.0" : 3.7060021635687734
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    3.6668955553505533,
+                    3.7060021635687734,
+                    3.690658724074074,
+                    3.6890310055555555
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "RANDOM"
+        },
+        "primaryMetric" : {
+            "score" : 119.52988765909092,
+            "scoreError" : 0.09749965658492991,
+            "scoreConfidence" : [
+                119.43238800250599,
+                119.62738731567585
+            ],
+            "scorePercentiles" : {
+                "0.0" : 119.51392922727273,
+                "50.0" : 119.52765588636365,
+                "90.0" : 119.55030963636364,
+                "95.0" : 119.55030963636364,
+                "99.0" : 119.55030963636364,
+                "99.9" : 119.55030963636364,
+                "99.99" : 119.55030963636364,
+                "99.999" : 119.55030963636364,
+                "99.9999" : 119.55030963636364,
+                "100.0" : 119.55030963636364
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    119.5284525,
+                    119.55030963636364,
+                    119.51392922727273,
+                    119.52685927272728
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "REPEATED"
+        },
+        "primaryMetric" : {
+            "score" : 4.5956669095892355,
+            "scoreError" : 0.06364711826319566,
+            "scoreConfidence" : [
+                4.53201979132604,
+                4.659314027852431
+            ],
+            "scorePercentiles" : {
+                "0.0" : 4.58114697515528,
+                "50.0" : 4.59933041995842,
+                "90.0" : 4.602859823284823,
+                "95.0" : 4.602859823284823,
+                "99.0" : 4.602859823284823,
+                "99.9" : 4.602859823284823,
+                "99.99" : 4.602859823284823,
+                "99.999" : 4.602859823284823,
+                "99.9999" : 4.602859823284823,
+                "100.0" : 4.602859823284823
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    4.58114697515528,
+                    4.600232247401247,
+                    4.598428592515592,
+                    4.602859823284823
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "STAGGER"
+        },
+        "primaryMetric" : {
+            "score" : 7.086329987624174,
+            "scoreError" : 0.6315631655273312,
+            "scoreConfidence" : [
+                6.454766822096842,
+                7.717893153151505
+            ],
+            "scorePercentiles" : {
+                "0.0" : 7.032571349090909,
+                "50.0" : 7.039954702554745,
+                "90.0" : 7.232839196296296,
+                "95.0" : 7.232839196296296,
+                "99.0" : 7.232839196296296,
+                "99.9" : 7.232839196296296,
+                "99.99" : 7.232839196296296,
+                "99.999" : 7.232839196296296,
+                "99.9999" : 7.232839196296296,
+                "100.0" : 7.232839196296296
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    7.232839196296296,
+                    7.039658784671533,
+                    7.032571349090909,
+                    7.0402506204379565
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.35",
+        "benchmark" : "org.openjdk.bench.java.util.ArraysSort.Int.testSort",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/jdk/bin/java",
+        "jvmArgs" : [
+            "-Djava.library.path=/home/graphics-rasterizer/jdk/jdk-gh/build/linux-x86_64-server-release/images/test/micro/native"
+        ],
+        "jdkVersion" : "20-internal",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "20-internal-adhoc.bourgesl.jdk-gh",
+        "warmupIterations" : 1,
+        "warmupTime" : "5 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 4,
+        "measurementTime" : "3 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "size" : "1000000",
+            "type" : "SHUFFLE"
+        },
+        "primaryMetric" : {
+            "score" : 38.112955858490565,
+            "scoreError" : 1.0312230128661704,
+            "scoreConfidence" : [
+                37.081732845624394,
+                39.144178871356736
+            ],
+            "scorePercentiles" : {
+                "0.0" : 37.87372366037736,
+                "50.0" : 38.189390518867924,
+                "90.0" : 38.199318735849054,
+                "95.0" : 38.199318735849054,
+                "99.0" : 38.199318735849054,
+                "99.9" : 38.199318735849054,
+                "99.99" : 38.199318735849054,
+                "99.999" : 38.199318735849054,
+                "99.9999" : 38.199318735849054,
+                "100.0" : 38.199318735849054
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    38.18585479245283,
+                    38.199318735849054,
+                    38.19292624528302,
+                    37.87372366037736
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]
+
+
