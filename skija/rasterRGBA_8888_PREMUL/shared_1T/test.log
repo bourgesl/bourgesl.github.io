@@ -1,0 +1,6 @@
+Java:     11.0.13+8-LTS
+VM:       OpenJDK 64-Bit Server VM 11.0.13+8-LTS mixed mode
+OS:       Linux 5.4.0-137-generic amd64
+renderer: DMarlinRenderingEngine
+profile:  shared_1T
+Using SkijaGraphics2D ...
