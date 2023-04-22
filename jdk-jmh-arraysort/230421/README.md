@@ -1,8 +1,6 @@
 DPQS 23.03.26 JMH benchmarks
 =========================
 
-Tested on hp zbook G3 (2017.06) Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz (fixed), see cpu_max.sh script
-
 Build on OpenJDK-21 master vs patched (PR @ https://github.com/openjdk/jdk/pull/13568).
 
 Last jdk commit:
@@ -20,5 +18,12 @@ Date:   Thu Apr 20 19:20:03 2023 +0000
 JMH Vizualizer on full results
 ==============================
 
+Tested on hp zbook G3 (2017.06) Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz (fixed), see cpu_max.sh script
+
+- zbook G3 (x86_64 / ubuntu):
 https://jmh.morethan.io/?sources=https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-master-jmh-result-230421.json,https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-patched-jmh-result-230421.json
 
+
+- macbook M2 (arm64 / macos 13.3):
+
+https://jmh.morethan.io/?sources=https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/mac-arm64-openjdk21-jmh-result-master.json,https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/mac-arm64-openjdk21-jmh-result-patched.json
