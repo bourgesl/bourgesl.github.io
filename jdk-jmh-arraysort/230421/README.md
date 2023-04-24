@@ -24,6 +24,10 @@ Tested on hp zbook G3 (2017.06) Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz (fixed
 https://jmh.morethan.io/?sources=https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-master-jmh-result-230421.json,https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-patched-jmh-result-230421.json
 
 
-- macbook M2 (arm64 / macos 13.3):
+- zbook G3 (x86_64 / ubuntu) with heap=60m vs heap=1024m (low-mem):
+https://jmh.morethan.io/?sources=https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-patched-jmh-result-230422-0060m.json,https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/openjdk21-patched-jmh-result-230422-1024m.json
 
+
+- macbook M2 (arm64 / macos 13.3):
 https://jmh.morethan.io/?sources=https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/mac-arm64-openjdk21-jmh-result-master.json,https://raw.githubusercontent.com/bourgesl/bourgesl.github.io/master/jdk-jmh-arraysort/230421/mac-arm64-openjdk21-jmh-result-patched.json
+
